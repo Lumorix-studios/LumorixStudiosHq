@@ -11,7 +11,7 @@ const downloadLatest = async (platform: "windows" | "linux" | "linux1") => {
       throw new Error("Failed to fetch latest release");
     }
 
-    const release = await response.json();
+    const release = await releaseFromJson(response);
 
     const asset = release.assets.find(
       (asset: { name: string; browser_download_url: string }) => {
@@ -23,7 +23,7 @@ const downloadLatest = async (platform: "windows" | "linux" | "linux1") => {
           return asset.name.endsWith(".deb");
         }
         if (platform == "linux1") {
-          return asset.name.endsWith(".rpm")
+          return asset.name.endsWith(".rpm");
         }
 
         return false;
@@ -40,79 +40,118 @@ const downloadLatest = async (platform: "windows" | "linux" | "linux1") => {
   }
 };
 
+async function releaseFromJson(response: Response) {
+  return response.json();
+}
+
+const platforms = [
+  { value: "windows", label: "Windows", ext: ".exe" },
+  { value: "linux", label: "Linux (Debian)", ext: ".deb" },
+  { value: "linux1", label: "Linux (RPM)", ext: ".rpm" },
+] as const;
+
 export default function Downloads() {
-  const [platform, setPlatform] = useState<"windows" | "linux">("windows");
+  const [platform, setPlatform] = useState<"windows" | "linux" | "linux1">("windows");
+  const [loading, setLoading] = useState(false);
+
+  const handleDownload = async () => {
+    setLoading(true);
+    await downloadLatest(platform);
+    setLoading(false);
+  };
 
   return (
-    <main className="min-h-screen bg-black px-6 py-16 text-white">
-      <div className="mx-auto max-w-5xl">
+    <main className="min-h-[calc(100vh-4rem)] bg-zinc-950 px-4 py-16 text-white sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl">
 
         {/* Header */}
-        <div className="mb-12">
-          <p className="mb-3 text-sm font-medium text-zinc-400">
-            Project-Neo
+        <div className="mb-10">
+          <p className="mb-2 text-sm font-medium tracking-wide text-zinc-500 uppercase">
+            ProjectNeo
           </p>
 
-          <h1 className="text-4xl font-semibold tracking-tight">
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             Downloads
           </h1>
 
-          <p className="mt-3 max-w-2xl text-zinc-400">
-            Download the latest version of Neo for your platform.
+          <p className="mt-3 max-w-xl text-base text-zinc-400 sm:text-lg">
+            Get the latest stable release of Neo for your platform.
           </p>
         </div>
 
         {/* Download Card */}
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
+        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
 
             {/* Info */}
             <div>
               <div className="flex items-center gap-3">
-                <h2 className="text-lg font-medium">
+                <h2 className="text-xl font-medium">
                   Neo
                 </h2>
 
-                <span className="rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-xs text-zinc-300">
+                <span className="rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-zinc-300">
                   v1.0.5
                 </span>
               </div>
 
-              <p className="mt-2 text-sm text-zinc-500">
+              <p className="mt-1.5 text-sm text-zinc-500">
                 Latest stable release
               </p>
             </div>
 
             {/* Controls */}
-            <div className="flex flex-col gap-2 sm:flex-row">
-
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <select
                 value={platform}
                 onChange={(e) =>
-                  setPlatform(e.target.value as "windows" | "linux")
+                  setPlatform(e.target.value as "windows" | "linux" | "linux1")
                 }
-                className="rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-white outline-none transition focus:border-zinc-500"
+                className="rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white outline-none transition focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
               >
-                <option value="windows">
-                  Windows
-                </option>
-
-                <option value="linux">
-                  Linux
-                </option>
+                {platforms.map((p) => (
+                  <option key={p.value} value={p.value}>
+                    {p.label}
+                  </option>
+                ))}
               </select>
 
               <button
-                onClick={() => downloadLatest(platform)}
-                className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200"
+                onClick={handleDownload}
+                disabled={loading}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:opacity-60"
               >
-                Download
+                {loading ? (
+                  <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" className="opacity-25" />
+                    <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="opacity-75" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                )}
+                {loading ? "Fetching…" : "Download"}
               </button>
-
             </div>
           </div>
         </div>
 
+        {/* System requirements */}
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
+            <h3 className="text-sm font-medium text-white">Windows</h3>
+            <p className="mt-1.5 text-xs text-zinc-500">
+              Windows 10 or later · 64-bit · ~150 MB
+            </p>
+          </div>
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
+            <h3 className="text-sm font-medium text-white">Linux</h3>
+            <p className="mt-1.5 text-xs text-zinc-500">
+              Ubuntu 20.04+ / Fedora 34+ · 64-bit · ~150 MB
+            </p>
+          </div>
+        </div>
       </div>
     </main>
   );
