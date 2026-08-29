@@ -8,6 +8,7 @@ const navigation = [
   { label: "Downloads", href: "/downloads" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label : "Documentation", href : "/Documentation"},
 ];
 
 export default function Navbar() {

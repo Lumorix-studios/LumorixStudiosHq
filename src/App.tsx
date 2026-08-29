@@ -8,7 +8,7 @@ import Downloads from "../components/Downloads";
 import About from "../components/About";
 import testImage from "./assets/TEST004.png";
 import Contact from "../components/Contact";
-
+import Documentation from "../components/Documentation"
 export default function App() {
   return (
     <BrowserRouter>
@@ -38,13 +38,12 @@ export default function App() {
 
                         <div className="mt-4 flex flex-wrap items-center gap-x-2 text-lg text-zinc-400 sm:text-xl">
                           <span>Built to be</span>
-
                           <RotatingText
                             texts={[
                               "Efficient",
                               "Easy to use",
                               "Lightweight",
-                              "Free",
+                              "Free (Currently)",
                             ]}
                             mainClassName="inline-flex font-medium text-white"
                             staggerFrom="last"
@@ -142,6 +141,8 @@ export default function App() {
               element={<Contact />}
             />
 
+<Route 
+  path = "/Documentation" element = {<Documentation/>}/>
           </Routes>
         </main>
 

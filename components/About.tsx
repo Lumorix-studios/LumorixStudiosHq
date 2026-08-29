@@ -11,11 +11,9 @@ export default function About() {
           </h1>
 
           <p className="mt-5 text-lg leading-relaxed text-zinc-400 sm:text-xl">
-            Neo started as a project to build the kind of development
-            environment I actually wanted to use.
+            Neo started as a project built as a hobby because I was bored and wanted to do something productive
           </p>
         </div>
-
         {/* Sections */}
         <div className="mt-16 space-y-16 sm:mt-20 sm:space-y-20">
 
@@ -28,20 +26,17 @@ export default function About() {
             <div className="mt-4 space-y-4 leading-7 text-zinc-400">
               <p>
                 Neo is a desktop IDE with agentic coding capabilities. The idea
-                isn't to make another editor with an AI chat box attached to it.
+                is not to make another editor with an AI chat box attached to.
                 Neo is built around the idea that an agent should be able to work
                 alongside the developer and the project itself.
-              </p>
-
-              <p>
-                The project is intentionally lightweight. I don't want the editor
+                The project is intentionally lightweight as its made from a rust backend unlike electron
+                 which is notoriously known from being Ram intensive even at idle stages
                 to consume a huge amount of resources just to sit open while I'm
                 coding. The goal is for Neo to feel like a development tool first
                 and an AI application second.
               </p>
             </div>
           </div>
-
           {/* Why */}
           <div>
             <h2 className="text-xl font-semibold sm:text-2xl">
@@ -50,10 +45,7 @@ export default function About() {
 
             <div className="mt-4 space-y-4 leading-7 text-zinc-400">
               <p>
-                I wanted more control over the development environment I was
-                building. That meant experimenting with different models,
-                providers, interfaces, and ways of letting an agent interact with
-                a codebase.
+                
               </p>
 
               <p>
