@@ -141,8 +141,9 @@ export default function App() {
               element={<Contact />}
             />
 
-<Route 
-  path = "/Documentation" element = {<Documentation/>}/>
+            <Route 
+              path="/Documentation"
+              element={<Documentation />} />
           </Routes>
         </main>
 

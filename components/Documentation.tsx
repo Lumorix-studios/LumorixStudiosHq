@@ -1,5 +1,5 @@
 export default function Documentation() {
-  retrun(
+  return(
     <div>
       </div>
     );
