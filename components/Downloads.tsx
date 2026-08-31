@@ -142,13 +142,13 @@ export default function Downloads() {
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
             <h3 className="text-sm font-medium text-white">Windows</h3>
             <p className="mt-1.5 text-xs text-zinc-500">
-              Windows 10 or later · 64-bit · ~150 MB
+              Windows 10 or later · 64-bit · ~7 MB
             </p>
           </div>
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
             <h3 className="text-sm font-medium text-white">Linux</h3>
             <p className="mt-1.5 text-xs text-zinc-500">
-              Ubuntu 20.04+ / Fedora 34+ · 64-bit · ~150 MB
+              Ubuntu 20.04+ / Fedora 34+ · 64-bit · ~10 MB
             </p>
           </div>
         </div>
