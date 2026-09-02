@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import PrivacyPolicy from "../components/Privacypolicyandterms";
 import RotatingText from "../components/RotatingText";
 import Navbar from "../components/navbar";
@@ -11,7 +11,9 @@ import Contact from "../components/Contact";
 import Documentation from "../components/Documentation"
 export default function App() {
   return (
-    <BrowserRouter>
+    // basename is required on GitHub Pages project sites: the app lives at
+    // /LumorixStudiosHq/, so without it no route ever matches on refresh.
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="flex min-h-screen flex-col bg-zinc-950">
         <Navbar />
 
@@ -70,12 +72,12 @@ export default function App() {
                         </p>
 
                         <div className="mt-8 flex flex-wrap gap-3">
-                          <a
-                            href="/downloads"
+                          <Link
+                            to="/downloads"
                             className="rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
                           >
                             Download
-                          </a>
+                          </Link>
 
                           <a
                             href="https://github.com/Lumorix-studios/Neo"
@@ -141,9 +143,29 @@ export default function App() {
               element={<Contact />}
             />
 
-            <Route 
+            <Route
               path="/Documentation"
-              element={<Documentation />} />
+              element={<Documentation />}
+            />
+
+            {/* Catch-all: keeps refreshes/unknown URLs inside the app */}
+            <Route
+              path="*"
+              element={
+                <div className="mx-auto max-w-7xl px-4 py-32 text-center sm:px-6">
+                  <h1 className="text-5xl font-semibold text-white">404</h1>
+                  <p className="mt-4 text-zinc-400">
+                    This page doesn&apos;t exist.
+                  </p>
+                  <Link
+                    to="/"
+                    className="mt-8 inline-block rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                  >
+                    Back home
+                  </Link>
+                </div>
+              }
+            />
           </Routes>
         </main>
 
