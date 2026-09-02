@@ -30,10 +30,10 @@ export default function About() {
                 Neo is built around the idea that an agent should be able to work
                 alongside the developer and the project itself.
                 The project is intentionally lightweight as its made from a rust backend unlike electron
-                 which is notoriously known from being Ram intensive even at idle stages
-                to consume a huge amount of resources just to sit open while I'm
-                coding. The goal is for Neo to feel like a development tool first
-                and an AI application second.
+                which is notoriously known from being RAM intensive even at idle stages.
+                I mean come on who wants an app to consume a huge amount of resources just to sit open while
+                coding. The goal is for Neo to feel like a development tool first that is accessible to any hardware as long as the OS is supported.
+                Enjoy!!!
               </p>
             </div>
           </div>

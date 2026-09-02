@@ -6,7 +6,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Downloads from "../components/Downloads";
 import About from "../components/About";
-import testImage from "./assets/TEST004.png";
+import testImage from "./assets/TEST001.png";
 import Contact from "../components/Contact";
 import Documentation from "../components/Documentation"
 export default function App() {

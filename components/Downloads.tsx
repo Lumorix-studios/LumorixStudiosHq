@@ -91,7 +91,7 @@ export default function Downloads() {
                 </h2>
 
                 <span className="rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-zinc-300">
-                  v1.0.5
+                  v1.0.6
                 </span>
               </div>
 
