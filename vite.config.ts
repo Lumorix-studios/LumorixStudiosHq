@@ -5,13 +5,6 @@ import { copyFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import type { Plugin } from 'vite'
 
-/**
- * GitHub Pages has no SPA fallback: when a user refreshes on a client route
- * (e.g. /LumorixStudiosHq/downloads), GitHub Pages looks for a real file,
- * doesn't find one, and serves its own 404. Copying index.html to 404.html
- * makes GitHub Pages serve our app instead, letting React Router handle the
- * URL client-side.
- */
 function copy404ForGithubPages(): Plugin {
   return {
     name: 'copy-404-for-github-pages',
