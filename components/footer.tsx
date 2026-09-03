@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const links = [
   { label: "GitHub", href: "https://github.com/Lumorix-studios/Neo" },
@@ -14,17 +15,29 @@ const Footer: React.FC = () => (
       </span>
 
       <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 sm:gap-x-6">
-        {links.map(({ label, href }) => (
-          <a
-            key={label}
-            href={href}
-            target={href.startsWith("http") ? "_blank" : undefined}
-            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="transition-colors hover:text-zinc-200"
-          >
-            {label}
-          </a>
-        ))}
+        {links.map(({ label, href }) =>
+          href.startsWith("http") ? (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-zinc-200"
+            >
+              {label}
+            </a>
+          ) : (
+            /* Internal links go through the router so the GitHub Pages
+               basename (e.g. /LumorixStudiosHq/) is applied automatically */
+            <Link
+              key={label}
+              to={href}
+              className="transition-colors hover:text-zinc-200"
+            >
+              {label}
+            </Link>
+          )
+        )}
       </nav>
 
       <span className="text-center sm:text-right">

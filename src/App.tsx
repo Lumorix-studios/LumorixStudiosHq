@@ -11,8 +11,6 @@ import Contact from "../components/Contact";
 import Documentation from "../components/Documentation"
 export default function App() {
   return (
-    // basename is required on GitHub Pages project sites: the app lives at
-    // /LumorixStudiosHq/, so without it no route ever matches on refresh.
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="flex min-h-screen flex-col bg-zinc-950">
         <Navbar />
