@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaDiscord, FaGithub, FaXTwitter } from "react-icons/fa6";
+import { FaDiscord, FaGithub} from "react-icons/fa6";
 import icon from "../src/assets/icon.png";
 
 const productLinks = [
