@@ -61,8 +61,9 @@ export default function Downloads() {
   };
 
   return (
-    <main className="min-h-[calc(100vh-4rem)] bg-zinc-950 px-4 py-16 text-white sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl">
+    <main className="min-h-[calc(100vh-4rem)] text-white">
+      <div className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
 
         {/* Header */}
         <div className="mb-10">
@@ -90,9 +91,7 @@ export default function Downloads() {
                   Neo
                 </h2>
 
-                <span className="rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-zinc-300">
-                  v1.0.6
-                </span>
+                
               </div>
 
               <p className="mt-1.5 text-sm text-zinc-500">
@@ -139,7 +138,9 @@ export default function Downloads() {
 
         {/* System requirements */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
+          
             <h3 className="text-sm font-medium text-white">Windows</h3>
             <p className="mt-1.5 text-xs text-zinc-500">
               Windows 10 or later · 64-bit · ~7 MB
@@ -152,6 +153,22 @@ export default function Downloads() {
             </p>
           </div>
         </div>
+        <div className = " rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 m-5">
+          <h3 className="text-sm font-medium text-white">
+            Visit the releases page on GitHub if you want to download it that way.
+            
+            <a
+              href="https://github.com/Lumorix-studios/Neo/releases"
+              className="ml-2 text-blue-400 hover:text-blue-300 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Click here
+            </a>
+          </h3>
+
+        </div>
+      </div>
       </div>
     </main>
   );

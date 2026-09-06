@@ -8,21 +8,34 @@ import Downloads from "../components/Downloads";
 import About from "../components/About";
 import testImage from "./assets/TEST001.png";
 import Contact from "../components/Contact";
-import Documentation from "../components/Documentation"
+import Documentation from "../components/Documentation";
+import CRTWarp from "../components/CrtWrap";
+
 export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="flex min-h-screen flex-col bg-zinc-950">
-        <Navbar />
+        {/* Everything above the footer shares the CRT background */}
+        <div className="relative flex flex-1 flex-col">
+          {/* Global CRT animated background */}
+          <div className="absolute inset-0" aria-hidden="true">
+            <CRTWarp mouseReact={false} />
+          </div>
+          <div
+            className="absolute inset-0 bg-zinc-950/70"
+            aria-hidden="true"
+          />
 
-        <main className="flex-1">
+          <Navbar />
+
+          <main className="relative z-10 flex-1">
           <Routes>
 
             {/* Home */}
             <Route
               path="/"
               element={
-                <section className="bg-zinc-950">
+                <section>
                   <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
                     <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
@@ -65,7 +78,7 @@ export default function App() {
                         </div>
 
                         <p className="mt-5 max-w-lg text-base leading-relaxed text-zinc-400 sm:text-lg">
-                          A lightweight agentic IDE for developers who want
+                          A lightweight agentic interface for developers who want
                           their tools to stay out of the way.
                         </p>
 
@@ -112,6 +125,12 @@ export default function App() {
                       </div>
 
                     </div>
+                    <p className = " text-white m-50">
+                      
+
+
+
+                    </p>
                   </div>
                 </section>
               }
@@ -166,6 +185,7 @@ export default function App() {
             />
           </Routes>
         </main>
+        </div>
 
         <Footer />
       </div>

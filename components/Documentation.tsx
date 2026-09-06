@@ -6,14 +6,15 @@ const docGroups = [
     label: "Introduction",
     items: [
       { id: "what-is-neo", label: "What is Neo?" },
-      { id: "getting-started", label: "Getting started" },
+     
     ],
   },
   {
     label: "The agent",
     items: [
-      { id: "agent", label: "Agent & filesystem tools" },
+      { id: "Agentic-tools", label: "Agent & filesystem tools" },
       { id: "change-review", label: "Reviewing changes" },
+      {id : "how-to-add-agents", label: "How to add agents"},
     ],
   },
   {
@@ -232,8 +233,8 @@ export default function Documentation() {
           </section>
 
           {/* Getting started */}
-          <section id="getting-started" className="scroll-mt-24">
-            <h2 className="text-xl font-semibold sm:text-2xl">
+          <section  id = "how-to-add-agents" className="scroll-mt-24">
+            <h2 className="text-xl font-semibold sm:text-2xl" >
               Getting started
             </h2>
 
@@ -253,7 +254,7 @@ export default function Documentation() {
                   .
                 </li>
                 <li>
-                  <span className="font-medium text-zinc-200">
+                  <span className="font-medium text-zinc-200" >
                     Open a workspace.
                   </span>{" "}
                   Neo works on folder-based workspaces. Open your project
@@ -261,7 +262,7 @@ export default function Documentation() {
                   inside it.
                 </li>
                 <li>
-                  <span className="font-medium text-zinc-200">
+                  <span className="font-medium text-zinc-200" >
                     Configure a model provider.
                   </span>{" "}
                   Point Neo at a compatible AI endpoint using your own
@@ -282,7 +283,7 @@ export default function Documentation() {
           </section>
 
           {/* The agent */}
-          <section id="agent" className="scroll-mt-24 border-t border-zinc-800 pt-12 sm:pt-16">
+          <section id="Agentic-tools" className="scroll-mt-24 border-t border-zinc-800 pt-12 sm:pt-16">
             <h2 className="text-xl font-semibold sm:text-2xl">
               The agent &amp; filesystem tools
             </h2>

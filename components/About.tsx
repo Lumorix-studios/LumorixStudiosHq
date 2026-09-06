@@ -1,7 +1,7 @@
 
 export default function About() {
   return (
-    <main className="bg-zinc-950 text-white">
+    <main className="text-white">
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
 
         {/* Header */}
