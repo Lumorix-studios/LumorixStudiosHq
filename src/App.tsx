@@ -125,7 +125,7 @@ export default function App() {
                       </div>
 
                     </div>
-                    <p className = " text-white m-50">
+                    <p className = " text-white m-80">
                       
 
 
