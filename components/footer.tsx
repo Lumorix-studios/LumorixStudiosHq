@@ -5,14 +5,14 @@ import icon from "../src/assets/icon.png";
 
 const productLinks = [
   { label: "Downloads", href: "/downloads" },
-  { label: "Documentation", href: "/Documentation" },
+  { label: "Documentation", href: "/documentation" },
   { label: "About Neo", href: "/about" },
 ];
 
 const resourceLinks = [
   { label: "Contact", href: "/contact" },
-  { label: "Privacy Policy", href: "/Privacypolicyandterms" },
-  { label: "Terms of Service", href: "/Privacypolicyandterms" },
+  { label: "Privacy Policy", href: "/privacypolicyandterms" },
+  { label: "Terms of Service", href: "/privacypolicyandterms" },
   {
     label: "GitHub Repository",
     href: "https://github.com/Lumorix-studios/Neo",
@@ -21,8 +21,13 @@ const resourceLinks = [
 
 const socials = [
   {
-    label: "GitHub",
+    label: "GitHub organization",
     href: "https://github.com/Lumorix-studios",
+    Icon: FaGithub,
+  },
+  {
+    label: "ProjectNeo repository",
+    href: "https://github.com/Lumorix-studios/Neo",
     Icon: FaGithub,
   },
   {
@@ -49,7 +54,7 @@ const Footer: React.FC = () => (
           >
             <img
               src={icon}
-              alt="Lumorix Studios"
+              alt=""
               className="h-7 w-7 rounded-md"
             />
             <span>Lumorix Studios</span>
@@ -57,7 +62,7 @@ const Footer: React.FC = () => (
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
             Home of ProjectNeo — a lightweight desktop IDE with agentic coding
-            capabilities, built to run on any hardware.
+            capabilities. Beta, free while in development, no account needed.
           </p>
 
           <div className="mt-5 flex gap-3">

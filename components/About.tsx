@@ -6,12 +6,17 @@ export default function About() {
 
         {/* Header */}
         <div className="max-w-2xl">
+          <p className="mb-2 text-sm font-medium tracking-wide text-zinc-500 uppercase">
+            ProjectNeo
+          </p>
+
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             About Neo
           </h1>
 
           <p className="mt-5 text-lg leading-relaxed text-zinc-400 sm:text-xl">
-            Neo started as a project built as a hobby because I was bored and wanted to do something productive
+            A lightweight desktop IDE with agentic coding, built to stay fast on
+            modest hardware.
           </p>
         </div>
         {/* Sections */}
@@ -25,15 +30,17 @@ export default function About() {
 
             <div className="mt-4 space-y-4 leading-7 text-zinc-400">
               <p>
-                Neo is a desktop IDE with agentic coding capabilities. The idea
-                is not to make another editor with an AI chat box attached to.
-                Neo is built around the idea that an agent should be able to work
-                alongside the developer and the project itself.
-                The project is intentionally lightweight as its made from a rust backend unlike electron
-                which is notoriously known from being RAM intensive even at idle stages.
-                I mean come on who wants an app to consume a huge amount of resources just to sit open while
-                coding. The goal is for Neo to feel like a development tool first that is accessible to any hardware as long as the OS is supported.
-                Enjoy!!!
+                Neo is a desktop IDE with agentic coding capabilities. Rather
+                than bolting a chat box onto another editor, Neo is built
+                around an agent that can work alongside you, inside your
+                project.
+              </p>
+
+              <p>
+                It stays intentionally lightweight: a Rust backend instead of
+                Electron, so it idles small and stays usable on modest
+                hardware. The goal is a tool that feels like a development
+                environment first — supported wherever the OS is.
               </p>
             </div>
           </div>
@@ -45,12 +52,8 @@ export default function About() {
 
             <div className="mt-4 space-y-4 leading-7 text-zinc-400">
               <p>
-                
-              </p>
-
-              <p>
-                Neo is the result of those experiments turning into an actual
-                application.
+                Neo started as a hobby project — small experiments in editors,
+                agents, and desktop tooling that grew into a real application.
               </p>
             </div>
           </div>

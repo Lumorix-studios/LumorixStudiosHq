@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import icon from "../src/assets/orglogo.jpg";
 
@@ -8,30 +9,45 @@ const navigation = [
   { label: "Downloads", href: "/downloads" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label : "Documentation", href : "/Documentation"},
+  { label: "Documentation", href: "/documentation" },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState<string | null>(null);
   const location = useLocation();
+
+  // Close the mobile menu when the route changes (derived state, no effect).
+  if (menuPath !== location.pathname) {
+    setMenuPath(location.pathname);
+    if (mobileOpen) setMobileOpen(false);
+  }
 
   // location.pathname is relative to the router basename (e.g. "/downloads")
   const isActive = (href: string) => {
-    if (href === "/") return location.pathname === "/";
-    return location.pathname.startsWith(href);
+    const current = location.pathname.toLowerCase();
+    const target = href.toLowerCase();
+    if (target === "/") return current === "/";
+    return current === target || current.startsWith(`${target}/`);
+  };
+
+  // Close the mobile menu with Escape while it is open.
+  const handleMenuKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") setMobileOpen(false);
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
+    <nav aria-label="Primary" className="sticky top-0 z-50 w-full border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link
           to="/"
           className="flex items-center gap-2.5 text-base font-semibold tracking-tight text-white sm:text-xl"
+          aria-label="Lumorix Studios — home"
         >
           <img
             src={icon}
-            alt="Lumorix Studios"
+            alt=""
             className="h-7 w-7 rounded-md"
           />
           <span>Lumorix Studios</span>
@@ -43,6 +59,7 @@ export default function Navbar() {
             <Link
               key={label}
               to={href}
+              aria-current={isActive(href) ? "page" : undefined}
               className={`rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
                 isActive(href)
                   ? "bg-zinc-800/80 text-white"
@@ -68,7 +85,9 @@ export default function Navbar() {
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
           className="flex h-10 w-10 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-zinc-800 hover:text-white md:hidden"
-          aria-label="Toggle menu"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav"
         >
           {mobileOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-5 w-5">
@@ -84,12 +103,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-zinc-800 bg-zinc-950 px-4 pb-4 pt-2 md:hidden">
+        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="border-t border-zinc-800 bg-zinc-950 px-4 pb-4 pt-2 md:hidden">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
               to={href}
               onClick={() => setMobileOpen(false)}
+              aria-current={isActive(href) ? "page" : undefined}
               className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                 isActive(href)
                   ? "bg-zinc-800/80 text-white"

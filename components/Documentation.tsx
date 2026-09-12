@@ -6,15 +6,14 @@ const docGroups = [
     label: "Introduction",
     items: [
       { id: "what-is-neo", label: "What is Neo?" },
-     
+      { id: "how-to-add-agents", label: "How to add agents" },
     ],
   },
   {
     label: "The agent",
     items: [
-      { id: "Agentic-tools", label: "Agent & filesystem tools" },
+      { id: "agentic-tools", label: "Agent & filesystem tools" },
       { id: "change-review", label: "Reviewing changes" },
-      {id : "how-to-add-agents", label: "How to add agents"},
     ],
   },
   {
@@ -79,17 +78,63 @@ const providerConfig = [
 
 const devRequirements = ["Node.js", "npm", "Rust", "Cargo", "Tauri prerequisites", "Git"];
 
-function CodeBlock({ children }: { children: string }) {
+function CodeBlock({ children, label }: { children: string; label?: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(children);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
+    } catch {
+      setCopied(false);
+    }
+  };
+
   return (
-    <pre className="overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900 p-4 text-sm leading-6 text-zinc-300">
-      <code>{children}</code>
-    </pre>
+    <div className="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900">
+      <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-2">
+        <span className="text-xs text-zinc-500">{label ?? "Terminal"}</span>
+        <button
+          type="button"
+          onClick={copy}
+          className="rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
+        >
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+      <pre className="overflow-x-auto p-4 text-sm leading-6 text-zinc-300">
+        <code>{children}</code>
+      </pre>
+    </div>
   );
 }
 
 export default function Documentation() {
   const [openGroup, setOpenGroup] = useState<string | null>(docGroups[0].label);
   const [activeId, setActiveId] = useState<string>("what-is-neo");
+
+  // Keep the sidebar group open for whichever section is in view.
+  // activeId is event-driven (IntersectionObserver), so derive the visible
+  // group during render instead of syncing it in a second effect.
+  const activeGroupLabel =
+    docGroups.find((group) =>
+      group.items.some((item) => item.id === activeId)
+    )?.label ?? docGroups[0].label;
+  const visibleGroup = openGroup ?? activeGroupLabel;
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    window.history.replaceState(null, "", `#${id}`);
+  };
+
+  // Support deep links like /documentation#terminal
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      window.setTimeout(() => scrollToSection(id), 50);
+    }
+  }, []);
 
   // Scroll spy: highlight the sidebar entry for the section in view
   useEffect(() => {
@@ -119,9 +164,9 @@ export default function Documentation() {
 
           {/* Sidebar */}
           <aside className="hidden lg:block">
-            <nav className="sticky top-24 space-y-1">
+            <nav aria-label="Documentation sections" className="sticky top-24 space-y-1">
               {docGroups.map((group) => {
-                const open = openGroup === group.label;
+                const open = visibleGroup === group.label;
                 return (
                   <div key={group.label}>
                     <button
@@ -155,9 +200,7 @@ export default function Documentation() {
                               href={`#${id}`}
                               onClick={(e) => {
                                 e.preventDefault();
-                                document
-                                  .getElementById(id)
-                                  ?.scrollIntoView({ behavior: "smooth" });
+                                scrollToSection(id);
                               }}
                               className={`block rounded-md px-3 py-1.5 text-sm transition-colors ${
                                 activeId === id
@@ -179,6 +222,21 @@ export default function Documentation() {
 
           {/* Content */}
           <div className="min-w-0">
+
+            {/* Mobile quick nav: same links as the sidebar, no JS needed */}
+            <nav aria-label="On this page" className="mb-10 flex flex-wrap gap-2 lg:hidden">
+              {docGroups.flatMap((group) =>
+                group.items.map(({ id, label }) => (
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    className="rounded-full border border-zinc-800 bg-zinc-900/60 px-3 py-1.5 text-xs font-medium text-zinc-300 transition hover:border-zinc-600 hover:text-white"
+                  >
+                    {label}
+                  </a>
+                ))
+              )}
+            </nav>
 
         {/* Header */}
         <div className="max-w-2xl">
@@ -233,7 +291,7 @@ export default function Documentation() {
           </section>
 
           {/* Getting started */}
-          <section  id = "how-to-add-agents" className="scroll-mt-24">
+          <section id="how-to-add-agents" className="scroll-mt-24">
             <h2 className="text-xl font-semibold sm:text-2xl" >
               Getting started
             </h2>
@@ -283,7 +341,7 @@ export default function Documentation() {
           </section>
 
           {/* The agent */}
-          <section id="Agentic-tools" className="scroll-mt-24 border-t border-zinc-800 pt-12 sm:pt-16">
+          <section id="agentic-tools" className="scroll-mt-24 border-t border-zinc-800 pt-12 sm:pt-16">
             <h2 className="text-xl font-semibold sm:text-2xl">
               The agent &amp; filesystem tools
             </h2>
@@ -508,7 +566,7 @@ export default function Documentation() {
                 that provider is subject to the provider's own privacy policy
                 and terms of service. For the full details, see the{" "}
                 <Link
-                  to="/Privacypolicyandterms"
+                  to="/privacypolicyandterms"
                   className="text-white underline decoration-zinc-600 underline-offset-4 transition hover:decoration-zinc-300"
                 >
                   Privacy Policy &amp; Terms

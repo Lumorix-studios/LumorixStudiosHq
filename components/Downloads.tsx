@@ -1,64 +1,55 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const downloadLatest = async (platform: "windows" | "linux" | "linux1") => {
-  try {
-    const response = await fetch(
-      "https://api.github.com/repos/Lumorix-studios/Neo/releases/latest"
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch latest release");
-    }
-
-    const release = await releaseFromJson(response);
-
-    const asset = release.assets.find(
-      (asset: { name: string; browser_download_url: string }) => {
-        if (platform === "windows") {
-          return asset.name.endsWith(".exe");
-        }
-
-        if (platform === "linux") {
-          return asset.name.endsWith(".deb");
-        }
-        if (platform == "linux1") {
-          return asset.name.endsWith(".rpm");
-        }
-
-        return false;
-      }
-    );
-
-    if (!asset) {
-      throw new Error(`${platform} download not found`);
-    }
-
-    window.location.href = asset.browser_download_url;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-async function releaseFromJson(response: Response) {
-  return response.json();
+interface ReleaseAsset {
+  name: string;
+  size: number;
+  browser_download_url: string;
 }
 
-const platforms = [
-  { value: "windows", label: "Windows", ext: ".exe" },
-  { value: "linux", label: "Linux (Debian)", ext: ".deb" },
-  { value: "linux1", label: "Linux (RPM)", ext: ".rpm" },
-] as const;
+interface ReleaseInfo {
+  tag_name: string;
+  published_at?: string;
+  html_url?: string;
+  assets?: ReleaseAsset[];
+}
+
+const RELEASE_URL =
+  "https://api.github.com/repos/Lumorix-studios/Neo/releases/latest";
+const RELEASES_PAGE = "https://github.com/Lumorix-studios/Neo/releases";
+
+function formatSize(bytes: number) {
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+}
 
 export default function Downloads() {
-  const [platform, setPlatform] = useState<"windows" | "linux" | "linux1">("windows");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [release, setRelease] = useState<ReleaseInfo | null>(null);
 
-  const handleDownload = async () => {
-    setLoading(true);
-    await downloadLatest(platform);
-    setLoading(false);
-  };
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const response = await fetch(RELEASE_URL);
+        if (!response.ok) throw new Error("Could not reach the releases service.");
+        const data = (await response.json()) as ReleaseInfo;
+        if (!cancelled) setRelease(data);
+      } catch (err) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : "Could not load release info.");
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const assets = release?.assets ?? [];
 
   return (
     <main className="min-h-[calc(100vh-4rem)] text-white">
@@ -88,7 +79,7 @@ export default function Downloads() {
             <div>
               <div className="flex items-center gap-3">
                 <h2 className="text-xl font-medium">
-                  Neo
+                  Neo{version ? ` ${version}` : ""}
                 </h2>
 
                 
@@ -101,10 +92,14 @@ export default function Downloads() {
 
             {/* Controls */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <label htmlFor="platform" className="sr-only">
+                Choose your platform
+              </label>
               <select
+                id="platform"
                 value={platform}
                 onChange={(e) =>
-                  setPlatform(e.target.value as "windows" | "linux" | "linux1")
+                  setPlatform(e.target.value as Platform)
                 }
                 className="rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white outline-none transition focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
               >
@@ -118,6 +113,7 @@ export default function Downloads() {
               <button
                 onClick={handleDownload}
                 disabled={loading}
+                aria-live="polite"
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:opacity-60"
               >
                 {loading ? (
@@ -134,6 +130,21 @@ export default function Downloads() {
               </button>
             </div>
           </div>
+
+          {error && (
+            <p role="alert" className="mt-4 rounded-lg border border-red-900/60 bg-red-950/40 px-4 py-3 text-sm text-red-200">
+              {error}{" "}
+              <a
+                href="https://github.com/Lumorix-studios/Neo/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-red-100"
+              >
+                Open the releases page
+              </a>
+              .
+            </p>
+          )}
         </div>
 
         {/* System requirements */}
@@ -154,18 +165,18 @@ export default function Downloads() {
           </div>
         </div>
         <div className = " rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 m-5">
-          <h3 className="text-sm font-medium text-white">
-            Visit the releases page on GitHub if you want to download it that way.
+          <p className="text-sm font-medium text-white">
+            Prefer to browse every build yourself?{" "}
             
             <a
               href="https://github.com/Lumorix-studios/Neo/releases"
-              className="ml-2 text-blue-400 hover:text-blue-300 hover:underline"
+              className="ml-1 text-blue-400 hover:text-blue-300 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Click here
+              Visit the releases page
             </a>
-          </h3>
+          </p>
 
         </div>
       </div>
