@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://madhusudhan-rgb.github.io/LumorixStudiosHq/</loc>
+    <loc>https://lumorix-studios.github.io/LumorixStudiosHq/</loc>
     <lastmod>2026-09-12</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://madhusudhan-rgb.github.io/LumorixStudiosHq/downloads</loc>
+    <loc>https://lumorix-studios.github.io/LumorixStudiosHq/downloads</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://madhusudhan-rgb.github.io/LumorixStudiosHq/documentation</loc>
+    <loc>https://lumorix-studios.github.io/LumorixStudiosHq/documentation</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://madhusudhan-rgb.github.io/LumorixStudiosHq/about</loc>
+    <loc>https://lumorix-studios.github.io/LumorixStudiosHq/about</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://madhusudhan-rgb.github.io/LumorixStudiosHq/contact</loc>
+    <loc>https://lumorix-studios.github.io/LumorixStudiosHq/contact</loc>
     <priority>0.6</priority>
   </url>
 </urlset>
