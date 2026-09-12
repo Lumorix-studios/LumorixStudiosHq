@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://madhusudhan-rgb.github.io/LumorixStudiosHq/",
+  "homepage": "https://lumorix-studios.github.io/LumorixStudiosHq/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
