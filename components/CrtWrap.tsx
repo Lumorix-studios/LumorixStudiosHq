@@ -229,7 +229,17 @@ export default function CRTWarp({
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false, powerPreference: 'low-power' });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false, powerPreference: 'low-power' });
+    } catch {
+      // WebGL unavailable — keep the page's look with a static gradient instead of crashing.
+      container.style.background = 'radial-gradient(ellipse at 50% 40%, #150826 0%, #05010a 70%)';
+      material.dispose();
+      geometry.dispose();
+      materialRef.current = null;
+      return undefined;
+    }
     rendererRef.current = renderer;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1));
