@@ -105,7 +105,7 @@ export default function Downloads() {
   const dmg = findAsset(assets, ".dmg");
 
   const primary =
-    os === "windows" ? exe ?? msi : os === "macos" ? dmg : deb ?? rpm ?? null;
+    (os === "windows" ? exe ?? msi : os === "macos" ? dmg : deb ?? rpm) ?? null;
   const hasPrimaryForOs = primary !== null;
 
   return (
@@ -273,7 +273,7 @@ export default function Downloads() {
               </p>
               <ul className="mt-3 space-y-1.5 text-xs">
                 {[deb, rpm, dmg]
-                  .filter((a): a is ReleaseAsset => a !== null)
+                  .filter((a): a is ReleaseAsset => a != null)
                   .map((a) => (
                     <li key={a.name}>
                       <a
