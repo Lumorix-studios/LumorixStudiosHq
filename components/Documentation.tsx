@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ScreenshotFrame from "./ScreenshotFrame";
+import previewApp from "../src/assets/previewss2.0.png";
+import localModels from "../src/assets/local.png";
+import editorView from "../src/assets/IDE.png";
+// import terminalView from "../src/assets/TEST002.png";
 
 const docGroups = [
   {
@@ -287,6 +292,12 @@ export default function Documentation() {
                 cloud service storing your conversations, configuration, or
                 project data — everything lives on your machine.
               </p>
+
+              <ScreenshotFrame
+                src={previewApp}
+                alt="Neo workspace"
+                // title="previewss2.0.png"
+              />
             </div>
           </section>
 
@@ -421,6 +432,12 @@ export default function Documentation() {
                 reopened.
               </p>
 
+              <ScreenshotFrame
+                src={editorView}
+                alt="Neo code editor"
+                // title="IDE.png"
+              />
+
               <p>
                 Toggle the editor with{" "}
                 <kbd className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-xs text-zinc-300">
@@ -452,6 +469,12 @@ export default function Documentation() {
                 toolchains — it works with the development environments
                 already on your machine.
               </p>
+
+              {/* <ScreenshotFrame
+                src={terminalView}
+                alt="Neo integrated terminal"
+                title="TEST002.png"
+              /> */}
             </div>
           </section>
 
@@ -492,6 +515,12 @@ export default function Documentation() {
                 you want, and point Neo at them — inference can stay entirely
                 on your device.
               </p>
+
+              <ScreenshotFrame
+                src={localModels}
+                alt="Local model provider (Ollama)"
+                title="local.png"
+              />
             </div>
           </section>
 

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
+import ScreenshotFrame from "./ScreenshotFrame";
+import previewSss from "../src/assets/preview sss.png";
 
 const steps = [
   {
@@ -78,8 +80,25 @@ export default function Home() {
               </p>
         </div>
       </section>
+      <section>
+        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+          <h2 className="text-center text-xl font-semibold tracking-tight text-white sm:text-2xl">
+            A quick look at Neo
+          </h2>
+          <p className="mt-3 text-center text-sm text-zinc-400">
+            The workspace, editor, terminal, and AI chat — all running on
+            your machine.
+          </p>
+          <ScreenshotFrame
+            src={previewSss}
+            alt="Neo workspace preview"
+            title="preview sss.png"
+          />
+        </div>
+      </section>
 
-      <section className="border-t border-zinc-800/60">
+
+      <section className="">
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
             What Neo actually is
@@ -106,7 +125,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-zinc-800/60">
+      <section className="">
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
             Getting started
