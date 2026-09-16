@@ -465,56 +465,56 @@ export default function Downloads() {
 
           {/* Footer */}
           <footer className="mt-8 flex flex-col gap-4 pt-6 sm:flex-row sm:items-start sm:justify-between">
-  <div>
-    <p className="text-sm text-white/50">
-      Looking for an older build or release notes?
-    </p>
+        <div>
+          <p className="text-sm text-white/50">
+            Looking for an older build or release notes?
+          </p>
 
-    <a
-      href={RELEASES_PAGE}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="mt-2 inline-flex items-center gap-2 text-sm text-white hover:text-white/70"
-    >
-      Browse all releases
-      <IoOpenOutline />
-    </a>
-  </div>
-
-  <div className="relative max-w-md sm:text-right">
-    <button
-      type="button"
-      className="inline-flex items-center gap-2 text-xs text-white/40 transition hover:text-white/70"
-      onClick={(e) => {
-        const popover = e.currentTarget.nextElementSibling;
-        popover?.classList.toggle("hidden");
-      }}
-    >
-      Important information !
-      <IoInformationCircleOutline className="h-4 w-4" />
-    </button>
-
-    <div className="absolute right-0 z-50 mt-3 hidden w-80 border border-white/20 bg-zinc-950 p-4 text-left shadow-xl">
-      <p className="text-xs font-medium text-white">
-        About builds
-      </p>
-
-      <p className="mt-2 text-xs leading-5 text-white/50">
-        Neo is currently in beta and Windows builds are unsigned, so
-        Microsoft Defender SmartScreen may display a warning.
-      </p>
-
-      <p className="mt-2 text-xs leading-5 text-white/50">
-        Only download Neo from this page or the official Lumorix-studios
-        GitHub repository. Never trust third-party builds or installers.
-        Verify the source before installing.
-      </p>
-    </div>
-  </div>
-</footer>
+          <a
+            href={RELEASES_PAGE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center gap-2 text-sm text-white hover:text-white/70"
+          >
+            Browse all releases
+            <IoOpenOutline />
+          </a>
         </div>
-      </div>
-    </main>
-  
-);
-}
+
+        <div className="relative max-w-md sm:text-right">
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 text-xs text-white/40 transition hover:text-white/70"
+            onClick={(e) => {
+              const popover = e.currentTarget.nextElementSibling;
+              popover?.classList.toggle("hidden");
+            }}
+          >
+            Important information !
+            <IoInformationCircleOutline className="h-4 w-4" />
+          </button>
+
+          <div className="absolute right-0 z-50 mt-3 hidden w-80 border border-white/20 bg-zinc-950 p-4 text-left shadow-xl">
+            <p className="text-xs font-medium text-white">
+              About builds
+            </p>
+
+            <p className="mt-2 text-xs leading-5 text-white/50">
+              Neo is currently in beta and Windows builds are unsigned, so
+              Microsoft Defender SmartScreen may display a warning.
+            </p>
+
+            <p className="mt-2 text-xs leading-5 text-white/50">
+              Only download Neo from this page or the official Lumorix-studios
+              GitHub repository. Never trust third-party builds or installers.
+              Verify the source before installing.
+            </p>
+          </div>
+        </div>
+      </footer>
+              </div>
+            </div>
+          </main>
+        
+      );
+      }

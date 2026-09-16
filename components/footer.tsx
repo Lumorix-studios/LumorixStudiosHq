@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaDiscord, FaGithub} from "react-icons/fa6";
+import { FaDiscord, FaGithub } from "react-icons/fa6";
+import { IoInformationCircleOutline } from "react-icons/io5";
 import icon from "../src/assets/icon.png";
 
 const productLinks = [
@@ -20,11 +21,6 @@ const resourceLinks = [
 ];
 
 const socials = [
-  // {
-  //   label: "GitHub organization",
-  //   href: "https://github.com/Lumorix-studios",
-  //   Icon: FaGithub,
-  // },
   {
     label: "ProjectNeo repository",
     href: "https://github.com/Lumorix-studios/Neo",
@@ -35,17 +31,15 @@ const socials = [
     href: "https://discord.gg/nMfbNrebs",
     Icon: FaDiscord,
   },
-  // {
-  //   label: "X (Twitter)",
-  //   href: "https://x.com",
-  //   Icon: FaXTwitter,
-  // },
 ];
 
 const Footer: React.FC = () => (
   <footer className="border-t border-zinc-800/60 bg-zinc-950">
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+      {/* Main footer */}
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
         {/* Brand */}
         <div className="lg:col-span-2">
           <Link
@@ -57,6 +51,7 @@ const Footer: React.FC = () => (
               alt=""
               className="h-7 w-7 rounded-md"
             />
+
             <span>Lumorix Studios</span>
           </Link>
 
@@ -65,6 +60,7 @@ const Footer: React.FC = () => (
             capabilities. Beta, free while in development, no account needed.
           </p>
 
+          {/* Socials */}
           <div className="mt-5 flex gap-3">
             {socials.map(({ label, href, Icon }) => (
               <a
@@ -84,7 +80,10 @@ const Footer: React.FC = () => (
 
         {/* Product */}
         <div>
-          <h3 className="text-sm font-semibold text-white">Product</h3>
+          <h3 className="text-sm font-semibold text-white">
+            Product
+          </h3>
+
           <ul className="mt-4 space-y-2.5">
             {productLinks.map(({ label, href }) => (
               <li key={label}>
@@ -101,7 +100,10 @@ const Footer: React.FC = () => (
 
         {/* Resources */}
         <div>
-          <h3 className="text-sm font-semibold text-white">Resources</h3>
+          <h3 className="text-sm font-semibold text-white">
+            Resources
+          </h3>
+
           <ul className="mt-4 space-y-2.5">
             {resourceLinks.map(({ label, href }) =>
               href.startsWith("http") ? (
@@ -116,8 +118,6 @@ const Footer: React.FC = () => (
                   </a>
                 </li>
               ) : (
-                /* Internal links go through the router so the GitHub Pages
-                   basename (e.g. /LumorixStudiosHq/) is applied automatically */
                 <li key={label}>
                   <Link
                     to={href}
@@ -133,11 +133,40 @@ const Footer: React.FC = () => (
       </div>
 
       {/* Bottom bar */}
-      <div className="mt-10 flex flex-col items-center justify-between gap-3  pt-6 text-xs text-zinc-600 sm:flex-row">
+      <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-zinc-800/60 pt-6 text-xs text-zinc-600 sm:flex-row">
+
+        {/* Copyright */}
         <span>
           © {new Date().getFullYear()} Lumorix Studios. All rights reserved.
         </span>
-        <span></span>
+
+        {/* Info */}
+        <div className="relative">
+          <button
+            type="button"
+            aria-label="Feedback information"
+            className="inline-flex items-center justify-center text-white/40 transition hover:text-white/70"
+            onClick={(e) => {
+              const popover = e.currentTarget.nextElementSibling;
+
+              popover?.classList.toggle("hidden");
+            }}
+          >
+            
+            <IoInformationCircleOutline className="h-5 w-5" />
+          </button>
+
+          {/* Info popover */}
+          <div className="absolute right-0 bottom-full z-50 mb-3 hidden w-64 border border-white/20 bg-zinc-950 p-3 text-left shadow-xl">
+            <p className="text-xs leading-5 text-white/50">
+              If you want to share feedback, we'd appreciate it. Join our
+              Discord server and share your thoughts in the feedback channel.
+              We're always looking for ways to improve Neo and make it more
+              user-friendly.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </footer>
