@@ -20,11 +20,11 @@ const resourceLinks = [
 ];
 
 const socials = [
-  {
-    label: "GitHub organization",
-    href: "https://github.com/Lumorix-studios",
-    Icon: FaGithub,
-  },
+  // {
+  //   label: "GitHub organization",
+  //   href: "https://github.com/Lumorix-studios",
+  //   Icon: FaGithub,
+  // },
   {
     label: "ProjectNeo repository",
     href: "https://github.com/Lumorix-studios/Neo",
@@ -133,11 +133,11 @@ const Footer: React.FC = () => (
       </div>
 
       {/* Bottom bar */}
-      <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-zinc-800/60 pt-6 text-xs text-zinc-600 sm:flex-row">
+      <div className="mt-10 flex flex-col items-center justify-between gap-3  pt-6 text-xs text-zinc-600 sm:flex-row">
         <span>
           © {new Date().getFullYear()} Lumorix Studios. All rights reserved.
         </span>
-        <span>Built with React, TypeScript &amp; Rust (Tauri)</span>
+        <span></span>
       </div>
     </div>
   </footer>

@@ -1,5 +1,13 @@
 
 import { useEffect, useMemo, useState } from "react";
+import {
+  IoLogoApple,
+  IoLogoTux,
+  IoLogoWindows,
+  IoDownloadOutline,
+  IoOpenOutline,
+  IoInformationCircleOutline,
+} from "react-icons/io5";
 
 interface ReleaseAsset {
   name: string;
@@ -23,10 +31,13 @@ type OsKey = "windows" | "linux" | "macos" | "other";
 
 function detectOs(): OsKey {
   if (typeof navigator === "undefined") return "other";
+
   const ua = navigator.userAgent.toLowerCase();
+
   if (ua.includes("win")) return "windows";
   if (ua.includes("linux")) return "linux";
   if (ua.includes("mac")) return "macos";
+
   return "other";
 }
 
@@ -43,6 +54,7 @@ function formatSize(bytes: number) {
 
 function formatDate(iso?: string) {
   if (!iso) return null;
+
   try {
     return new Date(iso).toLocaleDateString(undefined, {
       year: "numeric",
@@ -54,7 +66,6 @@ function formatDate(iso?: string) {
   }
 }
 
-/** Pull a human version (e.g. "1.0.7") out of a tag like "Release_v_1.0.7-revamped". */
 function parseVersion(tag: string) {
   const match = tag.match(/(\d+\.\d+\.\d+)/);
   return match ? match[1] : tag.replace(/^release[_v-]*/i, "");
@@ -64,30 +75,64 @@ function findAsset(assets: ReleaseAsset[], ext: string) {
   return assets.find((a) => a.name.toLowerCase().endsWith(ext));
 }
 
+function PlatformIcon({ os }: { os: OsKey }) {
+  if (os === "windows") {
+    return <IoLogoWindows className="h-5 w-5" />;
+  }
+
+  if (os === "macos") {
+    return <IoLogoApple className="h-5 w-5" />;
+  }
+
+  return <IoLogoTux className="h-5 w-5" />;
+}
+
 export default function Downloads() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [release, setRelease] = useState<ReleaseInfo | null>(null);
+
   const os = useMemo(() => detectOs(), []);
 
   useEffect(() => {
     let cancelled = false;
     const controller = new AbortController();
+
     const load = async () => {
       try {
-        const response = await fetch(RELEASE_URL, { signal: controller.signal });
-        if (!response.ok) throw new Error("Could not reach the releases service.");
+        const response = await fetch(RELEASE_URL, {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("Could not reach the releases service.");
+        }
+
         const data = (await response.json()) as ReleaseInfo;
-        if (!cancelled) setRelease(data);
+
+        if (!cancelled) {
+          setRelease(data);
+        }
       } catch (err) {
-        if (!cancelled && !(err instanceof DOMException && err.name === "AbortError")) {
-          setError(err instanceof Error ? err.message : "Could not load release info.");
+        if (
+          !cancelled &&
+          !(err instanceof DOMException && err.name === "AbortError")
+        ) {
+          setError(
+            err instanceof Error
+              ? err.message
+              : "Could not load release info."
+          );
         }
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     };
+
     load();
+
     return () => {
       cancelled = true;
       controller.abort();
@@ -105,223 +150,371 @@ export default function Downloads() {
   const dmg = findAsset(assets, ".dmg");
 
   const primary =
-    (os === "windows" ? exe ?? msi : os === "macos" ? dmg : deb ?? rpm) ?? null;
-  const hasPrimaryForOs = primary !== null;
+    os === "windows"
+      ? exe ?? msi
+      : os === "macos"
+        ? dmg
+        : os === "linux"
+          ? deb ?? rpm
+          : exe ?? msi ?? dmg ?? deb ?? rpm;
 
   return (
     <main className="min-h-[calc(100vh-4rem)] text-white">
-      <div className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          {/* Header */}
-          <div className="mb-10">
-            <p className="mb-2 text-sm font-medium tracking-wide text-zinc-500 uppercase">
-              ProjectNeo
-            </p>
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Downloads
-            </h1>
-            <p className="mt-3 max-w-xl text-base text-zinc-400 sm:text-lg">
-              Free while in beta. No account needed.
-              {version && (
-                <span className="text-zinc-500">
-                  {" "}
-                  Latest: v{version}
-                  {date ? `, released ${date}` : ""}.
-                </span>
-              )}
-            </p>
-          </div>
+      <div className="px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+        <div className="mx-auto max-w-5xl">
 
-          {/* Primary download */}
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 sm:p-8">
-            {loading ? (
-              <div aria-live="polite" aria-busy="true">
-                <p className="text-sm text-zinc-500">Fetching the latest release…</p>
+          {/* Header */}
+          <header className="mb-8 border-b border-white/20 pb-6">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                {/* <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
+                  NEO / DOWNLOADS
+                </p> */}
+
+                <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
+                  Downloads
+                </h1>
+                {/*lazy way of spacing it lol*/}
+                <span className = "m-4"></span>
+
+                {/* <p className="mt-3 text-sm text-white/60">
+                  Get the latest Neo build for your platform.
+                </p> */}
               </div>
-            ) : error ? (
-              <div role="alert">
-                <p className="text-sm text-red-200">
-                  {error}{" "}
+
+              {version && (
+                <div className="font-mono text-xs text-white/50">
+                  v{version}
+                  {date && ` · ${date}`}
+                </div>
+              )}
+            </div>
+          </header>
+
+          {/* Recommended */}
+          <section className="border border-white/30 bg-black/50">
+            <div className="p-6 sm:p-7">
+              {loading ? (
+                <div className="font-mono text-sm text-white/60">
+                  Loading...
+                </div>
+              ) : error ? (
+                <div>
+                  <p className="text-sm text-white/70">{error}</p>
+
                   <a
                     href={RELEASES_PAGE}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-4 hover:text-red-100"
+                    className="mt-4 inline-flex items-center gap-2 text-sm text-white underline underline-offset-4 hover:text-white/70"
                   >
-                    Open the releases page
-                  </a>{" "}
-                  to grab a build directly.
-                </p>
-              </div>
-            ) : hasPrimaryForOs && primary ? (
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                    Open releases
+                    <IoOpenOutline />
+                  </a>
+                </div>
+              ) : primary ? (
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center border border-white/25 bg-black/60">
+                      <PlatformIcon os={os} />
+                    </div>
+
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+                        Recommended build
+                      </p>
+
+                      <h2 className="mt-1 text-lg font-medium">
+                        Neo v{version}
+                      </h2>
+
+                      <p className="mt-1 text-sm text-white/55">
+                        {OS_LABEL[os]} · {primary.name} ·{" "}
+                        {formatSize(primary.size)}
+                      </p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={primary.browser_download_url}
+                    className="inline-flex h-11 items-center justify-center gap-2 bg-white px-6 text-sm font-medium text-black transition hover:bg-white/80"
+                  >
+                    Download
+                    <IoDownloadOutline className="h-4 w-4" />
+                  </a>
+                </div>
+              ) : (
                 <div>
-                  <h2 className="text-xl font-medium">
+                  <h2 className="text-lg font-medium">
                     Neo {version ? `v${version}` : ""}
                   </h2>
-                  <p className="mt-1.5 text-sm text-zinc-500">
-                    {primary.name} · {formatSize(primary.size)}
+
+                  <p className="mt-2 text-sm text-white/55">
+                    No prebuilt package for {OS_LABEL[os]} is available.
                   </p>
-                </div>
-                <a
-                  href={primary.browser_download_url}
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="h-4 w-4"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                    />
-                  </svg>
-                  Download for {OS_LABEL[os]}
-                </a>
-              </div>
-            ) : (
-              <div>
-                <h2 className="text-xl font-medium">Neo {version ? `v${version}` : ""}</h2>
-                <p className="mt-1.5 text-sm text-zinc-400">
-                  No prebuilt package for {OS_LABEL[os]} in this release yet. Check the{" "}
-                  <a
-                    href={RELEASES_PAGE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white underline decoration-zinc-600 underline-offset-4 hover:decoration-zinc-300"
-                  >
-                    releases page
-                  </a>{" "}
-                  or{" "}
-                  <a
-                    href={REPO_PAGE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white underline decoration-zinc-600 underline-offset-4 hover:decoration-zinc-300"
-                  >
-                    build from source
-                  </a>
-                  .
-                </p>
-              </div>
-            )}
 
-            {/* Windows alternates */}
-            {exe && msi && (
-              <div className="mt-5 border-t border-zinc-800 pt-4">
-                <p className="text-sm text-zinc-400">
-                  Prefer the MSI?{" "}
-                  <a
-                    href={msi.browser_download_url}
-                    className="text-white underline decoration-zinc-600 underline-offset-4 hover:decoration-zinc-300"
-                  >
-                    {msi.name}
-                  </a>{" "}
-                  <span className="text-zinc-500">({formatSize(msi.size)})</span>
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Platform details */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
-              <h3 className="text-sm font-medium text-white">Windows</h3>
-              <p className="mt-1.5 text-xs leading-5 text-zinc-500">
-                Windows 10 or later · 64-bit
-              </p>
-              <ul className="mt-3 space-y-1.5 text-xs">
-                {exe ? (
-                  <li>
+                  <div className="mt-4 flex gap-5">
                     <a
-                      href={exe.browser_download_url}
-                      className="text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition hover:text-white hover:decoration-zinc-400"
+                      href={RELEASES_PAGE}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-white underline underline-offset-4"
                     >
-                      {exe.name}
-                    </a>{" "}
-                    <span className="text-zinc-500">({formatSize(exe.size)})</span>
-                  </li>
-                ) : (
-                  <li className="text-zinc-500">Installer not published in this release.</li>
-                )}
-                {msi && (
-                  <li>
-                    <a
-                      href={msi.browser_download_url}
-                      className="text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition hover:text-white hover:decoration-zinc-400"
-                    >
-                      {msi.name}
-                    </a>{" "}
-                    <span className="text-zinc-500">({formatSize(msi.size)})</span>
-                  </li>
-                )}
-              </ul>
-            </div>
+                      View releases
+                    </a>
 
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
-              <h3 className="text-sm font-medium text-white">Linux &amp; macOS</h3>
-              <p className="mt-1.5 text-xs leading-5 text-zinc-500">
-                {deb || rpm || dmg
-                  ? "Packages from the current release:"
-                  : "No prebuilt packages in this release yet."}
-              </p>
-              <ul className="mt-3 space-y-1.5 text-xs">
-                {[deb, rpm, dmg]
-                  .filter((a): a is ReleaseAsset => a != null)
-                  .map((a) => (
-                    <li key={a.name}>
-                      <a
-                        href={a.browser_download_url}
-                        className="text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition hover:text-white hover:decoration-zinc-400"
-                      >
-                        {a.name}
-                      </a>{" "}
-                      <span className="text-zinc-500">({formatSize(a.size)})</span>
-                    </li>
-                  ))}
-                {!deb && !rpm && !dmg && (
-                  <li>
                     <a
                       href={REPO_PAGE}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition hover:text-white hover:decoration-zinc-400"
+                      className="text-sm text-white/60 underline underline-offset-4"
+                    >
+                      Build from source
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* {exe && msi && (
+              <div className="border-t border-white/15 bg-white/[0.03] px-6 py-4">
+                <p className="text-xs text-white/50">
+                  Alternate Windows installer:{" "}
+                  <a
+                    href={msi.browser_download_url}
+                    className="text-white/80 underline underline-offset-4 hover:text-white"
+                  >
+                    {msi.name}
+                  </a>{" "}
+                  ({formatSize(msi.size)})
+                </p>
+              </div>
+            )} */}
+          </section>
+
+          {/* Builds */}
+          <section className="mt-10">
+            <div className="mb-5">
+              <h2 className="text-lg font-medium">
+                Available builds
+              </h2>
+
+              {/* <p className="mt-1 text-sm text-white/50">
+                Installers included with the latest release.
+              </p> */}
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+
+              {/* Windows */}
+              <section className="border border-white/25 bg-black/40">
+                <div className="flex items-center gap-3 border-b border-white/20 px-5 py-4">
+                  <IoLogoWindows className="h-5 w-5 text-white/80" />
+
+                  <div>
+                    <h3 className="text-sm font-medium">
+                      Windows
+                    </h3>
+
+                    <p className="mt-0.5 text-xs text-white/45">
+                      Windows 10 or later · 64-bit
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-5">
+                  {exe && (
+                    <a
+                      href={exe.browser_download_url}
+                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate text-sm text-white/80 group-hover:text-white">
+                          {exe.name}
+                        </p>
+
+                        <p className="mt-1 font-mono text-[11px] text-white/40">
+                          {formatSize(exe.size)}
+                        </p>
+                      </div>
+
+                      <IoDownloadOutline className="ml-4 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" />
+                    </a>
+                  )}
+
+                  {msi && (
+                    <a
+                      href={msi.browser_download_url}
+                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate text-sm text-white/80 group-hover:text-white">
+                          {msi.name}
+                        </p>
+
+                        <p className="mt-1 font-mono text-[11px] text-white/40">
+                          {formatSize(msi.size)}
+                        </p>
+                      </div>
+
+                      <IoDownloadOutline className="ml-4 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" />
+                    </a>
+                  )}
+
+                  {!exe && !msi && (
+                    <p className="py-5 text-sm text-white/40">
+                      No Windows installer available.
+                    </p>
+                  )}
+                </div>
+              </section>
+
+              {/* Linux / macOS */}
+              <section className="border border-white/25 bg-black/40">
+                <div className="flex items-center gap-3 border-b border-white/20 px-5 py-4">
+                  {dmg ? (
+                    <IoLogoApple className="h-5 w-5 text-white/80" />
+                  ) : (
+                    <IoLogoTux className="h-5 w-5 text-white/80" />
+                  )}
+
+                  <div>
+                    <h3 className="text-sm font-medium">
+                      Linux & macOS
+                    </h3>
+
+                    <p className="mt-0.5 text-xs text-white/45">
+                      Available release packages
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-5">
+                  {deb && (
+                    <a
+                      href={deb.browser_download_url}
+                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                    >
+                      <div>
+                        <p className="text-sm text-white/80 group-hover:text-white">
+                          {deb.name}
+                        </p>
+
+                        <p className="mt-1 font-mono text-[11px] text-white/40">
+                          {formatSize(deb.size)}
+                        </p>
+                      </div>
+
+                      <IoDownloadOutline className="h-4 w-4 text-white/40 group-hover:text-white" />
+                    </a>
+                  )}
+
+                  {rpm && (
+                    <a
+                      href={rpm.browser_download_url}
+                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                    >
+                      <div>
+                        <p className="text-sm text-white/80 group-hover:text-white">
+                          {rpm.name}
+                        </p>
+
+                        <p className="mt-1 font-mono text-[11px] text-white/40">
+                          {formatSize(rpm.size)}
+                        </p>
+                      </div>
+
+                      <IoDownloadOutline className="h-4 w-4 text-white/40 group-hover:text-white" />
+                    </a>
+                  )}
+
+                  {dmg && (
+                    <a
+                      href={dmg.browser_download_url}
+                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                    >
+                      <div>
+                        <p className="text-sm text-white/80 group-hover:text-white">
+                          {dmg.name}
+                        </p>
+
+                        <p className="mt-1 font-mono text-[11px] text-white/40">
+                          {formatSize(dmg.size)}
+                        </p>
+                      </div>
+
+                      <IoDownloadOutline className="h-4 w-4 text-white/40 group-hover:text-white" />
+                    </a>
+                  )}
+
+                  {!deb && !rpm && !dmg && (
+                    <a
+                      href={REPO_PAGE}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between py-5 text-sm text-white/55 hover:text-white"
                     >
                       Build from source on GitHub
+                      <IoOpenOutline className="h-4 w-4" />
                     </a>
-                  </li>
-                )}
-              </ul>
+                  )}
+                </div>
+              </section>
             </div>
-          </div>
+          </section>
 
-          {/* Footer note */}
-          <div className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
-            <p className="text-sm leading-6 text-zinc-400">
-              Looking for an older build or release notes?{" "}
-              <a
-                href={RELEASES_PAGE}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition hover:decoration-zinc-300"
-              >
-                Browse all releases on GitHub
-              </a>
-              .
-            </p>
-            <p className="mt-2 text-xs leading-5 text-zinc-500">
-              Windows builds are unsigned while Neo is in beta, so SmartScreen may show a
-              warning. Only download Neo from this page or the Lumorix-studios GitHub.
-            </p>
-          </div>
+          {/* Footer */}
+          <footer className="mt-8 flex flex-col gap-4 pt-6 sm:flex-row sm:items-start sm:justify-between">
+  <div>
+    <p className="text-sm text-white/50">
+      Looking for an older build or release notes?
+    </p>
+
+    <a
+      href={RELEASES_PAGE}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-2 inline-flex items-center gap-2 text-sm text-white hover:text-white/70"
+    >
+      Browse all releases
+      <IoOpenOutline />
+    </a>
+  </div>
+
+  <div className="relative max-w-md sm:text-right">
+    <button
+      type="button"
+      className="inline-flex items-center gap-2 text-xs text-white/40 transition hover:text-white/70"
+      onClick={(e) => {
+        const popover = e.currentTarget.nextElementSibling;
+        popover?.classList.toggle("hidden");
+      }}
+    >
+      Important information !
+      <IoInformationCircleOutline className="h-4 w-4" />
+    </button>
+
+    <div className="absolute right-0 z-50 mt-3 hidden w-80 border border-white/20 bg-zinc-950 p-4 text-left shadow-xl">
+      <p className="text-xs font-medium text-white">
+        About builds
+      </p>
+
+      <p className="mt-2 text-xs leading-5 text-white/50">
+        Neo is currently in beta and Windows builds are unsigned, so
+        Microsoft Defender SmartScreen may display a warning.
+      </p>
+
+      <p className="mt-2 text-xs leading-5 text-white/50">
+        Only download Neo from this page or the official Lumorix-studios
+        GitHub repository. Never trust third-party builds or installers.
+        Verify the source before installing.
+      </p>
+    </div>
+  </div>
+</footer>
         </div>
       </div>
     </main>
-  );
+  
+);
 }
