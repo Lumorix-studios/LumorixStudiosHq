@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaDiscord, FaGithub } from "react-icons/fa6";
 import { IoInformationCircleOutline } from "react-icons/io5";
-import icon from "../src/assets/icon.png";
+
 
 const productLinks = [
   { label: "Downloads", href: "/downloads" },
@@ -47,7 +47,7 @@ const Footer: React.FC = () => (
             className="flex items-center gap-2.5 text-base font-semibold tracking-tight text-white sm:text-lg"
           >
             <img
-              src={icon}
+              src="./dist/orglogo.png"
               alt=""
               className="h-7 w-7 rounded-md"
             />
@@ -56,7 +56,7 @@ const Footer: React.FC = () => (
           </Link>
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
-            Home of ProjectNeo — a lightweight desktop IDE with agentic coding
+            Home of ProjectNeo, a lightweight desktop IDE with agentic coding
             capabilities. Beta, free while in development, no account needed.
           </p>
 

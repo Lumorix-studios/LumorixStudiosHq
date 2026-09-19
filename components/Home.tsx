@@ -3,29 +3,29 @@ import RotatingText from "./RotatingText";
 import ScreenshotFrame from "./ScreenshotFrame";
 import previewSss from "../src/assets/preview sss.png";
 
-const steps = [
-  {
-    n: "1",
-    title: "Install it",
-    body: "Windows installer or Linux package from downloads. Roughly 7–10 MB, no account.",
-    href: "/downloads",
-    link: "Downloads",
-  },
-  {
-    n: "2",
-    title: "Connect a model",
-    body: "Paste an API key or point Neo at local Ollama. Credentials never leave your device.",
-    href: "/documentation#providers",
-    link: "Provider setup",
-  },
-  {
-    n: "3",
-    title: "Open a folder",
-    body: "Explorer, editor and agent operate on the same project. Start with one small task.",
-    href: "/documentation#how-to-add-agents",
-    link: "Getting started",
-  },
-];
+// const steps = [
+//   {
+//     n: "1",
+//     title: "Install it",
+//     body: "Windows installer or Linux package from downloads. Roughly 7–10 MB, no account.",
+//     href: "/downloads",
+//     link: "Downloads",
+//   },
+//   {
+//     n: "2",
+//     title: "Connect a model",
+//     body: "Paste an API key or point Neo at local Ollama. Credentials never leave your device.",
+//     href: "/documentation#providers",
+//     link: "Provider setup",
+//   },
+//   {
+//     n: "3",
+//     title: "Open a folder",
+//     body: "Explorer, editor and agent operate on the same project. Start with one small task.",
+//     href: "/documentation#how-to-add-agents",
+//     link: "Getting started",
+//   },
+// ];
 
 export default function Home() {
   return (
@@ -72,8 +72,7 @@ export default function Home() {
             </div>
 
             <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg">
-              A lightweight agentic interface for developers who want their
-              tools to stay out of the way.
+              A lightweight agentic interface 
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
@@ -118,7 +117,7 @@ export default function Home() {
             </h2>
 
             <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400 sm:text-base">
-              The workspace, editor, terminal, and AI chat — all running on
+              The workspace, editor, terminal, and AI chat  all running on
               your machine.
             </p>
           </div>

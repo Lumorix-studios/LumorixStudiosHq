@@ -4,6 +4,7 @@ import ScreenshotFrame from "./ScreenshotFrame";
 import previewApp from "../src/assets/previewss2.0.png";
 import localModels from "../src/assets/local.png";
 import editorView from "../src/assets/IDE.png";
+import { IoInformationCircleOutline } from "react-icons/io5";
 // import terminalView from "../src/assets/TEST002.png";
 
 const docGroups = [
@@ -380,6 +381,31 @@ export default function Documentation() {
                 its own filesystem tools — keeping unnecessary context out of
                 the model.
               </p>
+               <div className="relative">
+                  <button
+                    type="button"
+                    aria-label="Feedback information"
+                    className="inline-flex items-center justify-center text-white/40 transition hover:text-white/70"
+                    onClick={(e) => {
+                      const popover = e.currentTarget.nextElementSibling;
+              
+                        popover?.classList.toggle("hidden");
+                          }}
+                        >
+                          
+                        <IoInformationCircleOutline className="h-5 w-5" />
+                        </button>
+              
+                        {/* Info popover */}
+                        <div className="absolute right-90 bottom-full z-50 mb-3 hidden w-64 border border-white/20 bg-zinc-950 p-3 text-left shadow-xl">
+                          <p className="text-xs leading-5 text-white/50">
+                            Agent tools currently are limited and will be worked on in future releases. 
+                            The agent can only read and write files, search for files, delete files, make folders, web search,
+                             acces other third party tools when connected througha mcp servers
+                             and perform basic file operations. More advanced tools and capabilities will be added over time.
+                          </p>
+                        </div>
+                      </div>
             </div>
           </section>
 
@@ -427,7 +453,7 @@ export default function Documentation() {
               </p>
 
               <p>
-                When files are modified externally — or by the agent — open
+                When files are modified externally or by the agent you can open
                 editor tabs update live without requiring the file to be
                 reopened.
               </p>
@@ -458,7 +484,7 @@ export default function Documentation() {
               <p>
                 Neo ships with an integrated PowerShell terminal backed by a
                 native PTY implementation. It's a real interactive shell, so
-                it can run anything already installed on your system —
+                it can run anything already installed on your system 
                 Python, Node.js, npm, Git, Rust, Cargo, and more.
               </p>
 
@@ -466,15 +492,15 @@ export default function Documentation() {
                 Multiple terminal sessions are supported, letting you keep
                 separate environments for development servers, long-running
                 commands, and debugging. Neo doesn't bundle compiler
-                toolchains — it works with the development environments
+                toolchains it works with the development environments
                 already on your machine.
               </p>
 
-              {/* <ScreenshotFrame
-                src={terminalView}
+              <ScreenshotFrame
+                src="./dist/terminal.png"
                 alt="Neo integrated terminal"
-                title="TEST002.png"
-              /> */}
+                title="Terminal inside the code editor itself"
+              />
             </div>
           </section>
 
@@ -498,7 +524,7 @@ export default function Documentation() {
 
               <p>
                 This means you choose the AI infrastructure that fits your
-                workflow — no lock-in to a single provider.
+                workflow  no lock-in to a single provider.
               </p>
 
               <p>
@@ -512,14 +538,14 @@ export default function Documentation() {
                   Ollama
                 </a>
                 . Run an Ollama server on your own machine, pull the models
-                you want, and point Neo at them — inference can stay entirely
+                you want, and point Neo at them inference can stay entirely
                 on your device.
               </p>
 
               <ScreenshotFrame
                 src={localModels}
                 alt="Local model provider (Ollama)"
-                title="local.png"
+                title="Local model provider (Ollama)"
               />
             </div>
           </section>
@@ -532,11 +558,11 @@ export default function Documentation() {
 
             <div className="mt-4 leading-7 text-zinc-400">
               <p>
-                Neo supports the Model Context Protocol (MCP), an extensible
-                mechanism for connecting additional tools and services to the
-                agent environment — without each integration needing to be
-                built directly into the application.
+                Neo allows you (the user) to bridge Ai models in other third party applications that support MCP (Model Control Protocol). This allows you to use Neo as a central hub for your AI workflows, connecting to other applications and services that support MCP. You can configure and manage these connections directly within Neo, enabling seamless integration and control over your AI models across different platforms.
               </p>
+              <ScreenshotFrame src="./dist/mcp.png" alt="MCP integration" 
+                  className="mt-4 rounded-lg border border-zinc-800" 
+                  title = "MCP integration"/>
             </div>
           </section>
 
@@ -584,7 +610,7 @@ export default function Documentation() {
 
             <div className="mt-4 space-y-4 leading-7 text-zinc-400">
               <p>
-                Application data is stored locally on your device — chat
+                Application data is stored locally on your device chat
                 history, settings, API and model configuration, system
                 prompts, and other persisted data. Neo does not require a Neo
                 cloud account.
