@@ -4,8 +4,9 @@ import ScreenshotFrame from "./ScreenshotFrame";
 import previewApp from "../src/assets/previewss2.0.png";
 import localModels from "../src/assets/local.png";
 import editorView from "../src/assets/IDE.png";
+// import terminalView from "../src/assets/terminal.png";
+// import mcpIntegration from "../src/assets/mcp.png";
 import { IoInformationCircleOutline } from "react-icons/io5";
-// import terminalView from "../src/assets/TEST002.png";
 
 const docGroups = [
   {
@@ -496,11 +497,11 @@ export default function Documentation() {
                 already on your machine.
               </p>
 
-              <ScreenshotFrame
-                src="./dist/terminal.png"
+              {/* <ScreenshotFrame
+                src={terminalView}
                 alt="Neo integrated terminal"
                 title="Terminal inside the code editor itself"
-              />
+              /> */}
             </div>
           </section>
 
@@ -560,9 +561,11 @@ export default function Documentation() {
               <p>
                 Neo allows you (the user) to bridge Ai models in other third party applications that support MCP (Model Control Protocol). This allows you to use Neo as a central hub for your AI workflows, connecting to other applications and services that support MCP. You can configure and manage these connections directly within Neo, enabling seamless integration and control over your AI models across different platforms.
               </p>
-              <ScreenshotFrame src="./dist/mcp.png" alt="MCP integration" 
-                  className="mt-4 rounded-lg border border-zinc-800" 
-                  title = "MCP integration"/>
+              {/* <ScreenshotFrame
+                src={mcpIntegration}
+                alt="MCP integration"
+                title="MCP integration"
+              /> */}
             </div>
           </section>
 
