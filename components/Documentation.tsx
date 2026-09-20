@@ -289,10 +289,7 @@ export default function Documentation() {
               </p>
 
               <p>
-                Neo is designed around local data ownership and
-                user-controlled AI infrastructure. There is no Neo-operated
-                cloud service storing your conversations, configuration, or
-                project data — everything lives on your machine.
+               Neo does have a backend server connected to it for purposes such as account organization, model management, and other features. However, the agent itself does not rely on this server for its core functionality. All file operations are performed locally on your machine. Some features are behind paywalls, but the core functionality of Neo is free to use. The server is primarily for managing premium features and providing additional services, but it is not necessary for the basic operation of the agent unless you want to access providers that arent locally run or the IDE.
               </p>
 
               <ScreenshotFrame

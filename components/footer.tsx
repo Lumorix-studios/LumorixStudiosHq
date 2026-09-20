@@ -46,11 +46,7 @@ const Footer: React.FC = () => (
             to="/"
             className="flex items-center gap-2.5 text-base font-semibold tracking-tight text-white sm:text-lg"
           >
-            <img
-              src="./dist/orglogo.png"
-              alt=""
-              className="h-7 w-7 rounded-md"
-            />
+            
 
             <span>Lumorix Studios</span>
           </Link>
