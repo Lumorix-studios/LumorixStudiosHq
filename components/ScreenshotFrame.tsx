@@ -61,7 +61,7 @@ export default function ScreenshotFrame({
           block
           h-auto
           w-full
-          max-h-[62vh]
+          max-h-[90vh]
           rounded-b-lg
           object-contain
           object-center

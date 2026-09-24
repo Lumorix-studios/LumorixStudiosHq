@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
 import ScreenshotFrame from "./ScreenshotFrame";
-import previewSss from "../src/assets/preview sss.png";
+import previewSss from "../src/assets/newtest.png";
 
 // const steps = [
 //   {
@@ -50,7 +50,7 @@ export default function Home() {
                   "Efficient",
                   "Easy to use",
                   "Lightweight",
-                  "Free (Currently)",
+                  "",
                 ]}
                 mainClassName="inline-flex font-medium text-white"
                 staggerFrom="last"

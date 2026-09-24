@@ -15,6 +15,9 @@ import About from "../components/About";
 import Contact from "../components/Contact";
 import Documentation from "../components/Documentation";
 import Home from "../components/Home";
+import Pricings from "../components/pricings";
+import AccountPage from "../components/AccountPage";
+import AuthModal from "../components/AuthModal";
 import CRTWarp from "../components/CrtWrap";
 
 function ScrollToTop() {
@@ -58,6 +61,9 @@ function PageContent() {
         )}
 
         <Navbar />
+
+        {/* Global auth modal (sign in / sign up) — opened by the navbar and the Pricing page. */}
+        <AuthModal />
 
         <main className="relative z-10 flex-1">
           <Routes>
@@ -108,6 +114,30 @@ function PageContent() {
             <Route
               path="/Documentation"
               element={<Documentation />}
+            />
+
+            {/* Pricing */}
+            <Route
+              path="/pricing"
+              element={<Pricings />}
+            />
+
+            {/* Legacy pricing route */}
+            <Route
+              path="/Pricings"
+              element={<Pricings />}
+            />
+
+            {/* Account */}
+            <Route
+              path="/account"
+              element={<AccountPage />}
+            />
+
+            {/* Legacy account route */}
+            <Route
+              path="/Account"
+              element={<AccountPage />}
             />
 
             {/* 404 */}

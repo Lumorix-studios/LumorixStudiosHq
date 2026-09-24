@@ -819,22 +819,7 @@ export default function Legal() {
             </p>
           </section>
 
-          <section className="rounded-lg border border-amber-900/60 bg-amber-950/20 p-5 text-sm leading-6 text-amber-100">
-            <h2 className="font-semibold text-amber-200">Release note</h2>
-            <p className="mt-2">
-              This page is product-language drafting, not legal advice. Before
-              publishing it as a binding policy, have qualified counsel adapt
-              it to the actual legal operator, supported jurisdictions,
-              subscription and refund rules, payment processor, provider
-              agreements, training-data controls, account-deletion process,
-              security practices, open-source or custom license, and applicable
-              consumer laws. Every statement must match the implementation.
-              In particular, do not claim that a key is encrypted, a request
-              is deleted, a provider is not used for training, or a local
-              feature is offline unless the product actually enforces that
-              behavior.
-            </p>
-          </section>
+          
         </article>
       </div>
     </main>

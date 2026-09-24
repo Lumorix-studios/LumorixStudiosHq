@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { KeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import icon from "../src/assets/orglogo.jpg";
+import AccountMenu from "./AccountMenu";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -10,6 +11,7 @@ const navigation = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Documentation", href: "/documentation" },
+  { label: "Pricing", href: "/pricing" }
 ];
 
 export default function Navbar() {
@@ -38,29 +40,29 @@ export default function Navbar() {
 
   return (
     <nav aria-label="Primary" className="sticky top-0 z-50 w-full border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 text-base font-semibold tracking-tight text-white sm:text-xl"
+          className="flex shrink-0 items-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(1rem,1.2vw,1.25rem)] font-semibold tracking-tight text-white"
           aria-label="Lumorix Studios — home"
         >
           <img
             src={icon}
             alt=""
-            className="h-7 w-7 rounded-md"
+            className="h-[clamp(1.75rem,2.5vw,2.25rem)] w-[clamp(1.75rem,2.5vw,2.25rem)] rounded-md"
           />
           <span>Lumorix Studios</span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden shrink-0 items-center gap-[clamp(0.25rem,0.6vw,0.75rem)] xl:flex">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
               to={href}
               aria-current={isActive(href) ? "page" : undefined}
-              className={`rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-lg px-[clamp(0.625rem,0.9vw,1rem)] py-[clamp(0.5rem,0.8vw,0.6875rem)] text-[clamp(0.8125rem,0.95vw,1rem)] font-medium transition-colors ${
                 isActive(href)
                   ? "bg-zinc-800/80 text-white"
                   : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
@@ -70,11 +72,13 @@ export default function Navbar() {
             </Link>
           ))}
 
+          <AccountMenu />
+
           <a
             href="https://github.com/Lumorix-studios/Neo"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+            className="ml-[clamp(0.5rem,1vw,1rem)] rounded-lg bg-white px-[clamp(0.75rem,1vw,1.25rem)] py-[clamp(0.5rem,0.8vw,0.6875rem)] text-[clamp(0.8125rem,0.95vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
           >
             GitHub
           </a>
@@ -84,17 +88,17 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-zinc-800 hover:text-white md:hidden"
+          className="flex h-[clamp(2.75rem,3.5vw,3.25rem)] w-[clamp(2.75rem,3.5vw,3.25rem)] items-center justify-center rounded-lg text-zinc-400 transition hover:bg-zinc-800 hover:text-white xl:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
         >
           {mobileOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-5 w-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-5 w-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           )}
@@ -103,14 +107,14 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="border-t border-zinc-800 bg-zinc-950 px-4 pb-4 pt-2 md:hidden">
+        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="border-t border-zinc-800 bg-zinc-950 px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] xl:hidden">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
               to={href}
               onClick={() => setMobileOpen(false)}
               aria-current={isActive(href) ? "page" : undefined}
-              className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+              className={`flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] items-center rounded-lg px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-medium transition-colors ${
                 isActive(href)
                   ? "bg-zinc-800/80 text-white"
                   : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
@@ -119,11 +123,16 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
+
+          <div className="mt-2">
+            <AccountMenu />
+          </div>
+
           <a
             href="https://github.com/Lumorix-studios/Neo"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 block rounded-lg bg-white px-3 py-2.5 text-center text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+            className="mt-2 flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] items-center justify-center rounded-lg bg-white px-3 py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
           >
             GitHub
           </a>

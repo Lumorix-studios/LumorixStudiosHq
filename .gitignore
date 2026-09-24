@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files (Supabase keys — never commit)
+.env
+.env.*
+!.env.example
