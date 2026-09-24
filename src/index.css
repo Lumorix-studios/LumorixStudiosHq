@@ -38,7 +38,12 @@ body {
   background: #3f3f46;
 }
 
-/* Respect users who prefer less motion (also pauses the CRT canvas via JS) */
+/* Keep the long documentation page cheap to render while scrolling on phones. */
+.doc-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 420px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

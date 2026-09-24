@@ -5,20 +5,23 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 
-import PrivacyPolicy from "../components/Privacypolicyandterms";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Downloads from "../components/Downloads";
-import About from "../components/About";
-import Contact from "../components/Contact";
-import Documentation from "../components/Documentation";
-import Home from "../components/Home";
-import Pricings from "../components/pricings";
-import AccountPage from "../components/AccountPage";
 import AuthModal from "../components/AuthModal";
-import CRTWarp from "../components/CrtWrap";
+"use client";
+
+import { BackgroundPixelStars } from "../components/background";
+const PrivacyPolicy = lazy(() => import("../components/Privacypolicyandterms"));
+const Downloads = lazy(() => import("../components/Downloads"));
+const About = lazy(() => import("../components/About"));
+const Contact = lazy(() => import("../components/Contact"));
+const Documentation = lazy(() => import("../components/Documentation"));
+const Home = lazy(() => import("../components/Home"));
+const Pricings = lazy(() => import("../components/pricings"));
+const AccountPage = lazy(() => import("../components/AccountPage"));
+const CRTWarp = lazy(() => import("../components/CrtWrap"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -33,24 +36,35 @@ function ScrollToTop() {
 function PageContent() {
   const { pathname } = useLocation();
 
-  // Pages that should not have the CRT background
-  const isPlainPage =
-    pathname === "/downloads" ||
-    pathname === "/about";
+  // Documentation is intentionally static and dark like the rest of the site;
+  // don't run the full-page WebGL effect behind an opaque reading surface.
+  // Touch devices also skip the effect: a full-viewport shader is expensive on phones.
+  const shouldRenderCrt =
+    pathname === "/" &&
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   return (
+    //credits to https://21st.dev/@uicapsule/components/background-pixel-stars for the background component
+     <div className="h-dvh w-dvw bg-black bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIElEQVR42mIUEhJiwAbevXuHVZyJgUQwqmEUDB0AEGAADd8DEPTX6ksAAAAASUVORK5CYII=')] bg-[size:10px]">
+      <BackgroundPixelStars />
+      
+   
     <div className="flex min-h-screen flex-col bg-zinc-950">
       <div className="relative flex flex-1 flex-col">
 
-        {/* Global CRT background */}
-        {/* Hidden on Downloads and About */}
-        {!isPlainPage && (
+        {/* The animated background is limited to the home route on capable,
+            motion-enabled desktop pointers. */}
+        {shouldRenderCrt && (
           <>
             <div
               className="absolute inset-0"
               aria-hidden="true"
             >
-              <CRTWarp mouseReact={false} />
+              <Suspense fallback={null}>
+                <CRTWarp mouseReact={false} />
+              </Suspense>
             </div>
 
             <div
@@ -66,7 +80,8 @@ function PageContent() {
         <AuthModal />
 
         <main className="relative z-10 flex-1">
-          <Routes>
+          <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-20 sm:px-6" aria-label="Loading page" />}>
+            <Routes>
 
             {/* Home */}
             <Route
@@ -163,12 +178,14 @@ function PageContent() {
               }
             />
 
-          </Routes>
+            </Routes>
+          </Suspense>
         </main>
       </div>
 
       <Footer />
     </div>
+     </div>
   );
 }
 
