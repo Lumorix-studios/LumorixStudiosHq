@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# Lumorix Studios HQ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Official website for **Lumorix Studios** and **ProjectNeo** (a.k.a. AgenticCoder /
+Neo) — a lightweight, local-first, agentic integrated development environment.
 
-Currently, two official plugins are available:
+Live site: https://lumorix-studios.github.io/LumorixStudiosHq/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What this repo is
 
-## React Compiler
+A React + TypeScript + Vite single-page app that serves:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Home** — product landing page
+* **Downloads** — desktop build downloads
+* **Documentation** — guides, provider setup, and FAQ
+* **Account** — sign-in and profile, backed by the same Supabase project the
+  Neo desktop app uses
 
-## Expanding the ESLint configuration
+The desktop app source lives in a separate repository (see the app README).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Accounts
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The website and the Neo app share one Supabase backend, so a single account
+works across both. An account is optional — it is only needed for features that
+require a backend (cloud sync and encrypted provider-key storage). All local
+features work without signing in.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Pricing
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**ProjectNeo is free.** There are no paid plans, no subscriptions, and no
+paywall. Every feature is available to all users at no cost, and Lumorix
+Studios does not process payments.
 
+## Getting started
+
+```bash
+npm install
+npm run dev      # start the dev server
+npm run build    # typecheck + production build
+npm run preview  # preview the production build
+npm run deploy   # publish to GitHub Pages
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Environment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Copy `.env.example` to `.env` and fill in your Supabase project values:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Variable | Purpose |
+| --- | --- |
+| `VITE_SUPABASE_URL` | Supabase project URL |
+| `VITE_SUPABASE_ANON_KEY` | Supabase anon (public) key |
 
-```
+Accounts are disabled if these are missing — the site still builds and the
+non-account pages still work.
+
+## Tech stack
+
+React 19 · TypeScript · Vite · React Router · Tailwind CSS v4 · Supabase JS ·
+Three.js · GSAP
+
+## Legal
+
+* [Privacy Policy & Terms of Use](https://lumorix-studios.github.io/LumorixStudiosHq/privacypolicyandterms)
+* [`LICENSE`](LICENSE) — MIT, covering this website's own source code
+* The Neo desktop app is licensed separately under the NEO Source-Available
+  License 1.0 — see that repository's `LICENSE` file
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+---
+
+Copyright © 2026 Lumorix Studios

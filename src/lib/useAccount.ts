@@ -33,9 +33,9 @@ export interface AccountState {
   /** True while the very first session probe is in flight. */
   loading: boolean;
   user: NeoUser | null;
-  /** Includes the `plan` read from `profiles` (what the Pricing page badges). */
+  /** Includes the informational `plan` column from `profiles`. */
   profile: Profile | null;
-  /** Re-read user + profile (call after a successful upgrade). */
+  /** Re-read user + profile (e.g. after a profile save). */
   refresh: () => Promise<void>;
 }
 

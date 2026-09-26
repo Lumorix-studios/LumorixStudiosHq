@@ -53,7 +53,7 @@ const Footer: React.FC = () => (
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
             Home of ProjectNeo, a lightweight desktop IDE with agentic coding
-            capabilities. Beta, Pricings are listed in the Pricings tab
+            capabilities.
           </p>
 
           {/* Socials */}

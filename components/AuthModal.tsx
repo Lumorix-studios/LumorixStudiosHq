@@ -185,7 +185,7 @@ export default function AuthModal() {
           <p className="mt-2 text-sm leading-6 text-zinc-400">
             {isSetPassword
               ? "Choose a new password for your account."
-              : "The same account you use in the Neo app — plans, chats and settings follow you across devices."}
+              : "The same account you use in the Neo app — chats, settings and keys follow you across devices."}
           </p>
 
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>

@@ -33,13 +33,13 @@ export default function Home() {
       {/* Hero */}
       <section>
         <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl justify-content-center align-items-center m-20 p-4 ">
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
-              Lumorix Studios
+              
             </p>
 
             <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
-              ProjectNeo
+              Neo
             </h1>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-lg text-zinc-400 sm:text-xl">
@@ -93,13 +93,14 @@ export default function Home() {
               </a>
             </div>
 
-            <p className="mt-6 text-xs text-zinc-500">
-              Windows 10+ / Ubuntu 20.04+ / Fedora 34+{" "}
-              <span className="mx-1.5 text-zinc-700">·</span>
-              No account
-              <span className="mx-1.5 text-zinc-700">·</span>
-              Beta
-            </p>
+            <a href="https://lumorix-studios.github.io/LumorixStudiosHq/downloads" target="_blank" rel="noopener noreferrer" className = "hover:bg-blue-500">
+              <p className="mt-6 text-xs text-zinc-500 hover:text-blue-500">
+                Windows 10+ / Ubuntu 20.04+ / Fedora 34+{" "}
+                {/* <span className="mx-1.5 text-zinc-700">·</span> */}
+                <span className="mx-1.5 text-zinc-700">/</span>
+                Beta
+              </p>
+            </a>
           </div>
         </div>
       </section>

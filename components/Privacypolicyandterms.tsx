@@ -13,7 +13,7 @@ export default function Legal() {
             <p className="mt-4 text-sm text-zinc-500">
               Effective date: September 19, 2026
               <br />
-              Last updated: September 19, 2026
+              Last updated: September 25, 2026
             </p>
           </header>
 
@@ -24,12 +24,14 @@ export default function Legal() {
             <p className="mt-2">
               ProjectNeo is a local-first, agentic integrated development
               environment connected to a Lumorix-operated backend for account
-              management, subscription plans, entitlement checks, and certain
-              AI-provider requests. Your local workspace, source files, local
-              model activity, and local agent data are intended to remain on
-              your device when you use local features. Account and service
-              information is processed by the backend so that accounts,
-              subscriptions, and connected provider features can function.
+              management, cloud synchronization, encrypted storage of your own
+              provider API keys, and certain AI-provider requests. Your local
+              workspace, source files, local model activity, and local agent
+              data are intended to remain on your device when you use local
+              features. Account and service information is processed by the
+              backend so that accounts and connected provider features can
+              function. ProjectNeo is free — there is no subscription, paid
+              plan, or paywall.
             </p>
             <p className="mt-3">
               If you use a cloud AI provider through Neo, including a provider
@@ -71,7 +73,7 @@ export default function Legal() {
 
             <p>
               This policy applies to the Application, the account and service
-              backend, subscription and plan features, provider-routing
+              backend, provider-routing
               features, and any website or documentation that links to this
               policy. A feature-specific notice or consent screen may provide
               additional information. If it conflicts with this policy for a
@@ -90,13 +92,14 @@ export default function Legal() {
                 running a local model, maintaining local agent history,
                 executing local tools, and recording local diagnostics.
                 Online processing occurs when you use account management,
-                subscription services, backend-routed provider calls, or
+                cloud synchronization, stored provider keys, backend-routed
+                provider calls, or
                 another feature that requires network communication.
               </p>
               <p className="mt-3">
                 Local-first does not mean that every feature is offline. A
                 local model can run without sending its prompt or workspace to
-                a remote model provider, but account, subscription, and
+                a remote model provider, but account, cloud sync, and
                 backend-routed AI features necessarily involve the relevant
                 Lumorix systems and, where applicable, third-party systems.
                 Review the feature description and network destination before
@@ -113,16 +116,16 @@ export default function Legal() {
                 To create, authenticate, secure, and maintain an account, we
                 may collect and process information such as:
               </p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-6 text-zinc-400">
+              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
                 <li>Email address, username, account identifier, and profile information</li>
                 <li>Authentication records, login events, session data, and security signals</li>
                 <li>Account preferences, feature settings, and consent choices</li>
-                <li>Plan, subscription, entitlement, usage-limit, and account-status information</li>
+                <li>Account-status information and the date the account was created</li>
                 <li>Communications that you send to support or through the service</li>
               </ul>
               <p className="mt-3">
                 We use this information to provide account access, protect
-                accounts, enforce plan limits, provide support, communicate
+                accounts, provide support, communicate
                 service notices, prevent abuse, and maintain the Application.
               </p>
             </div>
@@ -130,38 +133,14 @@ export default function Legal() {
             {/* 1.3 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.3 Subscription and billing information
-              </h3>
-              <p className="mt-3">
-                If you purchase or subscribe to a paid plan, we may process
-                subscription status, plan selection, renewal or cancellation
-                status, invoices, transaction identifiers, tax or billing
-                information, and records needed to provide the plan. Payment
-                card numbers and other payment credentials may be collected
-                and processed by a payment processor rather than stored
-                directly by Lumorix. The processor&apos;s own privacy policy
-                and terms apply to payment processing.
-              </p>
-              <p className="mt-3">
-                Subscription information may be linked to your account so that
-                Neo can enable the selected plan, including the free plan,
-                paid features, usage limits, and local-model availability. We
-                do not treat a paid subscription as a transfer of ownership in
-                Neo or in your content.
-              </p>
-            </div>
-
-            {/* 1.4 */}
-            <div>
-              <h3 className="text-lg font-semibold text-white">
-                1.4 Information processed on your device
+                1.3 Information processed on your device
               </h3>
               <p className="mt-3">
                 Depending on the features and permissions you use, Neo may
                 create, read, modify, index, or otherwise process the following
                 information locally:
               </p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-6 text-zinc-400">
+              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
                 <li>Source code, repositories, project files, and file paths</li>
                 <li>Prompts, instructions, agent plans, and local conversation history</li>
                 <li>Generated code, patches, build output, logs, and diagnostics</li>
@@ -179,10 +158,10 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.5 */}
+            {/* 1.4 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.5 Backend-routed AI requests
+                1.4 Backend-routed AI requests
               </h3>
               <p className="mt-3">
                 Neo may use the Lumorix backend to call AI providers on your
@@ -192,7 +171,7 @@ export default function Legal() {
                 feature, the backend may receive or generate a request
                 containing:
               </p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-6 text-zinc-400">
+              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
                 <li>Your account or session identifier</li>
                 <li>Prompt text, selected files, code context, and conversation history</li>
                 <li>Tool results, agent instructions, model settings, and requested actions</li>
@@ -216,10 +195,10 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.6 */}
+            {/* 1.5 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.6 API keys and credentials
+                1.5 API keys and credentials
               </h3>
               <p className="mt-3">
                 API keys, access tokens, OAuth tokens, SSH keys, environment
@@ -242,10 +221,10 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.7 */}
+            {/* 1.6 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.7 Training, evaluation, and service improvement
+                1.6 Training, evaluation, and service improvement
               </h3>
               <p className="mt-3">
                 Data collected through the Application or backend may be used
@@ -276,14 +255,14 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.8 */}
+            {/* 1.7 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.8 Usage data, logs, and crash handling
+                1.7 Usage data, logs, and crash handling
               </h3>
               <p className="mt-3">
                 The backend may collect service logs and operational metadata
-                needed to authenticate accounts, enforce subscriptions, route
+                needed to authenticate accounts, route
                 provider calls, measure usage, investigate abuse, troubleshoot
                 failures, and improve reliability. This may include timestamps,
                 request identifiers, feature usage, model and provider
@@ -302,19 +281,18 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.9 */}
+            {/* 1.8 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.9 Network requests and third-party services
+                1.8 Network requests and third-party services
               </h3>
               <p className="mt-3">
                 In addition to Lumorix systems, Neo may interact with services
                 that you choose or that are required by a connected feature,
                 including:
               </p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-6 text-zinc-400">
+              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
                 <li>AI model and inference providers, including OpenRouter where supported</li>
-                <li>Payment processors and subscription infrastructure</li>
                 <li>Git hosting, issue tracking, or source-control services</li>
                 <li>Package registries, dependency indexes, and update services</li>
                 <li>Documentation, browser, search, or web-fetch services</li>
@@ -329,19 +307,19 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.10 */}
+            {/* 1.9 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.10 Retention and deletion
+                1.9 Retention and deletion
               </h3>
               <p className="mt-3">
-                We retain account, subscription, security, service, provider,
+                We retain account, security, service, provider,
                 and training-related data for as long as reasonably necessary
                 for the purposes described in this policy, to provide the
                 service, comply with legal obligations, resolve disputes,
                 enforce agreements, prevent abuse, maintain backups, and
                 improve the service. Actual retention periods may differ by
-                data type, plan, provider, legal requirement, and operational
+                data type, provider, legal requirement, and operational
                 need.
               </p>
               <p className="mt-3">
@@ -362,10 +340,10 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.11 */}
+            {/* 1.10 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.11 Security and its limitations
+                1.10 Security and its limitations
               </h3>
               <p className="mt-3">
                 Neo may use account authentication, authorization controls,
@@ -391,10 +369,10 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.12 */}
+            {/* 1.11 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.12 Children and sensitive information
+                1.11 Children and sensitive information
               </h3>
               <p className="mt-3">
                 Neo is a developer tool and is not directed to children. Do
@@ -408,10 +386,10 @@ export default function Legal() {
               </p>
             </div>
 
-            {/* 1.13 */}
+            {/* 1.12 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                1.13 Privacy rights and requests
+                1.12 Privacy rights and requests
               </h3>
               <p className="mt-3">
                 Depending on where you live and subject to applicable
@@ -455,32 +433,34 @@ export default function Legal() {
                 report unauthorized access. You are responsible for activity
                 performed through your account unless applicable law provides
                 otherwise. Do not share an account, bypass account controls, or
-                create accounts to evade a restriction, plan limit, payment
-                obligation, or security measure.
+                create accounts to evade a restriction or security measure.
               </p>
             </div>
 
             {/* 2.2 */}
             <div>
               <h3 className="text-lg font-semibold text-white">
-                2.2 Plans, free access, and subscriptions
+                2.2 No subscription, no paywall
               </h3>
               <p className="mt-3">
-                Neo may provide a free plan and one or more paid subscription
-                plans. Features, limits, model availability, storage, usage,
-                provider access, and eligibility may differ by plan and may
-                change over time. Local model execution is included in the
-                free plan as described by the current product documentation,
-                but hardware requirements, model availability, performance,
-                and local storage requirements are your responsibility.
+                ProjectNeo is provided <strong>free of charge</strong>. There is
+                no subscription, no paid plan, no paywall, and no in-app
+                purchase or checkout. Lumorix Studios does not process,
+                collect, or store payment or card information, and all
+                features are available to all users at no cost.
               </p>
               <p className="mt-3">
-                Paid subscriptions may be subject to pricing, taxes, billing
-                cycles, renewals, cancellation rules, refunds, payment
-                processor terms, and plan-specific conditions displayed at
-                purchase. A plan does not grant unlimited or unrestricted use
-                of third-party AI providers, models, tokens, bandwidth, or
-                backend resources.
+                An account is required only for features that need a backend,
+                such as sign-in, cloud synchronization, and encrypted storage
+                of your own provider API keys. Local editing, terminal use, and
+                local model execution (Ollama) work without an account. You can
+                delete your synced data at any time.
+              </p>
+              <p className="mt-3">
+                Free of charge does not mean unlimited use of third-party
+                services. Hardware requirements, model availability,
+                performance, and local storage requirements for local model
+                execution are your responsibility.
               </p>
             </div>
 
@@ -588,8 +568,8 @@ export default function Legal() {
               <p className="mt-3">
                 Neo is licensed under the custom license published in the
                 ProjectNeo GitHub repository&apos;s{" "}
-                <code className="rounded bg-zinc-900 px-1.5 py-0.5 text-zinc-200">
-                  LICENSE.md
+                <code className="rounded bg-zinc-900 px-1.4 py-0.5 text-zinc-200">
+                  LICENSE
                 </code>
                 . That file is the authoritative source for the permissions,
                 restrictions, attribution requirements, commercial-use terms,
@@ -599,7 +579,7 @@ export default function Legal() {
               <p className="mt-3">
                 These Terms of Use do not replace, expand, or restrict rights
                 granted by the custom license except for the separate use of
-                the hosted account, subscription, backend, and provider
+                the hosted account, backend, and provider
                 features. If these Terms conflict with the applicable software
                 license regarding the licensed source code, the applicable
                 license controls.
@@ -614,7 +594,7 @@ export default function Legal() {
               <p className="mt-3">
                 Neo may include or interoperate with open-source software,
                 extensions, runtimes, package managers, model providers,
-                OpenRouter, payment processors, and other third-party
+                OpenRouter, and other third-party
                 technology. Those components may be subject to separate
                 licenses, notices, acceptable-use rules, pricing, service
                 limits, and changes outside Lumorix&apos;s control. You must
@@ -636,7 +616,7 @@ export default function Legal() {
               <p className="mt-3">
                 You must not use Neo or its backend to:
               </p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-6 text-zinc-400">
+              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
                 <li>Access, alter, destroy, or exfiltrate data without authorization</li>
                 <li>Deploy malware, ransomware, spyware, credential theft, or destructive code</li>
                 <li>Evade authentication, access controls, rate limits, or security monitoring</li>
@@ -650,7 +630,7 @@ export default function Legal() {
               <p className="mt-3">
                 This list is illustrative, not exhaustive. Lumorix may
                 suspend access or restrict distribution where necessary to
-                address legal, payment, security, abuse, or operational risk.
+                address legal, security, abuse, or operational risk.
               </p>
             </div>
 
@@ -684,7 +664,7 @@ export default function Legal() {
               </h3>
               <p className="mt-3">
                 TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEO, THE BACKEND, THE
-                FREE AND PAID PLANS, PROVIDER ROUTING, AND ALL RELATED
+                APPLICATION, PROVIDER ROUTING, AND ALL RELATED
                 MATERIALS ARE PROVIDED &quot;AS IS&quot; AND &quot;AS
                 AVAILABLE,&quot; WITHOUT WARRANTIES OF ANY KIND, EXPRESS,
                 IMPLIED, OR STATUTORY. LUMORIX DISCLAIMS WARRANTIES OF
@@ -713,9 +693,9 @@ export default function Legal() {
                 AND AFFILIATES WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL,
                 SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR
                 LOSS OF DATA, CODE, PROFITS, REVENUE, BUSINESS, GOODWILL,
-                SECURITY, SUBSCRIPTION VALUE, PROVIDER CREDITS, OR SYSTEM
+                SECURITY, PROVIDER CREDITS, OR SYSTEM
                 AVAILABILITY, ARISING FROM OR RELATED TO NEO, THE BACKEND, A
-                PLAN, A PROVIDER, OR THESE TERMS, EVEN IF ADVISED OF THE
+                PROVIDER, OR THESE TERMS, EVEN IF ADVISED OF THE
                 POSSIBILITY OF SUCH DAMAGES.
               </p>
               <p className="mt-3">
@@ -739,7 +719,7 @@ export default function Legal() {
                 and hold harmless Lumorix and its contributors from claims,
                 liabilities, damages, losses, and expenses arising from your
                 unlawful use of Neo, breach of these terms, content, account,
-                credentials, provider use, subscription activity, or violation
+                credentials, provider use, or violation
                 of another person&apos;s rights. This obligation does not
                 apply to the extent caused by liability that cannot legally be
                 shifted.
@@ -752,10 +732,9 @@ export default function Legal() {
                 2.14 Suspension and termination
               </h3>
               <p className="mt-3">
-                You may stop using Neo at any time and may cancel a
-                subscription subject to the applicable purchase terms. Lumorix
-                may suspend or terminate an account, subscription, backend
-                access, or provider feature for nonpayment, abuse, security
+                You may stop using Neo at any time. Lumorix
+                may suspend or terminate an account, backend
+                access, or provider feature for abuse, security
                 risk, legal requirements, violation of these terms, or
                 operational reasons. Suspension may occur while an issue is
                 investigated. Local software and data may remain on your
@@ -794,8 +773,8 @@ export default function Legal() {
               3. Contact and repository license
             </h2>
             <p>
-              Questions, privacy requests, security reports, billing
-              questions, and project-related inquiries can be submitted through
+              Questions, privacy requests, security reports, and
+              project-related inquiries can be submitted through
               the official ProjectNeo repository or the support channel
               provided with your account. For a suspected security issue, do
               not publicly disclose exploit details, private code, or
@@ -804,8 +783,8 @@ export default function Legal() {
             <p>
               The custom software license for Neo is available in the GitHub
               repository file{" "}
-              <code className="rounded bg-zinc-900 px-1.5 py-0.5 text-zinc-200">
-                LICENSE.md
+              <code className="rounded bg-zinc-900 px-1.4 py-0.5 text-zinc-200">
+                LICENSE
               </code>
               . Read that file before copying, modifying, distributing,
               commercially using, or creating a derivative of Neo.

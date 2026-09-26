@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from "react";
 
 /**
- * Tiny shared store so any page (e.g. Pricing) can open the global auth modal
+ * Tiny shared store so any page (e.g. the Account page) can open the global auth modal
  * rendered by the navbar's AccountMenu — no prop-drilling or context needed.
  */
 export type AuthModalMode = "sign-in" | "sign-up" | "set-password";

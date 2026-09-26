@@ -20,7 +20,6 @@ import {
 import { Link } from "react-router-dom";
 import {
   IoCheckmarkCircle,
-  IoCheckmarkOutline,
   IoChevronForward,
   IoCloseOutline,
   IoLogoGithub,
@@ -37,17 +36,6 @@ import {
 import { openAuthModal } from "../src/lib/authModal";
 import { isSupabaseConfigured } from "../src/lib/supabase";
 import { notifyAccountRefresh, useAccount } from "../src/lib/useAccount";
-import { listOrders, PLAN_DISPLAY, type BillingOrder, type OrderStatus } from "../src/lib/billing";
-
-const PAID_PLANS = new Set(["pro", "team", "enterprise", "admin", "paid"]);
-
-/** Order status is tinted text — no pills, no tiles. */
-const STATUS_TONE: Record<OrderStatus, string> = {
-  paid: "text-emerald-400",
-  pending: "text-amber-400",
-  failed: "text-red-400",
-  cancelled: "text-zinc-500",
-};
 
 /* ── Shared classes (single source so every block matches) ── */
 
@@ -70,18 +58,6 @@ function messageOf(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
 
-function formatPlan(plan: string | null | undefined): string {
-  const clean = (plan ?? "free").trim();
-  if (!clean) return "Free";
-  if (clean.toLowerCase() === "unavailable") return "Unavailable";
-  return clean.charAt(0).toUpperCase() + clean.slice(1);
-}
-
-function formatAmount(cents: number, currency: string): string {
-  const symbol = currency.toLowerCase() === "usd" ? "$" : currency.toUpperCase() + " ";
-  return symbol + (cents / 100).toFixed(2);
-}
-
 function formatDate(iso: string | null): string {
   if (!iso) return "—";
   const date = new Date(iso);
@@ -100,28 +76,6 @@ function ProviderIcon({ provider }: { provider: string }) {
   if (provider === "github") return <IoLogoGithub className="h-3.5 w-3.5" />;
   if (provider === "google") return <IoLogoGoogle className="h-3.5 w-3.5" />;
   return <IoMailOutline className="h-3.5 w-3.5" />;
-}
-
-function planBlurb(plan: string, isPaid: boolean): string {
-  if (isPaid) {
-    return `Your ${formatPlan(plan)} plan is active on this account — it unlocks the same features in the Neo app.`;
-  }
-  return "Free forever — the full editor, local projects and BYOK keys stored on your machine.";
-}
-
-function planFeatures(plan: string, isPaid: boolean): string[] {
-  if (isPaid) {
-    return [
-      `The complete ${formatPlan(plan)} feature set in the Neo app`,
-      "Encrypted cloud storage for your provider keys",
-      "Priority support from the team",
-    ];
-  }
-  return [
-    "The core Neo editor, CLI and project tools",
-    "Unlimited local projects",
-    "Community support on Discord",
-  ];
 }
 
 /* ── UI primitives ── */
@@ -430,44 +384,6 @@ export default function AccountPage() {
   const [resetBusy, setResetBusy] = useState(false);
   const [confirmSignOutAll, setConfirmSignOutAll] = useState(false);
 
-  const [orders, setOrders] = useState<BillingOrder[] | null>(null);
-  const [ordersError, setOrdersError] = useState<string | null>(null);
-  const [ordersBusy, setOrdersBusy] = useState(false);
-
-  const userId = user?.id ?? null;
-
-  // Purchase history — RLS only ever returns the signed-in user's own orders.
-  useEffect(() => {
-    if (!userId) return;
-    let cancelled = false;
-    void (async () => {
-      try {
-        const next = await listOrders();
-        if (cancelled) return;
-        setOrders(next);
-        setOrdersError(null);
-      } catch (e) {
-        if (cancelled) return;
-        setOrdersError(messageOf(e));
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [userId]);
-
-  const reloadOrders = async () => {
-    setOrdersBusy(true);
-    setOrdersError(null);
-    try {
-      setOrders(await listOrders());
-    } catch (e) {
-      setOrdersError(messageOf(e));
-    } finally {
-      setOrdersBusy(false);
-    }
-  };
-
   const handleProfileSave = async (event: FormEvent) => {
     event.preventDefault();
     setSaving(true);
@@ -551,19 +467,6 @@ export default function AccountPage() {
     void signOutEverywhere();
   };
 
-  const plan = (profile?.plan ?? "free").trim().toLowerCase();
-  const isPaid = PAID_PLANS.has(plan);
-
-  const paidOrders = (orders ?? []).filter((order) => order.status === "paid");
-  const paidCurrencies = new Set(paidOrders.map((order) => order.currency.toLowerCase()));
-  const lifetimeNote =
-    paidOrders.length > 0 && paidCurrencies.size === 1
-      ? `${formatAmount(
-          paidOrders.reduce((sum, order) => sum + order.amountCents, 0),
-          paidOrders[0].currency
-        )} lifetime`
-      : null;
-
   return (
     <div className="bg-zinc-950 text-white">
       <section className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -571,7 +474,7 @@ export default function AccountPage() {
         <div className="max-w-xl">
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Your account</h1>
           <p className="mt-2 text-sm leading-5 text-zinc-400">
-            One account for this site and the Neo app — your profile, plan and receipts live here.
+            One account for this site and the Neo app — your profile and settings live here.
           </p>
         </div>
 
@@ -618,8 +521,8 @@ export default function AccountPage() {
           <div className="mt-10 max-w-xl">
             <h2 className="text-xl font-semibold tracking-tight">Sign in to view your account</h2>
             <p className="mt-3 text-sm leading-6 text-zinc-400">
-              Your profile, plan and purchase history show up here once you&apos;re signed in. Use
-              the same account you sign into inside the Neo app.
+              Your profile shows up here once you&apos;re signed in. Use the same account you
+              sign into inside the Neo app.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <button
@@ -744,133 +647,6 @@ export default function AccountPage() {
                     </div>
                   )}
                 </form>
-              </Section>
-
-              {/* ── Plan ── */}
-              <Section
-                title="Plan"
-                description="The same entitlements the Neo app uses."
-                action={
-                  <span className={isPaid ? "text-xs text-emerald-400" : "text-xs text-zinc-500"}>
-                    {isPaid ? "Active" : "Free forever"}
-                  </span>
-                }
-              >
-                <p className="text-base font-medium tracking-tight text-white">
-                  {formatPlan(profile?.plan)}
-                </p>
-                <p className="mt-2 text-sm leading-5 text-zinc-400">{planBlurb(plan, isPaid)}</p>
-                <ul className="mt-4 space-y-2">
-                  {planFeatures(plan, isPaid).map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-start gap-2.5 text-sm leading-5 text-zinc-400"
-                    >
-                      <IoCheckmarkOutline className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-600" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                {profile?.dbError && (
-                  <div className="mt-6">
-                    <Alert tone="warning">
-                      Couldn&apos;t read your profile row ({profile.dbError}) — plan changes may not
-                      show until the database grants in SUPABASE_SETUP.md are applied.
-                    </Alert>
-                  </div>
-                )}
-                <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <Link to="/pricing" className={PRIMARY_BUTTON}>
-                    {isPaid ? "Change plan" : `Upgrade to ${PLAN_DISPLAY.pro.name}`}
-                  </Link>
-                  {/* <p className="max-w-sm text-xs leading-5 text-zinc-500">
-                    {profile?.byokEnabled
-                      ? `BYOK is included on your ${formatPlan(
-                          profile?.plan
-                        )} plan — provider API keys stay encrypted in your account.`
-                      : `BYOK isn't included in your ${formatPlan(
-                          profile?.plan
-                        )} plan yet — upgrade to Pro to store encrypted provider API keys.`}
-                  </p> */}
-                </div>
-              </Section>
-
-              {/* ── Purchase history ── */}
-              <Section
-                title="Purchase history"
-                description="Receipts from the same checkout the Neo app uses."
-                action={
-                  <button
-                    type="button"
-                    onClick={() => void reloadOrders()}
-                    disabled={ordersBusy}
-                    className={TEXT_BUTTON}
-                  >
-                    {ordersBusy ? "Refreshing…" : "Refresh"}
-                  </button>
-                }
-              >
-                {ordersError && <Alert tone="error">{ordersError}</Alert>}
-                {!ordersError && orders === null && (
-                  <p className="text-sm text-zinc-500">Loading your orders…</p>
-                )}
-                {!ordersError && orders?.length === 0 && (
-                  <p className="text-sm text-zinc-500">
-                    No purchases yet.{" "}
-                    <Link
-                      to="/pricing"
-                      className="text-zinc-300 underline underline-offset-4 transition hover:text-white"
-                    >
-                      Compare plans
-                    </Link>
-                  </p>
-                )}
-                {!ordersError && orders && orders.length > 0 && (
-                  <>
-                    <p className="text-xs text-zinc-500">
-                      {orders.length} {orders.length === 1 ? "order" : "orders"}
-                      {lifetimeNote && (
-                        <>
-                          {" "}
-                          <span aria-hidden="true">·</span>{" "}
-                          <span className="text-zinc-400">{lifetimeNote}</span>
-                        </>
-                      )}
-                    </p>
-                    <ul className={`mt-2 ${LIST_CLASS}`}>
-                      {orders.map((order) => (
-                        <li key={order.id} className="flex items-baseline gap-3 py-2.5">
-                          <div className="min-w-0 flex-1">
-                            <p className="flex flex-wrap items-baseline gap-x-2 text-sm text-zinc-200">
-                              {formatPlan(order.plan)}
-                              <span
-                                className={`text-[11px] uppercase tracking-wide ${
-                                  STATUS_TONE[order.status] ?? "text-zinc-500"
-                                }`}
-                              >
-                                {order.status}
-                              </span>
-                            </p>
-                            <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-xs text-zinc-500">
-                              <span>{formatDate(order.createdAt)}</span>
-                              {order.provider && (
-                                <>
-                                  <span aria-hidden="true">·</span>
-                                  <span>via {order.provider}</span>
-                                </>
-                              )}
-                              <span aria-hidden="true">·</span>
-                              <span className="font-mono">{order.id.slice(0, 8)}…</span>
-                            </p>
-                          </div>
-                          <p className="shrink-0 text-sm tabular-nums text-zinc-200">
-                            {formatAmount(order.amountCents, order.currency)}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
               </Section>
 
               {/* ── Security ── */}

@@ -19,7 +19,6 @@ const About = lazy(() => import("../components/About"));
 const Contact = lazy(() => import("../components/Contact"));
 const Documentation = lazy(() => import("../components/Documentation"));
 const Home = lazy(() => import("../components/Home"));
-const Pricings = lazy(() => import("../components/pricings"));
 const AccountPage = lazy(() => import("../components/AccountPage"));
 const CRTWarp = lazy(() => import("../components/CrtWrap"));
 
@@ -76,7 +75,7 @@ function PageContent() {
 
         <Navbar />
 
-        {/* Global auth modal (sign in / sign up) — opened by the navbar and the Pricing page. */}
+        {/* Global auth modal (sign in / sign up) — opened by the navbar. */}
         <AuthModal />
 
         <main className="relative z-10 flex-1">
@@ -129,18 +128,6 @@ function PageContent() {
             <Route
               path="/Documentation"
               element={<Documentation />}
-            />
-
-            {/* Pricing */}
-            <Route
-              path="/pricing"
-              element={<Pricings />}
-            />
-
-            {/* Legacy pricing route */}
-            <Route
-              path="/Pricings"
-              element={<Pricings />}
             />
 
             {/* Account */}

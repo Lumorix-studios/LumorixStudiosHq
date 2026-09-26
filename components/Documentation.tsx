@@ -45,7 +45,7 @@ const docGroups = [
     items: [
       { id: "shortcuts", label: "Keyboard shortcuts" },
       { id: "privacy", label: "Privacy & local data" },
-      { id: "accounts", label: "Accounts & plans" },
+      { id: "accounts", label: "Accounts" },
       { id: "faq", label: "Frequently asked questions" },
     ],
   },
@@ -509,20 +509,19 @@ ollama serve`}</CodeBlock>
                 </ul>
               </DocSection>
 
-              <DocSection id="accounts" title="Accounts & plans">
-                <p>The Lumorix Studios website and Neo use the same account system. Signing in on the website gives you access to your profile, plan information, and purchase history, so your plan follows you between the site and the app.</p>
+              <DocSection id="accounts" title="Accounts">
+                <p>The Lumorix Studios website and Neo use the same account system. Signing in on the website gives you access to your profile, so everything follows you between the site and the app.</p>
                 <Steps items={[
                   { title: "Sign in", body: <>Use the account menu in the navbar or the <Link className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" to="/account">Account page</Link>.</> },
-                  { title: "Choose a plan", body: <>Open <Link className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" to="/pricing">Pricing</Link> to compare plans and start checkout.</> },
-                  { title: "Check your account", body: <>Return to your profile to see the current plan and recent orders. Plan changes may take a moment to appear while a payment settles.</> },
+                  { title: "Check your account", body: <>Return to your profile to see your display name, avatar and member-since date.</> },
                 ]} />
-                <Callout title="Keep control of your account"><p>Use a unique password, sign out of shared devices, and review sign-in methods from account settings. Payment details are handled by the payment provider and are not stored in Neo.</p></Callout>
+                <Callout title="Keep control of your account"><p>Use a unique password, sign out of shared devices, and review sign-in methods from account settings.</p></Callout>
               </DocSection>
 
               <DocSection id="faq" title="Frequently asked questions">
                 <div className="divide-y divide-zinc-800 rounded-xl border border-zinc-800">
                   {[
-                    ["Does Neo need an account?", "The core desktop workspace and local file tools can be used without a cloud account. An account is useful for website plan management, billing, and shared app features."],
+                    ["Does Neo need an account?", "The core desktop workspace and local file tools can be used without a cloud account. An account is useful for cloud sync, encrypted provider-key storage, and shared app features."],
                     ["Can I use my own API key?", "Yes. Neo supports provider-independent configuration, including API keys, model names, base URLs, system prompts, and provider-specific options."],
                     ["Can I use a local model?", "Yes. Neo can connect to a local Ollama server so inference can remain on your machine."],
                     ["Will the agent delete my files?", "Destructive actions require explicit approval. You should still read the diff and understand the requested action before approving it."],

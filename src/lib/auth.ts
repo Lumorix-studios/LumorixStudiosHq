@@ -96,24 +96,22 @@ export interface NeoUser {
 }
 
 export interface Profile extends NeoUser {
-  /** Billing plan id from profiles.plan ("free" by default). */
+  /** Legacy plan id from profiles.plan. Kept for display only — nothing is gated on it. */
   plan: string;
-  /** Paywall flag — flipped server-side when a paid plan is active. */
+  /** Always true for a signed-in account (BYOK is no longer a paid feature). */
   byokEnabled: boolean;
   createdAt: string | null;
   /** Set when the profiles row could not be loaded (grants/RLS/schema). */
   dbError?: string | null;
 }
 
-const BYOK_PLAN_IDS = new Set(["admin", "pro", "team", "enterprise", "paid"]);
-
-function planIncludesByok(plan: string | null | undefined): boolean {
-  return BYOK_PLAN_IDS.has((plan ?? "").trim().toLowerCase());
-}
-
-function resolveByokEnabled(row?: { plan?: string | null; byok_enabled?: boolean | null } | null): boolean {
-  if (planIncludesByok(row?.plan)) return true;
-  return row?.byok_enabled ?? true;
+/**
+ * BYOK used to be a paid feature gated on `profiles.plan` / `byok_enabled`.
+ * There is no paywall any more, so every signed-in account is entitled and the
+ * plan column is purely informational.
+ */
+function resolveByokEnabled(): boolean {
+  return true;
 }
 
 /** Map a supabase auth user + profile row to our app-level shape. */
@@ -195,7 +193,7 @@ export async function getCurrentUser(): Promise<NeoUser | null> {
   return toNeoUser(data.session.user, profile ?? undefined);
 }
 
-/** Full profile (includes the plan / BYOK paywall flag). Null when signed out. */
+/** Full profile (includes the plan / BYOK entitlement flag). Null when signed out. */
 export async function getProfile(): Promise<Profile | null> {
   if (!isSupabaseConfigured) return null;
   const sb = supabase();
@@ -208,7 +206,7 @@ export async function getProfile(): Promise<Profile | null> {
     .eq("id", data.session.user.id)
     .maybeSingle();
   const resolvedPlan = rowError ? "unavailable" : (row?.plan ?? "free");
-  const resolvedByok = rowError ? false : resolveByokEnabled(row);
+  const resolvedByok = resolveByokEnabled();
   const base = toNeoUser(data.session.user, row ?? undefined);
   return {
     ...base,
@@ -232,7 +230,7 @@ export async function ensureProfile(): Promise<void> {
   const meta = user.user_metadata ?? {};
   // `ignoreDuplicates` → INSERT … ON CONFLICT DO NOTHING, so it only needs
   // INSERT privileges — the client can never touch plan / byok_enabled
-  // (0002_harden_profiles); only the billing edge function promotes those.
+  // (0002_harden_profiles).
   await sb.from("profiles").upsert(
     {
       id: user.id,
