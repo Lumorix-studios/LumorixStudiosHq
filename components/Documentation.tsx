@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import ScreenshotFrame from "./ScreenshotFrame";
+import webSearchPreview from "../src/assets/websearch.png";
 
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -79,6 +80,7 @@ const agentTools = [
   ["rename", "Rename a file or directory."],
   ["delete_file", "Delete a file after confirmation."],
   ["delete_dir", "Delete a directory after confirmation."],
+  ["web_search", "Surfs the web and grabs whatever you ask it to"]
 ] as const;
 
 const devRequirements = [
@@ -339,6 +341,14 @@ export default function Documentation() {
                   ))}
                 </div>
                 <p>Agent activity appears in a timeline with tool status and output. Destructive operations require explicit approval, but approval alone is not a substitute for reviewing the resulting diff.</p>
+                <ScreenshotFrame
+                  src={webSearchPreview}
+                  alt="Neo agent running a web search"
+                  title="Web search tool"
+                  loading="lazy"
+                  decoding="async"
+                />
+
                 <Callout title="Context is selected"><p>Neo does not automatically send your entire repository to a provider. The agent can work with open editor files, files you select, files discovered by search, and files reached through its tools.</p></Callout>
               </DocSection>
 

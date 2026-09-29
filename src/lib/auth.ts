@@ -1,13 +1,4 @@
-/**
- * Authentication for the Lumorix Studios site — email/password + GitHub &
- * Google OAuth against the SAME Supabase project the Neo app uses, so an
- * account created in the app signs in here and any plan bought here unlocks
- * in the app.
- *
- * All functions degrade gracefully when Supabase env vars are missing
- * (isSupabaseConfigured === false): they resolve to a signed-out state with a
- * friendly message instead of throwing.
- */
+// author : madhusudhan thapa
 
 import {
   supabase,
@@ -32,16 +23,7 @@ export interface EnabledProviders {
 
 let providersPromise: Promise<EnabledProviders | null> | null = null;
 
-/**
- * Ask the project which sign-in providers are enabled.
- *
- * Needed because a disabled provider still builds a valid-looking OAuth URL
- * entirely client-side — supabase-js reports `error: null` and the user gets
- * dropped into the browser staring at raw GoTrue JSON. The public settings
- * endpoint is the only way to know beforehand. Cached for the session;
- * resolves to `null` when the probe fails (offline, old project…), and callers
- * should then simply let the user try.
- */
+
 export function fetchEnabledProviders(): Promise<EnabledProviders | null> {
   if (!isSupabaseConfigured) return Promise.resolve(null);
   if (!providersPromise) {
@@ -105,11 +87,7 @@ export interface Profile extends NeoUser {
   dbError?: string | null;
 }
 
-/**
- * BYOK used to be a paid feature gated on `profiles.plan` / `byok_enabled`.
- * There is no paywall any more, so every signed-in account is entitled and the
- * plan column is purely informational.
- */
+
 function resolveByokEnabled(): boolean {
   return true;
 }
