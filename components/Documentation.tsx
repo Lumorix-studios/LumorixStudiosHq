@@ -304,7 +304,7 @@ export default function Documentation() {
                   { title: "Download the release", body: <>Open the <Link className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" to="/downloads">Downloads page</Link> and choose the asset for your operating system and processor.</> },
                   { title: "Install and launch", body: <>Run the installer, open Neo, and create or open a folder. Neo uses the development tools already installed on your machine rather than bundling every compiler.</> },
                 ]} />
-                <Callout title="Keep the installer name" warning><p>If Windows SmartScreen warns you about an unfamiliar installer, verify that the download came from the official Lumorix Studios GitHub release before continuing.</p></Callout>
+                {/* <Callout title="Keep the installer name" warning><p></p></Callout> */}
               </DocSection>
 
               <DocSection id="first-workspace" title="Open a workspace">
@@ -331,7 +331,6 @@ export default function Documentation() {
               </DocSection>
 
               <DocSection id="agentic-tools" title="Agent tools">
-                <p>The agent works through explicit tools rather than only generating code in chat. The exact set can evolve, but the current core covers these filesystem operations:</p>
                 <div className="overflow-hidden rounded-xl border border-zinc-800">
                   {agentTools.map(([name, description]) => (
                     <div key={name} className="grid gap-1 border-b border-zinc-800 px-4 py-3 last:border-b-0 sm:grid-cols-[10rem_1fr] sm:gap-4">
@@ -340,14 +339,12 @@ export default function Documentation() {
                     </div>
                   ))}
                 </div>
-                <p>Agent activity appears in a timeline with tool status and output. Destructive operations require explicit approval, but approval alone is not a substitute for reviewing the resulting diff.</p>
+                <p>Preview of web search</p>
                 <ScreenshotFrame
-                  src={webSearchPreview}
-                  alt="Neo agent running a web search"
-                  title="Web search tool"
-                  loading="lazy"
-                  decoding="async"
+                src = {webSearchPreview}
+                title = "web_search agent tool"
                 />
+                <p>Agent activity appears in a timeline with tool status and output. Destructive operations require explicit approval, but approval alone is not a substitute for reviewing the resulting diff.</p>
 
                 <Callout title="Context is selected"><p>Neo does not automatically send your entire repository to a provider. The agent can work with open editor files, files you select, files discovered by search, and files reached through its tools.</p></Callout>
               </DocSection>
