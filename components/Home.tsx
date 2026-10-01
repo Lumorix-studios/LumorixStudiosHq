@@ -3,6 +3,7 @@ import RotatingText from "./RotatingText";
 import ScreenshotFrame from "./ScreenshotFrame";
 import previewSss from "../src/assets/newtest.png";
 import { IoLogoGithub } from "react-icons/io5";
+import { IoLogoWindows } from "react-icons/io";
 const steps = [
   {
     n: "1",
@@ -62,7 +63,7 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="max-w-3xl justify-content-center align-items-center">
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
-              Welcome
+              
             </p>
 
             <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
@@ -121,14 +122,21 @@ export default function Home() {
               </a>
             </div>
 
-            <a href="https://lumorix-studios.github.io/LumorixStudiosHq/downloads" target="_blank" rel="noopener noreferrer" className = "hover:bg-blue-500">
-              <p className="mt-6 text-xs text-zinc-500 hover:text-blue-500">
-                Windows 10+ / Ubuntu 20.04+ / Fedora 34+{" "}
-                {/* <span className="mx-1.5 text-zinc-700">·</span> */}
-                <span className="mx-1.5 text-zinc-700">/</span>
-                Beta
-              </p>
+            
+            
+            // ... inside your component:
+            <a 
+              href="https://lumorix-studios.github.io/LumorixStudiosHq/downloads" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-blue-500"
+            > 
+              <p className="m-1 text-xs text-zinc-500 flex items-center gap-2 hover:text-blue-500"> 
+                <IoLogoWindows />
+                <span>Windows 10+</span>
+              </p> 
             </a>
+
           </div>
         </div>
       </section>

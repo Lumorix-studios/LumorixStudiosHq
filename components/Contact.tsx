@@ -1,4 +1,11 @@
 
+
+
+const contact = async() => {
+  const email = "madhusudhan207@gmail.com";
+  window.location.href = `mailto:${email}`;
+  
+}
 export default function Contact() {
   return (
     <main className="bg-zinc-950 text-white">
@@ -44,10 +51,17 @@ export default function Contact() {
 
           <p className="mt-4 max-w-xl leading-7 text-zinc-400">
             For bug reports, feature requests, questions, and contributions,
-            use the appropriate repository or discussion on GitHub.
-          </p>
-
+            use the appropriate repository or discussion on GitHub or contact through email
+            </p>
+          
+        
           <div className="mt-5">
+            <button
+              onClick={contact}>
+              <span className="hover:text-blue-500 m-4 underline underline-offset-4">
+                Contact us using Email
+                
+              </span></button>
             <a
               href="https://github.com/Lumorix-studios/Neo"
               target="_blank"

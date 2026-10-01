@@ -2,7 +2,8 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import ScreenshotFrame from "./ScreenshotFrame";
 import webSearchPreview from "../src/assets/websearch.png";
-
+import mcpusage from "../src/assets/MCPTESTBUIld.png";
+import { IoInformationCircleOutline } from "react-icons/io5"
 const BASE_URL = import.meta.env.BASE_URL;
 
 const docGroups = [
@@ -455,17 +456,65 @@ git status --short`}</CodeBlock>
 
 
               <DocSection id="local-models" title="Local models with Ollama">
+                <div className="relative">
+                  <button
+                    type="button"
+                    aria-label="Feedback information"
+                    className="inline-flex items-center justify-center text-white/40 transition hover:text-white/70 m-4"
+                    onClick={(e) => {
+                      const popover = e.currentTarget.nextElementSibling;
+        
+                      popover?.classList.toggle("hidden");
+                    }}
+                  >
+                    
+                    <span className = "m-1 py-0">Important</span> <IoInformationCircleOutline className="h-4 w-4" />
+                  </button>
+        
+                  {/* Info popover */}
+                  <div className="absolute right-130 bottom-full z-50 mb-3 hidden w-64 border border-white/20 bg-zinc-950 p-3 text-left shadow-xl">
+                    <p className="text-xs leading-5 text-white/50">
+                      For ollama or other local servers you need to downoad ollama.cpp in your system first then it can work
+                    </p>
+                  </div>
+                </div>
                 <p>Neo can connect to a model server running on your own machine through <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://ollama.com" target="_blank" rel="noopener noreferrer">Ollama</a>. This is useful when you want inference to stay local or need to work without a hosted provider connection.</p>
                 <CodeBlock label="Ollama setup">{`# install Ollama from ollama.com
-ollama pull llama3.1
-ollama serve`}</CodeBlock>
+                  ollama pull llama3.1
+                  ollama serve`}
+                </CodeBlock>
+                
                 <p>In Neo, use the local endpoint and the model identifier reported by Ollama. The exact setup varies by machine and model, so check the Ollama documentation and Neo&apos;s provider settings if the names do not match.</p>
                 <DocsImage name="local-models" alt="Neo configured to use a local Ollama model" title="Local model provider" />
                 <Callout title="Local does not automatically mean private" warning><p>Check what the model, OS, and any extensions can access. Avoid sending secrets or sensitive files to a model simply because the interface is running locally.</p></Callout>
               </DocSection>
 
               <DocSection id="mcp" title="MCP connections">
+                <div className="relative">
+                  <button
+                    type="button"
+                    aria-label="Feedback information"
+                    className="inline-flex items-center justify-center text-white/40 transition hover:text-white/70 m-4"
+                    onClick={(e) => {
+                      const popover = e.currentTarget.nextElementSibling;
+        
+                      popover?.classList.toggle("hidden");
+                    }}
+                  >
+                    
+                    <span className = "m-1 py-0">Important</span> <IoInformationCircleOutline className="h-4 w-4" />
+                  </button>
+        
+                  {/* Info popover */}
+                  <div className="absolute right-130 bottom-full z-50 mb-3 hidden w-64 border border-white/20 bg-zinc-950 p-3 text-left shadow-xl">
+                    <p className="text-xs leading-5 text-white/50">
+                    The MCP server feature is currently very limited. Its currently being worked on as we speak.
+                    </p>
+                  </div>
+                </div>
                 <p>MCP, or Model Context Protocol, lets Neo connect to compatible tools and services. Treat a connection as adding another capable system to your agent session: review what data it can access and which actions it can perform before enabling it.</p>
+             <ScreenshotFrame src = {mcpusage} title = "Example of MCP server usage in roblox studios"></ScreenshotFrame>
+               
                 <Steps items={[
                   { title: "Choose a trusted server", body: <>Prefer a server you understand, with a clear source, documentation, and permission model.</> },
                   { title: "Review the configuration", body: <>Look at the command, arguments, environment variables, network destination, and exposed tools.</> },

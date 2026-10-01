@@ -14,9 +14,9 @@ const STAR_COLORS = [
 ] as const;
 
 // Configuration constants
-const starDensity = 0.00004; // Reduced density for larger stars
+const starDensity = 0.00006; // Reduced density for larger stars
 const twinkleProbability = 1;
-const minTwinkleSpeed = 2;
+const minTwinkleSpeed = 1;
 const maxTwinkleSpeed = 4;
 const pixelSize = 4;
 const starRegenerationInterval = 5000; // Interval to regenerate stars (in ms)
@@ -24,7 +24,7 @@ const percentToRegenerate = 0.15; // Percentage of stars to regenerate at each i
 
 // Shooting star configuration
 const shootingStarPixelSize = 2;
-const targetFps = 16; // 16 FPS for that retro feel
+const targetFps =30; // 30 FPS for a more smoother expereicne
 
 // Type definitions
 type BackgroundStar = {
