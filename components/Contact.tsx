@@ -2,7 +2,7 @@
 
 
 const contact = async() => {
-  const email = "madhusudhan207@gmail.com";
+  const email = "madhusudhant207@gmail.com";
   window.location.href = `mailto:${email}`;
   
 }
