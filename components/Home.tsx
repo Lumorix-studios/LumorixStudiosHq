@@ -4,6 +4,7 @@ import ScreenshotFrame from "./ScreenshotFrame";
 import previewSss from "../src/assets/newtest.png";
 import { IoLogoGithub } from "react-icons/io5";
 import { IoLogoWindows } from "react-icons/io";
+import { IoLogoTux} from "react-icons/io";
 const steps = [
   {
     n: "1",
@@ -134,6 +135,8 @@ export default function Home() {
               <p className="m-1 text-xs text-zinc-500 flex items-center gap-2 hover:text-blue-500"> 
                 <IoLogoWindows />
                 <span>Windows 10+</span>
+                <IoLogoTux />
+                <span>Linux Distros</span>
               </p> 
             </a>
 
