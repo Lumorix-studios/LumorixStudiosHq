@@ -10,7 +10,7 @@ const docGroups = [
   {
     label: "Getting started",
     items: [
-      { id: "what-is-neo", label: "What is Neo?" },
+      { id: "what-is-neo", label: "What is Struct?" },
       { id: "installation", label: "Installation" },
       { id: "first-workspace", label: "Open a workspace" },
       { id: "first-task", label: "Run your first task" },
@@ -276,10 +276,10 @@ export default function Documentation() {
             </div>
 
             <header className="max-w-3xl border-b border-zinc-800 pb-10 sm:pb-12">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">ProjectNeo handbook</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Struct handbook</p>
               <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Documentation</h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-                Install Neo, open a project, connect a model, and learn a safe, repeatable workflow for working with an AI agent.
+                Install Struct, open a project, connect a model, and learn a safe, repeatable workflow for working with an AI agent.
               </p>
               <div className="mt-6 flex flex-wrap gap-2 text-xs text-zinc-400">
                 <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">21 chapters</span>
@@ -291,25 +291,25 @@ export default function Documentation() {
             <div className="mt-10 space-y-12 sm:mt-12 sm:space-y-16">
 
 
-              <DocSection id="what-is-neo" title="What is Neo?">
-                <p>Neo is a lightweight desktop coding environment built with React, TypeScript, Tauri, and Rust. It combines an editor, an AI agent, filesystem tools, Git, terminals, and extensible model connections in one application.</p>
-                <p>The important idea is not only that Neo can generate text. It can operate on a real folder: inspect project structure, read relevant files, search code, propose edits, run commands, and show you exactly what changed before you accept it.</p>
-                <DocsImage name="workspace" alt="Neo workspace with the editor, agent, and terminal" title="Neo workspace" />
-                <Callout title="What Neo does not do"><p>Neo does not silently take ownership of your repository. The agent is a collaborator: it works from the context you provide and the files it is allowed to inspect, while you keep control of consequential changes.</p></Callout>
+              <DocSection id="what-is-neo" title="What is Struct?">
+                <p>Struct is a lightweight desktop coding environment built with React, TypeScript, Tauri, and Rust. It combines an editor, an AI agent, filesystem tools, Git, terminals, and extensible model connections in one application.</p>
+                <p>The important idea is not only that Struct can generate text. It can operate on a real folder: inspect project structure, read relevant files, search code, propose edits, run commands, and show you exactly what changed before you accept it.</p>
+                <DocsImage name="workspace" alt="Struct workspace with the editor, agent, and terminal" title="Struct workspace" />
+                <Callout title="What Struct does not do"><p>Struct does not silently take ownership of your repository. The agent is a collaborator: it works from the context you provide and the files it is allowed to inspect, while you keep control of consequential changes.</p></Callout>
               </DocSection>
 
               <DocSection id="installation" title="Installation">
-                <p>Neo is distributed through GitHub Releases. Use the Downloads page to get the installer for your operating system, or build the application from source if you need unreleased changes.</p>
+                <p>Struct is distributed through GitHub Releases. Use the Downloads page to get the installer for your operating system, or build the application from source if you need unreleased changes.</p>
                 <Steps items={[
                   { title: "Check your platform", body: <>Use Windows 10 or later, Ubuntu 20.04 or later, or Fedora 34 or later. Hosted providers need a connection; local models can work offline.</> },
                   { title: "Download the release", body: <>Open the <Link className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" to="/downloads">Downloads page</Link> and choose the asset for your operating system and processor.</> },
-                  { title: "Install and launch", body: <>Run the installer, open Neo, and create or open a folder. Neo uses the development tools already installed on your machine rather than bundling every compiler.</> },
+                  { title: "Install and launch", body: <>Run the installer, open Struct, and create or open a folder. Struct uses the development tools already installed on your machine rather than bundling every compiler.</> },
                 ]} />
                 {/* <Callout title="Keep the installer name" warning><p></p></Callout> */}
               </DocSection>
 
               <DocSection id="first-workspace" title="Open a workspace">
-                <p>Neo is folder-based. A workspace is the project directory that the explorer, editor, terminal, and agent operate on. Choose the repository root when possible so searches and Git operations have the full project context.</p>
+                <p>Struct is folder-based. A workspace is the project directory that the explorer, editor, terminal, and agent operate on. Choose the repository root when possible so searches and Git operations have the full project context.</p>
                 <h3 className="text-base font-semibold text-zinc-200">A good first workspace</h3>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
                   <li>Use a project you understand well enough to verify the result.</li>
@@ -347,7 +347,7 @@ export default function Documentation() {
                 />
                 <p>Agent activity appears in a timeline with tool status and output. Destructive operations require explicit approval, but approval alone is not a substitute for reviewing the resulting diff.</p>
 
-                <Callout title="Context is selected"><p>Neo does not automatically send your entire repository to a provider. The agent can work with open editor files, files you select, files discovered by search, and files reached through its tools.</p></Callout>
+                <Callout title="Context is selected"><p>Struct does not automatically send your entire repository to a provider. The agent can work with open editor files, files you select, files discovered by search, and files reached through its tools.</p></Callout>
               </DocSection>
 
               <DocSection id="prompting" title="Writing effective prompts">
@@ -401,22 +401,22 @@ git log -5 --oneline`}</CodeBlock>
 
 
               <DocSection id="editor" title="Code editor">
-                <p>Neo includes a built-in editor designed to operate alongside the agent. It supports a workspace explorer, multi-tab editing, dirty-state indicators, syntax highlighting, line numbers, active-line highlighting, breadcrumbs, cursor position, indentation, and native undo history.</p>
+                <p>Struct includes a built-in editor designed to operate alongside the agent. It supports a workspace explorer, multi-tab editing, dirty-state indicators, syntax highlighting, line numbers, active-line highlighting, breadcrumbs, cursor position, indentation, and native undo history.</p>
                 <p>Up to 10 tabs stay open at once. Least-recently-used tabs can be evicted automatically, so save important work before closing or replacing a tab. When the agent or another process modifies a file, an open tab updates live rather than requiring the file to be reopened.</p>
-                <DocsImage name="editor" alt="Neo code editor showing a project file" title="Code editor" />
+                <DocsImage name="editor" alt="Struct code editor showing a project file" title="Code editor" />
                 <p>Use the command palette to reach editor actions quickly. Save with <kbd className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-xs text-zinc-300">Ctrl+S</kbd> and toggle the editor with <kbd className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-xs text-zinc-300">Ctrl+Shift+E</kbd>.</p>
               </DocSection>
 
               <DocSection id="terminal" title="Integrated terminal">
-                <p>Neo includes an integrated PowerShell terminal backed by a native PTY. It is a real interactive shell, so it can run tools already installed on your system, including Python, Node.js, npm, Git, Rust, Cargo, and project-specific commands.</p>
+                <p>Struct includes an integrated PowerShell terminal backed by a native PTY. It is a real interactive shell, so it can run tools already installed on your system, including Python, Node.js, npm, Git, Rust, Cargo, and project-specific commands.</p>
                 <h3 className="pt-2 text-base font-semibold text-zinc-200">Use the terminal for verification</h3>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
                   <li>Run the smallest relevant test before the full suite.</li>
                   <li>Use the project&apos;s package scripts instead of inventing command variants.</li>
                   <li>Capture the exact failure when a command does not behave as expected.</li>
-                  <li>Stop long-running processes before closing Neo or changing ports.</li>
+                  <li>Stop long-running processes before closing Struct or changing ports.</li>
                 </ul>
-                <p>Multiple sessions let you keep a development server, test run, and debugging shell separate. Neo does not install your toolchain; it uses what is available in the environment you launch it from.</p>
+                <p>Multiple sessions let you keep a development server, test run, and debugging shell separate. Struct does not install your toolchain; it uses what is available in the environment you launch it from.</p>
                 <CodeBlock label="Common checks">{`npm test
 npm run lint
 npm run build
@@ -424,7 +424,7 @@ git status --short`}</CodeBlock>
               </DocSection>
 
               <DocSection id="project-context" title="Project context">
-                <p>Good context is relevant, small, and current. Neo can gather context through the files you open, selections you make, searches you request, and the filesystem tools it uses. You remain in control of what the model sees.</p>
+                <p>Good context is relevant, small, and current. Struct can gather context through the files you open, selections you make, searches you request, and the filesystem tools it uses. You remain in control of what the model sees.</p>
                 <h3 className="pt-2 text-base font-semibold text-zinc-200">A practical context checklist</h3>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
                   <li>Name the entry point, component, route, or package involved.</li>
@@ -437,16 +437,16 @@ git status --short`}</CodeBlock>
               </DocSection>
 
               <DocSection id="providers" title="Model providers">
-                <p>Neo is provider-independent. Configure a compatible endpoint with the model name, base URL, credentials, and optional system prompt or provider-specific settings. This keeps you in control of cost, privacy, latency, and model choice.</p>
+                <p>Struct is provider-independent. Configure a compatible endpoint with the model name, base URL, credentials, and optional system prompt or provider-specific settings. This keeps you in control of cost, privacy, latency, and model choice.</p>
                 <Steps items={[
-                  { title: "Choose an endpoint", body: <>Select a hosted service or a compatible local endpoint. Confirm that it supports the model format Neo expects.</> },
+                  { title: "Choose an endpoint", body: <>Select a hosted service or a compatible local endpoint. Confirm that it supports the model format Struct expects.</> },
                   { title: "Enter the model and base URL", body: <>Use the exact model identifier and API path from the provider. A wrong URL usually produces a connection or parsing error.</> },
                   { title: "Add credentials securely", body: <>Treat API keys like passwords. Do not paste them into source files, screenshots, prompts, or issue reports.</> },
                   { title: "Test with a small prompt", body: <>Start with a short request before giving the agent a large repository task.</> },
                 ]} />
                 <h3 className="pt-2 text-base font-semibold text-zinc-200">Provider checklist</h3>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
-                  <li>The endpoint is reachable from the machine running Neo.</li>
+                  <li>The endpoint is reachable from the machine running Struct.</li>
                   <li>The model name is spelled exactly as the provider documents it.</li>
                   <li>The API key has permission for that model and account.</li>
                   <li>The selected context window can hold the files you plan to send.</li>
@@ -478,14 +478,14 @@ git status --short`}</CodeBlock>
                     </p>
                   </div>
                 </div>
-                <p>Neo can connect to a model server running on your own machine through <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://ollama.com" target="_blank" rel="noopener noreferrer">Ollama</a>. This is useful when you want inference to stay local or need to work without a hosted provider connection.</p>
+                <p>Struct can connect to a model server running on your own machine through <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://ollama.com" target="_blank" rel="noopener noreferrer">Ollama</a>. This is useful when you want inference to stay local or need to work without a hosted provider connection.</p>
                 <CodeBlock label="Ollama setup">{`# install Ollama from ollama.com
                   ollama pull llama3.1
                   ollama serve`}
                 </CodeBlock>
                 
-                <p>In Neo, use the local endpoint and the model identifier reported by Ollama. The exact setup varies by machine and model, so check the Ollama documentation and Neo&apos;s provider settings if the names do not match.</p>
-                <DocsImage name="local-models" alt="Neo configured to use a local Ollama model" title="Local model provider" />
+                <p>In Struct, use the local endpoint and the model identifier reported by Ollama. The exact setup varies by machine and model, so check the Ollama documentation and Struct&apos;s provider settings if the names do not match.</p>
+                <DocsImage name="local-models" alt="Struct configured to use a local Ollama model" title="Local model provider" />
                 <Callout title="Local does not automatically mean private" warning><p>Check what the model, OS, and any extensions can access. Avoid sending secrets or sensitive files to a model simply because the interface is running locally.</p></Callout>
               </DocSection>
 
@@ -512,7 +512,7 @@ git status --short`}</CodeBlock>
                     </p>
                   </div>
                 </div>
-                <p>MCP, or Model Context Protocol, lets Neo connect to compatible tools and services. Treat a connection as adding another capable system to your agent session: review what data it can access and which actions it can perform before enabling it.</p>
+                <p>MCP, or Model Context Protocol, lets Struct connect to compatible tools and services. Treat a connection as adding another capable system to your agent session: review what data it can access and which actions it can perform before enabling it.</p>
              <ScreenshotFrame src = {mcpusage} title = "Example of MCP server usage in roblox studios"></ScreenshotFrame>
                
                 <Steps items={[
@@ -555,7 +555,7 @@ git status --short`}</CodeBlock>
               </DocSection>
 
               <DocSection id="privacy" title="Privacy & local data">
-                <p>Neo stores application data locally on your device, including chat history, settings, model and API configuration, system prompts, and other persisted data. Core local file operations do not require a Neo cloud account.</p>
+                <p>Struct stores application data locally on your device, including chat history, settings, model and API configuration, system prompts, and other persisted data. Core local file operations do not require a Struct cloud account.</p>
                 <p>If you use a hosted AI provider, the context sent to that provider is subject to that provider&apos;s privacy policy and terms. Review what you include before sending proprietary code, credentials, customer data, or personal information.</p>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
                   <li>Keep API keys out of prompts, source files, screenshots, and bug reports.</li>
@@ -566,7 +566,7 @@ git status --short`}</CodeBlock>
               </DocSection>
 
               <DocSection id="accounts" title="Accounts">
-                <p>The Lumorix Studios website and Neo use the same account system. Signing in on the website gives you access to your profile, so everything follows you between the site and the app.</p>
+                <p>The Lumorix Studios website and Struct use the same account system. Signing in on the website gives you access to your profile, so everything follows you between the site and the app.</p>
                 <Steps items={[
                   { title: "Sign in", body: <>Use the account menu in the navbar or the <Link className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" to="/account">Account page</Link>.</> },
                   { title: "Check your account", body: <>Return to your profile to see your display name, avatar and member-since date.</> },
@@ -577,12 +577,12 @@ git status --short`}</CodeBlock>
               <DocSection id="faq" title="Frequently asked questions">
                 <div className="divide-y divide-zinc-800 rounded-xl border border-zinc-800">
                   {[
-                    ["Does Neo need an account?", "The core desktop workspace and local file tools can be used without a cloud account. An account is useful for cloud sync, encrypted provider-key storage, and shared app features."],
-                    ["Can I use my own API key?", "Yes. Neo supports provider-independent configuration, including API keys, model names, base URLs, system prompts, and provider-specific options."],
-                    ["Can I use a local model?", "Yes. Neo can connect to a local Ollama server so inference can remain on your machine."],
+                    ["Does Struct need an account?", "The core desktop workspace and local file tools can be used without a cloud account. An account is useful for cloud sync, encrypted provider-key storage, and shared app features."],
+                    ["Can I use my own API key?", "Yes. Struct supports provider-independent configuration, including API keys, model names, base URLs, system prompts, and provider-specific options."],
+                    ["Can I use a local model?", "Yes. Struct can connect to a local Ollama server so inference can remain on your machine."],
                     ["Will the agent delete my files?", "Destructive actions require explicit approval. You should still read the diff and understand the requested action before approving it."],
                     ["Can I use MCP?", "Yes, with compatible MCP servers. Review each server's commands, permissions, network access, and available tools before connecting it."],
-                    ["Where should I report a bug?", "Use the relevant issue or discussion on the official Neo GitHub repository. Include your platform, version, exact steps, and a minimal reproduction when possible."],
+                    ["Where should I report a bug?", "Use the relevant issue or discussion on the official Struct GitHub repository. Include your platform, version, exact steps, and a minimal reproduction when possible."],
                   ].map(([question, answer]) => (
                     <details key={question} className="group p-4 sm:p-5">
                       <summary className="cursor-pointer list-none pr-6 text-sm font-semibold text-zinc-200 marker:hidden">{question}<span className="float-right text-zinc-600 transition group-open:rotate-45">+</span></summary>
@@ -595,8 +595,8 @@ git status --short`}</CodeBlock>
 
               <DocSection id="building" title="Building from source">
                 <p>Development requires {devRequirements.join(", ")}. Then clone the official repository and start the development shell.</p>
-                <CodeBlock label="Development setup">{`git clone https://github.com/Lumorix-studios/Neo.git
-cd Neo
+                <CodeBlock label="Development setup">{`git clone https://github.com/Lumorix-studios/Struct.git
+cd Struct
 npm install
 npm run tauri dev`}</CodeBlock>
                 <h3 className="pt-2 text-base font-semibold text-zinc-200">Before opening a pull request</h3>
@@ -609,9 +609,9 @@ npm run tauri dev`}</CodeBlock>
               </DocSection>
 
               <DocSection id="status" title="Project status">
-                <p>Neo is currently in beta and under active development. Architecture, agent capabilities, APIs, shortcuts, and platform support may change between releases. Some features are experimental or incomplete.</p>
-                <p>Development began in May 2026. The project source, releases, and issue tracking live on <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://github.com/Lumorix-studios/Neo" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
-                <Callout title="Help improve Neo"><p>Bug reports with a minimal reproduction, focused feature requests, documentation fixes, and careful contributions are all useful. Do not include API keys, private code, or personal data in a public issue.</p></Callout>
+                <p>Struct is currently in beta and under active development. Architecture, agent capabilities, APIs, shortcuts, and platform support may change between releases. Some features are experimental or incomplete.</p>
+                <p>Development began in May 2026. The project source, releases, and issue tracking live on <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://github.com/Lumorix-studios/Struct" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+                <Callout title="Help improve Struct"><p>Bug reports with a minimal reproduction, focused feature requests, documentation fixes, and careful contributions are all useful. Do not include API keys, private code, or personal data in a public issue.</p></Callout>
               </DocSection>
             </div>
           </article>

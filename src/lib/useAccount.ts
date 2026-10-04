@@ -40,7 +40,7 @@ export interface AccountState {
 }
 
 /**
- * Current signed-in account, shared with the Neo app (same Supabase project).
+ * Current signed-in account, shared with the Struct app (same Supabase project).
  *
  * Each call site keeps its own state; every instance stays in sync because all
  * of them subscribe to the same supabase-js auth events.

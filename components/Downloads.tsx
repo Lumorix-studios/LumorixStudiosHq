@@ -23,9 +23,9 @@ interface ReleaseInfo {
 }
 
 const RELEASE_URL =
-  "https://api.github.com/repos/Lumorix-studios/Neo/releases/latest";
-const RELEASES_PAGE = "https://github.com/Lumorix-studios/Neo/releases";
-const REPO_PAGE = "https://github.com/Lumorix-studios/Neo";
+  "https://api.github.com/repos/Lumorix-studios/Struct/releases/latest";
+const RELEASES_PAGE = "https://github.com/Lumorix-studios/Struct/releases";
+const REPO_PAGE = "https://github.com/Lumorix-studios/Struct";
 
 type OsKey = "windows" | "linux" | "macos" | "other";
 
@@ -168,7 +168,7 @@ export default function Downloads() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 {/* <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
-                  NEO / DOWNLOADS
+                  STRUCT / DOWNLOADS
                 </p> */}
 
                 <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
@@ -178,7 +178,7 @@ export default function Downloads() {
                 <span className = "m-4"></span>
 
                 {/* <p className="mt-3 text-sm text-white/60">
-                  Get the latest Neo build for your platform.
+                  Get the latest Struct build for your platform.
                 </p> */}
               </div>
 
@@ -225,7 +225,7 @@ export default function Downloads() {
                       </p>
 
                       <h2 className="mt-1 text-lg font-medium">
-                        Neo v{version}
+                        Struct v{version}
                       </h2>
 
                       <p className="mt-1 text-sm text-white/55">
@@ -246,7 +246,7 @@ export default function Downloads() {
               ) : (
                 <div>
                   <h2 className="text-lg font-medium">
-                    Neo {version ? `v${version}` : ""}
+                    Struct {version ? `v${version}` : ""}
                   </h2>
 
                   <p className="mt-2 text-sm text-white/55">
@@ -500,12 +500,12 @@ export default function Downloads() {
             </p>
 
             <p className="mt-2 text-xs leading-5 text-white/50">
-              Neo is currently in beta and Windows builds are unsigned, so
+              Struct is currently in beta and Windows builds are unsigned, so
               Microsoft Defender SmartScreen may display a warning.
             </p>
 
             <p className="mt-2 text-xs leading-5 text-white/50">
-              Only download Neo from this page or the official Lumorix-studios
+              Only download Struct from this page or the official Lumorix-studios
               GitHub repository. Never trust third-party builds or installers.
               Verify the source before installing.
             </p>

@@ -7,7 +7,7 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 const productLinks = [
   { label: "Downloads", href: "/downloads" },
   { label: "Documentation", href: "/documentation" },
-  { label: "About Neo", href: "/about" },
+  { label: "About Struct", href: "/about" },
 ];
 
 const resourceLinks = [
@@ -16,14 +16,14 @@ const resourceLinks = [
   { label: "Terms of Service", href: "/privacypolicyandterms" },
   {
     label: "GitHub Repository",
-    href: "https://github.com/Lumorix-studios/Neo",
+    href: "https://github.com/Lumorix-studios/Struct",
   },
 ];
 
 const socials = [
   {
-    label: "ProjectNeo repository",
-    href: "https://github.com/Lumorix-studios/Neo",
+    label: "Struct repository",
+    href: "https://github.com/Lumorix-studios/Struct",
     Icon: FaGithub,
   },
   {
@@ -52,7 +52,7 @@ const Footer: React.FC = () => (
           </Link>
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
-            Home of ProjectNeo, a lightweight desktop IDE with agentic coding
+            Home of Struct, a lightweight desktop IDE with agentic coding
             capabilities.
           </p>
 
@@ -156,7 +156,7 @@ const Footer: React.FC = () => (
           <div className="absolute right-0 bottom-full z-50 mb-3 hidden w-64 border border-white/20 bg-zinc-950 p-3 text-left shadow-xl">
             <p className="text-xs leading-5 text-white/50">
               If you want to share your feedbacks, we'd appreciate it.
-              We're always looking for ways to improve Neo and make it more
+              We're always looking for ways to improve Struct and make it more
               user-friendly.
             </p>
           </div>

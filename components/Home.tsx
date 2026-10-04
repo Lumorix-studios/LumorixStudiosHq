@@ -16,7 +16,7 @@ const steps = [
   {
     n: "2",
     title: "Connect a model",
-    body: "Paste an API key for a hosted provider, or point Neo at a local Ollama server. Keys stay in Neo's settings, not in your repository.",
+    body: "Paste an API key for a hosted provider, or point Struct at a local Ollama server. Keys stay in Struct's settings, not in your repository.",
     href: "/documentation#providers",
     link: "Provider setup",
   },
@@ -68,7 +68,7 @@ export default function Home() {
             </p>
 
             <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
-              Neo
+              Struct
             </h1>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-lg text-zinc-400 sm:text-xl">
@@ -109,11 +109,11 @@ export default function Home() {
                 to="/downloads"
                 className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
               >
-                Download Neo
+                Download
               </Link>
 
               <a
-                href="https://github.com/Lumorix-studios/Neo"
+                href="https://github.com/Lumorix-studios/Struct"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
@@ -153,7 +153,7 @@ export default function Home() {
             </p>
 
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              A quick look at Neo
+              A quick look
             </h2>
 
             <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400 sm:text-base">
@@ -165,7 +165,7 @@ export default function Home() {
           <div className="overflow-hidden  bg-black/30">
             <ScreenshotFrame
               src={previewSss}
-              alt="Neo workspace preview"
+              alt="Struct workspace preview"
               title="Main chat interface"
             />
           </div>
@@ -185,7 +185,7 @@ export default function Home() {
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-zinc-400 sm:text-base">
-              Get Neo running and working on a real project in three steps.
+              Get it running and working on a real project in three steps.
             </p>
           </div>
 
@@ -227,7 +227,7 @@ export default function Home() {
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            Neo is still in beta. Grab it and tell us what breaks.
+            Still in beta. Grab it and tell us what breaks.
           </h2>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -235,7 +235,7 @@ export default function Home() {
               to="/downloads"
               className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
             >
-              Download Neo
+              Download
             </Link>
 
             <Link
@@ -246,7 +246,7 @@ export default function Home() {
             </Link>
 
             <a
-              href="https://github.com/Lumorix-studios/Neo/issues"
+              href="https://github.com/Lumorix-studios/Struct/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"

@@ -1,4 +1,4 @@
-// author : madhusudhan thapa
+// author : Lumorix Studios
 
 import {
   supabase,

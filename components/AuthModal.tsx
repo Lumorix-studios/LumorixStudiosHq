@@ -1,6 +1,6 @@
 /**
  * Global auth modal — sign in / sign up / set-new-password / forgot password
- * against the same Supabase account the Neo app uses. Rendered once by the
+ * against the same Supabase account the Struct app uses. Rendered once by the
  * AccountMenu in the navbar; any page opens it via openAuthModal()
  * (src/lib/authModal.ts).
  */
@@ -185,7 +185,7 @@ export default function AuthModal() {
           <p className="mt-2 text-sm leading-6 text-zinc-400">
             {isSetPassword
               ? "Choose a new password for your account."
-              : "The same account you use in the Neo app — chats, settings and keys follow you across devices."}
+              : "The same account you use in the Struct app — chats, settings and keys follow you across devices."}
           </p>
 
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>

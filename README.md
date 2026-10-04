@@ -1,7 +1,7 @@
 # Lumorix Studios HQ
 
-Official website for **Lumorix Studios** and **ProjectNeo** (a.k.a. AgenticCoder /
-Neo) — a lightweight, local-first, agentic integrated development environment.
+Official website for **Lumorix Studios** and **Struct** — a lightweight,
+local-first, agentic integrated development environment.
 
 Live site: https://lumorix-studios.github.io/LumorixStudiosHq/
 
@@ -13,20 +13,20 @@ A React + TypeScript + Vite single-page app that serves:
 * **Downloads** — desktop build downloads
 * **Documentation** — guides, provider setup, and FAQ
 * **Account** — sign-in and profile, backed by the same Supabase project the
-  Neo desktop app uses
+  Struct desktop app uses
 
 The desktop app source lives in a separate repository (see the app README).
 
 ## Accounts
 
-The website and the Neo app share one Supabase backend, so a single account
+The website and the Struct app share one Supabase backend, so a single account
 works across both. An account is optional — it is only needed for features that
 require a backend (cloud sync and encrypted provider-key storage). All local
 features work without signing in.
 
 ## Pricing
 
-**ProjectNeo is free.** There are no paid plans, no subscriptions, and no
+**Struct is free.** There are no paid plans, no subscriptions, and no
 paywall. Every feature is available to all users at no cost, and Lumorix
 Studios does not process payments.
 
@@ -61,7 +61,7 @@ Three.js · GSAP
 
 * [Privacy Policy & Terms of Use](https://lumorix-studios.github.io/LumorixStudiosHq/privacypolicyandterms)
 * [`LICENSE`](LICENSE) — MIT, covering this website's own source code
-* The Neo desktop app is licensed separately under the NEO Source-Available
+* The Struct desktop app is licensed separately under the STRUCT Source-Available
   License 1.0 — see that repository's `LICENSE` file
 
 ## Contributing

@@ -1,7 +1,7 @@
 /**
  * Navbar account control — "Sign in" when signed out; avatar + profile
  * dropdown when signed in. Opens the global AuthModal (rendered once in
- * App.tsx). Uses the same Supabase account as the Neo app.
+ * App.tsx). Uses the same Supabase account as the Struct app.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -103,7 +103,7 @@ export default function AccountMenu() {
               </div>
             </div>
             <p className="mt-3 text-xs leading-5 text-zinc-500">
-              The same account you sign into inside the Neo app.
+              The same account you sign into inside the Struct app.
             </p>
 
             <div className="mt-4 space-y-1">

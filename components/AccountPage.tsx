@@ -1,9 +1,9 @@
 /**
- * Account page — the signed-in profile for the shared Lumorix / Neo Supabase
+ * Account page — the signed-in profile for the shared Lumorix / Struct Supabase
  * account: display name + avatar, current plan and purchase history, plus the
  * security actions (change password, reset link, sign out).
  *
- * Everything editable here is the same `profiles` row the Neo desktop app
+ * Everything editable here is the same `profiles` row the Struct desktop app
  * reads, so a save shows up in both places.
  *
  * Deliberately plain: one narrow column, hairline separators, no cards, glows
@@ -361,7 +361,7 @@ export default function AccountPage() {
 
   // Profile drafts. `from` tracks the profile values the draft was derived
   // from, so a saved/loaded profile resets the draft during render instead of
-  // via a cascading setState-in-effect (same pattern as AccountSection in Neo).
+  // via a cascading setState-in-effect (same pattern as AccountSection in Struct).
   const loadedName = profile?.name ?? "";
   const loadedAvatar = profile?.avatarUrl ?? "";
   const source = `${loadedName}\u0000${loadedAvatar}`;
@@ -397,7 +397,7 @@ export default function AccountPage() {
       // No supabase auth event fires for a profiles update — tell every
       // useAccount() instance (navbar menu, Pricing banner…) to re-read.
       notifyAccountRefresh();
-      setSavedNote("Profile saved — it's updated in the Neo app too.");
+      setSavedNote("Profile saved — it's updated in the Struct app too.");
     } catch (e) {
       setSaveError(messageOf(e));
     } finally {
@@ -474,7 +474,7 @@ export default function AccountPage() {
         <div className="max-w-xl">
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Your account</h1>
           <p className="mt-2 text-sm leading-5 text-zinc-400">
-            One account for this site and the Neo app — your profile and settings live here.
+            One account for this site and the Struct app — your profile and settings live here.
           </p>
         </div>
 
@@ -522,7 +522,7 @@ export default function AccountPage() {
             <h2 className="text-xl font-semibold tracking-tight">Sign in to view your account</h2>
             <p className="mt-3 text-sm leading-6 text-zinc-400">
               Your profile shows up here once you&apos;re signed in. Use the same account you
-              sign into inside the Neo app.
+              sign into inside the Struct app.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <button
@@ -586,7 +586,7 @@ export default function AccountPage() {
               {/* ── Profile ── */}
               <Section
                 title="Profile"
-                description="Shows on this page and inside the Neo app."
+                description="Shows on this page and inside the Struct app."
                 action={
                   dirty ? <span className="text-xs text-amber-300/90">Unsaved changes</span> : undefined
                 }
@@ -652,7 +652,7 @@ export default function AccountPage() {
               {/* ── Security ── */}
               <Section
                 title="Security"
-                description="Applies to this site and the Neo app on every device."
+                description="Applies to this site and the Struct app on every device."
               >
                 <div className={LIST_CLASS}>
                   <ActionRow label="Change password" onClick={openPasswordDialog} />
@@ -720,7 +720,7 @@ export default function AccountPage() {
       {confirmSignOutAll && (
         <ConfirmDialog
           title="Sign out of all devices?"
-          body="This revokes every active session — including the Neo app on any machine you've signed into. You'll need to sign in again there."
+          body="This revokes every active session — including the Struct app on any machine you've signed into. You'll need to sign in again there."
           confirmLabel="Sign out everywhere"
           onClose={closeConfirmDialog}
           onConfirm={handleSignOutEverywhere}

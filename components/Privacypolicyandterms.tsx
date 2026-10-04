@@ -5,7 +5,7 @@ export default function Legal() {
         <article className="space-y-12">
           <header className="border-b border-zinc-800 pb-8">
             <p className="mb-3 text-sm font-medium uppercase tracking-widest text-zinc-500">
-              Lumorix Studios · ProjectNeo
+              Lumorix Studios · ProjectStruct
             </p>
             <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Privacy Policy &amp; Terms of Use
@@ -22,7 +22,7 @@ export default function Legal() {
               Plain-language summary
             </h2>
             <p className="mt-2">
-              ProjectNeo is a local-first, agentic integrated development
+              ProjectStruct is a local-first, agentic integrated development
               environment connected to a Lumorix-operated backend for account
               management, cloud synchronization, encrypted storage of your own
               provider API keys, and certain AI-provider requests. Your local
@@ -30,11 +30,11 @@ export default function Legal() {
               data are intended to remain on your device when you use local
               features. Account and service information is processed by the
               backend so that accounts and connected provider features can
-              function. ProjectNeo is free — there is no subscription, paid
+              function. Struct is free — there is no subscription, paid
               plan, or paywall.
             </p>
             <p className="mt-3">
-              If you use a cloud AI provider through Neo, including a provider
+              If you use a cloud AI provider through Struct, including a provider
               such as OpenRouter, the request may pass through Lumorix
               infrastructure before being sent to the provider. Depending on
               the feature and configuration, this can include prompts, code
@@ -62,9 +62,9 @@ export default function Legal() {
               This Privacy Policy describes how Lumorix Studios
               (&quot;Lumorix,&quot; &quot;we,&quot; &quot;us,&quot; or
               &quot;our&quot;) handles information in connection with
-              ProjectNeo (&quot;Neo&quot; or the &quot;Application&quot;).
+              Struct (&quot;Struct&quot; or the &quot;Application&quot;).
               Lumorix Studios is the GitHub organization name used to host and
-              organize ProjectNeo and related repositories; it is not, by this
+              organize Struct and related repositories; it is not, by this
               statement alone, a representation that Lumorix Studios is a
               separate incorporated legal entity. The person or organization
               legally operating the service should be identified in the
@@ -87,7 +87,7 @@ export default function Legal() {
                 1.1 What data is local and what data is online
               </h3>
               <p className="mt-3">
-                Neo uses two kinds of processing. Local processing occurs on
+                Struct uses two kinds of processing. Local processing occurs on
                 your device and may include opening workspaces, editing files,
                 running a local model, maintaining local agent history,
                 executing local tools, and recording local diagnostics.
@@ -136,7 +136,7 @@ export default function Legal() {
                 1.3 Information processed on your device
               </h3>
               <p className="mt-3">
-                Depending on the features and permissions you use, Neo may
+                Depending on the features and permissions you use, Struct may
                 create, read, modify, index, or otherwise process the following
                 information locally:
               </p>
@@ -164,10 +164,10 @@ export default function Legal() {
                 1.4 Backend-routed AI requests
               </h3>
               <p className="mt-3">
-                Neo may use the Lumorix backend to call AI providers on your
+                Struct may use the Lumorix backend to call AI providers on your
                 behalf or to manage the credentials required for those calls.
                 Providers may include OpenRouter and other providers that are
-                made available through Neo. When you invoke a backend-routed AI
+                made available through Struct. When you invoke a backend-routed AI
                 feature, the backend may receive or generate a request
                 containing:
               </p>
@@ -179,10 +179,10 @@ export default function Legal() {
                 <li>Provider API keys, access tokens, or other credentials needed to complete the call</li>
               </ul>
               <p className="mt-3">
-                The actual payload depends on the provider, model, Neo
+                The actual payload depends on the provider, model, Struct
                 configuration, and action you choose. A backend-routed request
                 can leave your device even when your project itself is stored
-                locally. Do not assume that selecting a provider in Neo makes
+                locally. Do not assume that selecting a provider in Struct makes
                 the request local or private from that provider.
               </p>
               <p className="mt-3">
@@ -229,7 +229,7 @@ export default function Legal() {
               <p className="mt-3">
                 Data collected through the Application or backend may be used
                 for training, evaluation, abuse prevention, quality assurance,
-                debugging, security analysis, and improvement of Neo and
+                debugging, security analysis, and improvement of Struct and
                 related services. Depending on the feature, this may include
                 account and usage data, prompts, model responses, tool
                 activity, request metadata, diagnostics, feedback, and
@@ -249,7 +249,7 @@ export default function Legal() {
                 Do not submit trade secrets, passwords, API keys, personal
                 information, regulated data, or confidential source code for
                 training or improvement unless you have the right to do so and
-                have accepted the associated risks. Where Neo presents a
+                have accepted the associated risks. Where Struct presents a
                 separate training, feedback, or data-use choice, that choice
                 controls the applicable collection and use for that feature.
               </p>
@@ -270,7 +270,7 @@ export default function Legal() {
                 application version, and error information.
               </p>
               <p className="mt-3">
-                Neo may also include a local crash handler that records crash
+                Struct may also include a local crash handler that records crash
                 information on your device. The crash handler does not
                 automatically make a local crash report available to Lumorix
                 unless the product implementation expressly sends it. If you
@@ -287,7 +287,7 @@ export default function Legal() {
                 1.8 Network requests and third-party services
               </h3>
               <p className="mt-3">
-                In addition to Lumorix systems, Neo may interact with services
+                In addition to Lumorix systems, Struct may interact with services
                 that you choose or that are required by a connected feature,
                 including:
               </p>
@@ -346,7 +346,7 @@ export default function Legal() {
                 1.10 Security and its limitations
               </h3>
               <p className="mt-3">
-                Neo may use account authentication, authorization controls,
+                Struct may use account authentication, authorization controls,
                 approval prompts, workspace boundaries, command approval,
                 file-diff review, protected credential handling, logging,
                 monitoring, and other safeguards. Agentic actions that require
@@ -375,13 +375,13 @@ export default function Legal() {
                 1.11 Children and sensitive information
               </h3>
               <p className="mt-3">
-                Neo is a developer tool and is not directed to children. Do
-                not use Neo or its backend to process protected health
+                Struct is a developer tool and is not directed to children. Do
+                not use Struct or its backend to process protected health
                 information, payment-card data, government-classified
                 information, export-controlled information, or other regulated
                 data unless you have confirmed the required authorization,
                 contracts, safeguards, provider configuration, and legal basis.
-                Lumorix does not represent Neo as compliant with any particular
+                Lumorix does not represent Struct as compliant with any particular
                 regulatory framework merely because safeguards are provided.
               </p>
             </div>
@@ -398,7 +398,7 @@ export default function Legal() {
                 regarding certain personal information. Requests may require
                 account verification and may be limited by legal, security,
                 provider, backup, or operational requirements. Submit requests
-                through the official ProjectNeo support or repository channel
+                through the official Struct support or repository channel
                 listed below. Do not send passwords, API keys, or complete
                 private repositories with a request.
               </p>
@@ -415,9 +415,9 @@ export default function Legal() {
 
             <p>
               By downloading, installing, accessing, creating an account for,
-              subscribing to, or using Neo or its backend, you agree to these
+              subscribing to, or using Struct or its backend, you agree to these
               Terms of Use. If you do not agree, do not use the Application or
-              related service. If you use Neo for an organization, you
+              related service. If you use Struct for an organization, you
               represent that you are authorized to accept these terms for that
               organization.
             </p>
@@ -443,7 +443,7 @@ export default function Legal() {
                 2.2 No subscription, no paywall
               </h3>
               <p className="mt-3">
-                ProjectNeo is provided <strong>free of charge</strong>. There is
+                Struct is provided <strong>free of charge</strong>. There is
                 no subscription, no paid plan, no paywall, and no in-app
                 purchase or checkout. Lumorix Studios does not process,
                 collect, or store payment or card information, and all
@@ -470,7 +470,7 @@ export default function Legal() {
                 2.3 Provider API calls and charges
               </h3>
               <p className="mt-3">
-                If you connect an API provider, you authorize Neo and its
+                If you connect an API provider, you authorize Struct and its
                 backend to make the provider calls enabled by your
                 configuration. You are responsible for having the necessary
                 rights to use the provider, complying with its terms, and
@@ -494,7 +494,7 @@ export default function Legal() {
                 2.4 Agentic actions and human review
               </h3>
               <p className="mt-3">
-                Neo may use AI agents to inspect files, propose or apply
+                Struct may use AI agents to inspect files, propose or apply
                 changes, execute commands, call tools, access configured
                 services, and perform other development actions. Agentic tool
                 actions are presented for your approval before execution where
@@ -523,7 +523,7 @@ export default function Legal() {
                 subject to third-party rights and the licenses that apply to
                 that content. You are responsible for having the rights,
                 permissions, notices, and legal authority required to use that
-                content with Neo, the backend, and every provider you select.
+                content with Struct, the backend, and every provider you select.
               </p>
               <p className="mt-3">
                 By submitting content to a backend feature, you grant Lumorix
@@ -566,15 +566,15 @@ export default function Legal() {
                 2.7 Application license
               </h3>
               <p className="mt-3">
-                Neo is licensed under the custom license published in the
-                ProjectNeo GitHub repository&apos;s{" "}
+                Struct is licensed under the custom license published in the
+                Struct GitHub repository&apos;s{" "}
                 <code className="rounded bg-zinc-900 px-1.4 py-0.5 text-zinc-200">
                   LICENSE
                 </code>
                 . That file is the authoritative source for the permissions,
                 restrictions, attribution requirements, commercial-use terms,
                 modification rights, distribution rights, warranty
-                disclaimers, and other license conditions applicable to Neo.
+                disclaimers, and other license conditions applicable to Struct.
               </p>
               <p className="mt-3">
                 These Terms of Use do not replace, expand, or restrict rights
@@ -592,7 +592,7 @@ export default function Legal() {
                 2.8 Third-party services and software
               </h3>
               <p className="mt-3">
-                Neo may include or interoperate with open-source software,
+                Struct may include or interoperate with open-source software,
                 extensions, runtimes, package managers, model providers,
                 OpenRouter, and other third-party
                 technology. Those components may be subject to separate
@@ -604,7 +604,7 @@ export default function Legal() {
                 Lumorix does not endorse, guarantee, or assume responsibility
                 for a third-party service, model, package, repository, tool,
                 recommendation, routing decision, or result accessed through
-                Neo.
+                Struct.
               </p>
             </div>
 
@@ -614,7 +614,7 @@ export default function Legal() {
                 2.9 Acceptable use
               </h3>
               <p className="mt-3">
-                You must not use Neo or its backend to:
+                You must not use Struct or its backend to:
               </p>
               <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
                 <li>Access, alter, destroy, or exfiltrate data without authorization</li>
@@ -640,7 +640,7 @@ export default function Legal() {
                 2.10 Availability, updates, and changes
               </h3>
               <p className="mt-3">
-                Neo and the backend may change, be discontinued, lose
+                Struct and the backend may change, be discontinued, lose
                 compatibility, experience outages, or contain defects. Lumorix
                 does not promise uninterrupted availability, continued support
                 for a provider or operating system, backward compatibility,
@@ -663,7 +663,7 @@ export default function Legal() {
                 2.11 Disclaimers
               </h3>
               <p className="mt-3">
-                TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEO, THE BACKEND, THE
+                TO THE MAXIMUM EXTENT PERMITTED BY LAW, STRUCT, THE BACKEND, THE
                 APPLICATION, PROVIDER ROUTING, AND ALL RELATED
                 MATERIALS ARE PROVIDED &quot;AS IS&quot; AND &quot;AS
                 AVAILABLE,&quot; WITHOUT WARRANTIES OF ANY KIND, EXPRESS,
@@ -673,7 +673,7 @@ export default function Legal() {
                 QUIET ENJOYMENT.
               </p>
               <p className="mt-3">
-                LUMORIX DOES NOT WARRANT THAT NEO, THE BACKEND, AN AGENT,
+                LUMORIX DOES NOT WARRANT THAT STRUCT, THE BACKEND, AN AGENT,
                 GENERATED OUTPUT, A PROVIDER, A LOCAL MODEL, OR A CONNECTED
                 SERVICE WILL BE ERROR-FREE, SECURE, PRIVATE, UNINTERRUPTED,
                 COMPATIBLE, OR FREE FROM MALWARE OR OTHER HARMFUL COMPONENTS.
@@ -694,7 +694,7 @@ export default function Legal() {
                 SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR
                 LOSS OF DATA, CODE, PROFITS, REVENUE, BUSINESS, GOODWILL,
                 SECURITY, PROVIDER CREDITS, OR SYSTEM
-                AVAILABILITY, ARISING FROM OR RELATED TO NEO, THE BACKEND, A
+                AVAILABILITY, ARISING FROM OR RELATED TO STRUCT, THE BACKEND, A
                 PROVIDER, OR THESE TERMS, EVEN IF ADVISED OF THE
                 POSSIBILITY OF SUCH DAMAGES.
               </p>
@@ -718,7 +718,7 @@ export default function Legal() {
                 To the extent permitted by law, you agree to defend, indemnify,
                 and hold harmless Lumorix and its contributors from claims,
                 liabilities, damages, losses, and expenses arising from your
-                unlawful use of Neo, breach of these terms, content, account,
+                unlawful use of Struct, breach of these terms, content, account,
                 credentials, provider use, or violation
                 of another person&apos;s rights. This obligation does not
                 apply to the extent caused by liability that cannot legally be
@@ -732,7 +732,7 @@ export default function Legal() {
                 2.14 Suspension and termination
               </h3>
               <p className="mt-3">
-                You may stop using Neo at any time. Lumorix
+                You may stop using Struct at any time. Lumorix
                 may suspend or terminate an account, backend
                 access, or provider feature for abuse, security
                 risk, legal requirements, violation of these terms, or
@@ -755,7 +755,7 @@ export default function Legal() {
                 2.15 Changes to this policy and terms
               </h3>
               <p className="mt-3">
-                We may update this page as Neo, the backend, plans, provider
+                We may update this page as Struct, the backend, plans, provider
                 integrations, or data practices change. The latest version will
                 include an updated date. Where required by law, we will provide
                 additional notice or obtain consent for material changes. Your
@@ -775,26 +775,26 @@ export default function Legal() {
             <p>
               Questions, privacy requests, security reports, and
               project-related inquiries can be submitted through
-              the official ProjectNeo repository or the support channel
+              the official Struct repository or the support channel
               provided with your account. For a suspected security issue, do
               not publicly disclose exploit details, private code, or
               credentials until a private reporting channel is available.
             </p>
             <p>
-              The custom software license for Neo is available in the GitHub
+              The custom software license for Struct is available in the GitHub
               repository file{" "}
               <code className="rounded bg-zinc-900 px-1.4 py-0.5 text-zinc-200">
                 LICENSE
               </code>
               . Read that file before copying, modifying, distributing,
-              commercially using, or creating a derivative of Neo.
+              commercially using, or creating a derivative of Struct.
             </p>
             <p className="text-sm text-zinc-500">
-              ProjectNeo
+              Struct
               <br />
               Lumorix Studios
               <br />
-              GitHub: Lumorix-studios/Neo
+              GitHub: Lumorix-studios/Struct
             </p>
           </section>
 
