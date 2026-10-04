@@ -1,4 +1,4 @@
-import{T as e,t}from"./index-D2vIFBPX.js";e();var n=t();function r({src:e,alt:t=``,title:r,className:i,...a}){return(0,n.jsxs)(`div`,{className:`
+import{T as e,t}from"./index-CUxnxpXP.js";e();var n=t();function r({src:e,alt:t=``,title:r,className:i,...a}){return(0,n.jsxs)(`div`,{className:`
         mx-auto my-6
         max-w-4xl
         overflow-hidden
