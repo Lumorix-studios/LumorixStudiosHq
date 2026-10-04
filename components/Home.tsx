@@ -29,32 +29,32 @@ const steps = [
   },
 ];
 
-const capabilities = [
-  {
-    title: "Editor and terminal",
-    body: "A code editor and an integrated terminal working on the same project as the explorer.",
-  },
-  {
-    title: "Agent tools",
-    body: "Read, search, write, replace, rename, and delete inside the workspace you opened. Deletions ask first.",
-  },
-  {
-    title: "Review before you accept",
-    body: "The agent shows exactly what changed, so consequential edits are yours to keep or discard.",
-  },
-  {
-    title: "Any provider",
-    body: "Bring a hosted endpoint or run inference locally through Ollama. You control the model and the cost.",
-  },
-  {
-    title: "MCP connections",
-    body: "Connect compatible tools and services, reviewing what each server can read and change first.",
-  },
-  {
-    title: "Lightweight by design",
-    body: "A Rust backend via Tauri with a React and TypeScript frontend, so it stays usable on modest hardware.",
-  },
-];
+// const capabilities = [
+  // {
+    // title: "Editor and terminal",
+    // body: "A code editor and an integrated terminal working on the same project as the explorer.",
+  // },
+  // {
+    // title: "Agent tools",
+    // body: "Read, search, write, replace, rename, and delete inside the workspace you opened. Deletions ask first.",
+  // },
+  // {
+    // title: "Review before you accept",
+    // body: "The agent shows exactly what changed, so consequential edits are yours to keep or discard.",
+  // },
+  // {
+    // title: "Any provider",
+    // body: "Bring a hosted endpoint or run inference locally through Ollama. You control the model and the cost.",
+  // },
+  // {
+    // title: "MCP connections",
+    // body: "Connect compatible tools and services, reviewing what each server can read and change first.",
+  // },
+  // {
+    // title: "Lightweight by design",
+    // body: "A Rust backend via Tauri with a React and TypeScript frontend, so it stays usable on modest hardware.",
+  // },
+// ];
 
 export default function Home() {
   return (
@@ -221,39 +221,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What Neo does */}
-      <section className="border-t border-white/10">
-        <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
-              Inside the app
-            </p>
-
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              What you get
-            </h2>
-
-            <p className="mt-3 text-sm leading-6 text-zinc-400 sm:text-base">
-              The parts of Neo that exist today. The project is still in beta, so
-              this list grows as the app does.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2">
-            {capabilities.map((c) => (
-              <div key={c.title} className="border-t border-white/10 pt-5">
-                <h3 className="text-sm font-medium text-white">
-                  {c.title}
-                </h3>
-
-                <p className="mt-2 max-w-md text-sm leading-6 text-zinc-400">
-                  {c.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Closing call to action */}
       <section className="border-t border-white/10">
