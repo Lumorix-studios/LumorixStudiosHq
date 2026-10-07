@@ -10,7 +10,6 @@ import { lazy, Suspense, useEffect } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import AuthModal from "../components/AuthModal";
-"use client";
 
 import { BackgroundPixelStars } from "../components/background";
 const PrivacyPolicy = lazy(() => import("../components/Privacypolicyandterms"));

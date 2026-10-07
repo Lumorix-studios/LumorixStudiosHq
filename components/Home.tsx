@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
 import { IoLogoGithub } from "react-icons/io5";
-
+import MaskedHeading from "./MaskedHeading";
+import heroImg from "../src/assets/hero.png";
+import textVideo from "../src/assets/text.mp4";
 const ORG_URL = "https://github.com/Lumorix-studios";
 
 type Product = {
@@ -99,7 +101,10 @@ export default function Home() {
                 auto
                 loop
               />
+             
+           
             </div>
+            
 
             <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg">
               {/*A technology-focused team developing modern applications,
@@ -126,9 +131,32 @@ export default function Home() {
               </a>
             </div>
           </div>
+          
+        </div>
+        <div className = "m-1">
+        <MaskedHeading
+          text="Where ideas become reality"
+          mediaType="video"
+          src={textVideo}
+          fillScale={1.25}
+          parallax={26}
+          reveal="rise"
+          trigger="view"
+          drift={0}
+          brightness={1}
+          saturation={1}
+          grayscale={false}
+          duration={2.1}
+          stagger={0.09}
+          align="center"
+          weight={300}
+          tracking={0}
+          lineHeight={1.06}
+          textScale={0.115}
+          />
         </div>
       </section>
-
+v
       {/* Products */}
       <section id="products" className="scroll-mt-24">
         <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
