@@ -19,6 +19,7 @@ const About = lazy(() => import("../components/About"));
 const Contact = lazy(() => import("../components/Contact"));
 const Documentation = lazy(() => import("../components/Documentation"));
 const Home = lazy(() => import("../components/Home"));
+const StructProduct = lazy(() => import("../components/StructProduct"));
 const AccountPage = lazy(() => import("../components/AccountPage"));
 
 function ScrollToTop() {
@@ -54,6 +55,12 @@ function PageContent() {
             <Route
               path="/"
               element={<Home />}
+            />
+
+            {/* Struct product page */}
+            <Route
+              path="/products/struct"
+              element={<StructProduct />}
             />
 
             {/* Downloads */}

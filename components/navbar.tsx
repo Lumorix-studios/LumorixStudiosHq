@@ -10,7 +10,6 @@ const navigation = [
   { label: "Downloads", href: "/downloads" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Documentation", href: "/documentation" },
 ];
 
 export default function Navbar() {
@@ -74,7 +73,7 @@ export default function Navbar() {
           <AccountMenu />
 
           <a
-            href="https://github.com/Lumorix-studios/Struct"
+            href="https://github.com/Lumorix-studios"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-[clamp(0.5rem,1vw,1rem)] inline-flex items-center gap-1.5 rounded-lg bg-white px-[clamp(0.75rem,1vw,1.25rem)] py-[clamp(0.5rem,0.8vw,0.6875rem)] text-[clamp(0.8125rem,0.95vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
@@ -129,7 +128,7 @@ export default function Navbar() {
           </div>
 
           <a
-            href="https://github.com/Lumorix-studios/Struct"
+            href="https://github.com/Lumorix-studios"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] items-center justify-center rounded-lg bg-white px-3 py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"

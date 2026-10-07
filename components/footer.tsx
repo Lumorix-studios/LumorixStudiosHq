@@ -5,9 +5,9 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 
 
 const productLinks = [
+  { label: "Struct", href: "/products/struct" },
   { label: "Downloads", href: "/downloads" },
-  { label: "Documentation", href: "/documentation" },
-  { label: "About Struct", href: "/about" },
+  { label: "About", href: "/about" },
 ];
 
 const resourceLinks = [
@@ -16,14 +16,14 @@ const resourceLinks = [
   { label: "Terms of Service", href: "/privacypolicyandterms" },
   {
     label: "GitHub Repository",
-    href: "https://github.com/Lumorix-studios/Struct",
+    href: "https://github.com/Lumorix-studios",
   },
 ];
 
 const socials = [
   {
-    label: "Struct repository",
-    href: "https://github.com/Lumorix-studios/Struct",
+    label: "Lumorix Studios on GitHub",
+    href: "https://github.com/Lumorix-studios",
     Icon: FaGithub,
   },
   {
@@ -52,8 +52,8 @@ const Footer: React.FC = () => (
           </Link>
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
-            Home of Struct, a lightweight desktop IDE with agentic coding
-            capabilities.
+            Lumorix Studios builds modern applications, developer tools, and
+            experimental projects — all in the open.
           </p>
 
           {/* Socials */}
@@ -156,8 +156,8 @@ const Footer: React.FC = () => (
           <div className="absolute right-0 bottom-full z-50 mb-3 hidden w-64 border border-white/20 bg-zinc-950 p-3 text-left shadow-xl">
             <p className="text-xs leading-5 text-white/50">
               If you want to share your feedbacks, we'd appreciate it.
-              We're always looking for ways to improve Struct and make it more
-              user-friendly.
+              We're always looking for ways to improve our projects and make
+              them more user-friendly.
             </p>
           </div>
         </div>

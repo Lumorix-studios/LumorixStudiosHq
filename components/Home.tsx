@@ -1,59 +1,60 @@
 import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
-import ScreenshotFrame from "./ScreenshotFrame";
-import previewSss from "../src/assets/newtest.png";
 import { IoLogoGithub } from "react-icons/io5";
-import { IoLogoWindows } from "react-icons/io";
-import { IoLogoTux} from "react-icons/io";
-const steps = [
+
+const ORG_URL = "https://github.com/Lumorix-studios";
+
+type Product = {
+  name: string;
+  description: string;
+  href: string;
+  external?: boolean;
+};
+
+// Every public repository is listed here. Add an entry to ship a new product
+// to the lineup — Struct is the only one with an on-site product page so far.
+const products: Product[] = [
   {
-    n: "1",
-    title: "Install it",
-    body: "Windows installer or Linux package from downloads. No account needed to get started.",
-    href: "/downloads",
-    link: "Downloads",
+    name: "Struct",
+    description:
+      "A lightweight desktop IDE with a built-in agent, for Windows and Linux.",
+    href: "/products/struct",
   },
-  {
-    n: "2",
-    title: "Connect a model",
-    body: "Paste an API key for a hosted provider, or point Struct at a local Ollama server. Keys stay in Struct's settings, not in your repository.",
-    href: "/documentation#providers",
-    link: "Provider setup",
-  },
-  {
-    n: "3",
-    title: "Open a folder",
-    body: "Explorer, editor, terminal, and agent operate on the same project. Start with one small task.",
-    href: "/documentation#first-workspace",
-    link: "Open a workspace",
-  },
+  // {
+  //   name: "Lumorix Studios HQ",
+  //   description:
+  //     "The site you're on documentation, downloads, and everything else we publish.",
+  //   href: "https://github.com/Lumorix-studios/LumorixStudiosHq",
+  //   external: true,
+  // },
+  // {
+  //   name: "TeamDiscussions",
+  //   description:
+  //     "Where members talk through projects, plans, and general stuff in the open.",
+  //   href: "https://github.com/Lumorix-studios/TeamDiscussions",
+  //   external: true,
+  // },
+  // {
+  //   name: ".github",
+  //   description:
+  //     "The organization profile and the guidelines shared by every project.",
+  //   href: "https://github.com/Lumorix-studios/.github",
+  //   external: true,
+  // },
 ];
 
-// const capabilities = [
-  // {
-    // title: "Editor and terminal",
-    // body: "A code editor and an integrated terminal working on the same project as the explorer.",
-  // },
-  // {
-    // title: "Agent tools",
-    // body: "Read, search, write, replace, rename, and delete inside the workspace you opened. Deletions ask first.",
-  // },
-  // {
-    // title: "Review before you accept",
-    // body: "The agent shows exactly what changed, so consequential edits are yours to keep or discard.",
-  // },
-  // {
-    // title: "Any provider",
-    // body: "Bring a hosted endpoint or run inference locally through Ollama. You control the model and the cost.",
-  // },
-  // {
-    // title: "MCP connections",
-    // body: "Connect compatible tools and services, reviewing what each server can read and change first.",
-  // },
-  // {
-    // title: "Lightweight by design",
-    // body: "A Rust backend via Tauri with a React and TypeScript frontend, so it stays usable on modest hardware.",
-  // },
+// const principles = [
+//   {
+//     n: "1",
+//     title: "Open source by default",
+//     body: "Every repository is public. Source, releases, and issue tracking live on GitHub, so anyone can read how a thing works or send a fix.",
+//   },
+//   {
+//     n: "2",
+//     title: "Lightweight by design",
+//     body: "Tools are built to stay fast on modest hardware with native backends instead of heavyweight runtimes, and interfaces that stay out of the way.",
+//   },
+  
 // ];
 
 export default function Home() {
@@ -62,24 +63,24 @@ export default function Home() {
       {/* Hero */}
       <section>
         <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="max-w-3xl justify-content-center align-items-center">
+          <div className="max-w-3xl">
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
-              
+              Open source git org
             </p>
 
             <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
-              Struct
+              Lumorix Studios
             </h1>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-lg text-zinc-400 sm:text-xl">
-              <span>Built to be</span>
+              <span></span>
 
               <RotatingText
                 texts={[
-                  "Efficient",
-                  "Easy to use",
-                  "Lightweight",
-                  "",
+                  "developer tools",
+                  "Desktop apps",
+                  "Completely free",
+                  "open source",
                 ]}
                 mainClassName="inline-flex font-medium text-white"
                 staggerFrom="last"
@@ -93,7 +94,7 @@ export default function Home() {
                   damping: 30,
                   stiffness: 400,
                 }}
-                rotationInterval={2000}
+                rotationInterval={3000}
                 splitBy="characters"
                 auto
                 loop
@@ -101,161 +102,140 @@ export default function Home() {
             </div>
 
             <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg">
-              A lightweight agentic interface 
+              {/*A technology-focused team developing modern applications,
+              developer tools, and experimental projects at the intersection
+              of software engineering, AI, and user-focused design.*/}
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link
-                to="/downloads"
+              <a
+                href="#products"
                 className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
               >
-                Download
-              </Link>
+                Explore products
+              </a>
 
               <a
-                href="https://github.com/Lumorix-studios/Struct"
+                href={ORG_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
               >
-                <IoLogoGithub className="inline-block mr-2" />
-                GitHub
+                <IoLogoGithub className="mr-2 inline-block" />
+                GitHub organization
               </a>
             </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Products */}
+      <section id="products" className="scroll-mt-24">
+        <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
             
-            
-            // ... inside your component:
-            <a 
-              href="https://lumorix-studios.github.io/LumorixStudiosHq/downloads" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-blue-500"
-            > 
-              <p className="m-1 text-xs text-zinc-500 flex items-center gap-2 hover:text-blue-500"> 
-                <IoLogoWindows />
-                <span>Windows 10+</span>
-                <IoLogoTux />
-                <span>Linux Distros</span>
-              </p> 
-            </a>
+          </p>
 
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            Projects
+          </h2>
+
+          
+          <div className = "">
+          <ul className="mt-12 space-y-10">
+            {products.map((p) => {
+              const inner = (
+                <>
+                  <span className="block text-lg font-medium text-white transition group-hover:text-zinc-300">
+                    {p.name}
+                  </span>
+
+                  <span className="mt-1 block max-w-2xl text-sm leading-6 text-zinc-400">
+                    {p.description}
+                  </span>
+
+                  <span className="mt-2 inline-block text-sm text-zinc-500 transition group-hover:text-blue-600">
+                    {p.external ? "View repository" : "View product"} →
+                  </span>
+                </>
+              );
+
+              return (
+                <li key={p.name}>
+                  {p.external ? (
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block"
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <Link to={p.href} className="group block">
+                      {inner}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
           </div>
         </div>
       </section>
-
-      {/* Preview */}
-      <section className="">
-        <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-          <div className="mb-8 max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
-              The workspace
-            </p>
-
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              A quick look
-            </h2>
-
-            <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400 sm:text-base">
-              The workspace, editor, terminal, and AI chat  all running on
-              your machine.
-            </p>
-          </div>
-
-          <div className="overflow-hidden  bg-black/30">
-            <ScreenshotFrame
-              src={previewSss}
-              alt="Struct workspace preview"
-              title="Main chat interface"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Getting started */}
-      <section className="border-t border-white/10">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
-              Start here
-            </p>
-
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              Getting started
-            </h2>
-
-            <p className="mt-3 text-sm leading-6 text-zinc-400 sm:text-base">
-              Get it running and working on a real project in three steps.
-            </p>
-          </div>
-
-          <ol className="mt-10 divide-y divide-white/10 border-y border-white/10">
-            {steps.map((s) => (
-              <li
-                key={s.n}
-                className="grid gap-4 py-7 sm:grid-cols-[40px_1fr] sm:gap-5"
-              >
-                <span className="text-sm font-medium text-zinc-600">
-                  {s.n}
-                </span>
-
-                <div>
-                  <h3 className="text-base font-medium text-white">
-                    {s.title}
-                  </h3>
-
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-400">
-                    {s.body}
-                  </p>
-
-                  <Link
-                    to={s.href}
-                    className="mt-3 inline-block text-sm font-medium text-white underline decoration-zinc-600 underline-offset-4 transition hover:decoration-zinc-300"
-                  >
-                    {s.link}
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       
 
+      {/* How we work */}
+      <section>
+        <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
+            
+          </p>
+
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+          
+          </h2>
+
+         
+
+        </div>
+      </section>
+
       {/* Closing call to action */}
-      <section className="border-t border-white/10">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+      <section>
+        <div className="mx-auto max-w-4xl px-4 pb-28 pt-4 sm:px-6 sm:pb-32 lg:px-8">
           <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            Still in beta. Grab it and tell us what breaks.
+            Everything we ship is free and open source.
           </h2>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/downloads"
-              className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-            >
-              Download
-            </Link>
-
-            <Link
-              to="/documentation"
-              className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
-            >
-              Read the docs
-            </Link>
-
             <a
-              href="https://github.com/Lumorix-studios/Struct/issues"
+              href={ORG_URL}
               target="_blank"
               rel="noopener noreferrer"
+              className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+            >
+              <IoLogoGithub className="mr-2 inline-block" />
+              View on GitHub
+            </a>
+
+            <Link
+              to="/about"
               className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
             >
-              Report an issue
-            </a>
+              About the studio
+            </Link>
+
+            <Link
+              to="/contact"
+              className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
+            >
+              Get in touch
+            </Link>
           </div>
         </div>
       </section>
+
     </>
   );
 }

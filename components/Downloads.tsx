@@ -1,5 +1,6 @@
 
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   IoLogoApple,
   IoLogoTux,
@@ -164,22 +165,27 @@ export default function Downloads() {
         <div className="mx-auto max-w-5xl">
 
           {/* Header */}
-          <header className="mb-8 border-b border-white/20 pb-6">
+          <header className="mb-8 pb-6">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                {/* <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">
-                  STRUCT / DOWNLOADS
-                </p> */}
+                <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
+                  Lumorix Studios · Struct
+                </p>
 
                 <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
                   Downloads
                 </h1>
-                {/*lazy way of spacing it lol*/}
-                <span className = "m-4"></span>
 
-                {/* <p className="mt-3 text-sm text-white/60">
-                  Get the latest Struct build for your platform.
-                </p> */}
+                <p className="mt-3 text-sm text-white/60">
+                  Current release builds. See all projects on the{" "}
+                  <Link
+                    to="/"
+                    className="text-white/90 underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
+                  >
+                    home page
+                  </Link>
+                  .
+                </p>
               </div>
 
               {version && (
@@ -192,7 +198,7 @@ export default function Downloads() {
           </header>
 
           {/* Recommended */}
-          <section className="border border-white/30 bg-black/50">
+          <section className="border border-white/15 bg-black/40">
             <div className="p-6 sm:p-7">
               {loading ? (
                 <div className="font-mono text-sm text-white/60">

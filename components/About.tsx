@@ -1,3 +1,26 @@
+import { Link } from "react-router-dom";
+
+const projects = [
+  {
+    name: "Struct",
+    body: "A lightweight desktop IDE with agentic coding, for Windows and Linux.",
+    href: "/products/struct",
+    external: false,
+  },
+  {
+    name: "TeamDiscussions",
+    body: "Where members talk through projects, plans, and general stuff.",
+    href: "https://github.com/Lumorix-studios/TeamDiscussions",
+    external: true,
+  },
+  {
+    name: "Lumorix Studios HQ",
+    body: "This website — documentation, downloads, and everything we publish.",
+    href: "https://github.com/Lumorix-studios/LumorixStudiosHq",
+    external: true,
+  },
+];
+
 export default function About() {
   return (
     <main className="min-h-screen text-white">
@@ -6,107 +29,125 @@ export default function About() {
         {/* Header */}
         <header className="pb-10">
           <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
-            About Struct
+            About Lumorix Studios
           </h1>
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-white/60 sm:text-lg">
-            A lightweight desktop IDE with agentic coding, built to stay fast
-            on modest hardware.
+            A technology-focused team developing modern applications,
+            developer tools, and experimental projects — open source by
+            default.
           </p>
         </header>
 
         {/* Content */}
         <div className="space-y-14">
 
-          {/* The Project */}
+          {/* Who we are */}
           <section>
             <h2 className="text-xl font-medium">
-              The project
+              Who we are
             </h2>
 
             <div className="mt-4 max-w-3xl space-y-4 leading-7 text-white/60">
               <p>
-                Struct is a desktop IDE with agentic coding capabilities. Rather
-                than bolting a chat box onto another editor, Struct is built around
-                an agent that can work alongside you, inside your project.
+                Lumorix Studios is a GitHub organization where our projects,
+                releases, and issue tracking live. It isn't a separate company
+                or legal entity — think of it as the home for the code and the
+                team behind it.
               </p>
 
               <p>
-                It stays intentionally lightweight: a Rust backend instead of
-                Electron, so it idles small and stays usable on modest hardware.
-                The goal is a tool that feels like a development environment
-                first — supported wherever the OS is.
+                We explore the intersection of software engineering,
+                artificial intelligence, and user-focused design to create
+                practical, forward-thinking tools. Some projects ship; some
+                stay experiments. All of them are public.
               </p>
             </div>
           </section>
 
-          {/* Why Struct */}
-          <section className="border-t border-white/15 pt-10">
+          {/* Projects */}
+          <section>
             <h2 className="text-xl font-medium">
-              Why Struct?
+              Our projects
+            </h2>
+
+            <ul className="mt-4 space-y-6">
+              {projects.map((p) => {
+                const inner = (
+                  <>
+                    <span className="block font-medium text-white/90">
+                      {p.name}
+                    </span>
+
+                    <span className="mt-1 block max-w-3xl leading-7 text-white/60">
+                      {p.body}
+                    </span>
+                  </>
+                );
+
+                return (
+                  <li key={p.name}>
+                    {p.external ? (
+                      <a
+                        href={p.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block transition hover:text-white"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <Link
+                        to={p.href}
+                        className="block transition hover:text-white"
+                      >
+                        {inner}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+
+          {/* How we work */}
+          <section>
+            <h2 className="text-xl font-medium">
+              How we work
+            </h2>
+
+            <div className="mt-4 max-w-3xl space-y-4 leading-7 text-white/60">
+              <p>
+                Everything is built in the open. Repositories are public,
+                releases are published on GitHub, and issues are the front door
+                for bug reports and feature requests.
+              </p>
+
+              <p>
+                We keep things lightweight on purpose — native backends instead
+                of heavyweight runtimes, and interfaces that stay out of the
+                way. The goal is tools that remain usable on modest hardware.
+              </p>
+            </div>
+          </section>
+
+          {/* Contact */}
+          <section>
+            <h2 className="text-xl font-medium">
+              Get in touch
             </h2>
 
             <p className="mt-4 max-w-3xl leading-7 text-white/60">
-              Struct started as a hobby project — small experiments in editors,
-              agents, and desktop tooling that grew into a real application.
+              For questions, collaboration opportunities, or project inquiries,
+              open an issue in the relevant repository or reach out on the{" "}
+              <Link
+                to="/contact"
+                className="text-white/90 underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
+              >
+                contact page
+              </Link>
+              .
             </p>
-          </section>
-
-          {/* Under the Hood */}
-          <section className="border-t border-white/15 pt-10">
-            <h2 className="text-xl font-medium">
-              Under the hood
-            </h2>
-
-            <div className="mt-4 max-w-3xl space-y-4 leading-7 text-white/60">
-              <p>
-                Struct is built as a desktop application using Tauri, with a
-                TypeScript and React frontend. The project uses Rust on the
-                native side and is designed to keep the desktop layer
-                substantially lighter than traditional webview-based desktop
-                applications.
-              </p>
-
-              <p>
-                The architecture is still evolving. Some parts of Struct are
-                experimental, and the project will continue to change as new
-                approaches are tested.
-              </p>
-            </div>
-          </section>
-
-          {/* Lumorix Studios */}
-          <section className="border-t border-white/15 pt-10">
-            <h2 className="text-xl font-medium">
-              Lumorix Studios
-            </h2>
-
-            <p className="mt-4 max-w-3xl leading-7 text-white/60">
-              Lumorix Studios is the GitHub organization where Struct and its
-              related repositories are maintained. It isn't a separate
-              company or legal entity. Think of it as the home for the
-              project's code, releases, and other work.
-            </p>
-          </section>
-
-          {/* Current Status */}
-          <section className="border-t border-white/15 pt-10">
-            <h2 className="text-xl font-medium">
-              Where Struct is now
-            </h2>
-
-            <div className="mt-4 max-w-3xl space-y-4 leading-7 text-white/60">
-              <p>
-                Struct is still actively being built. Releases are incremental,
-                and the project is nowhere near finished. Features will change,
-                things will break, and parts of the application will be
-                rewritten when they need to be.
-              </p>
-
-              <p>
-                That's part of building software from scratch.
-              </p>
-            </div>
           </section>
 
         </div>
@@ -114,3 +155,4 @@ export default function About() {
     </main>
   );
 }
+
