@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
 import { IoLogoGithub } from "react-icons/io5";
-import MaskedHeading from "./MaskedHeading";
-import heroImg from "../src/assets/hero.png";
-import textVideo from "../src/assets/text.mp4";
+// import MaskedHeading from "./MaskedHeading";
+// import textVideo from "../src/assets/text.mp4";
 const ORG_URL = "https://github.com/Lumorix-studios";
 
 type Product = {
@@ -134,7 +133,7 @@ export default function Home() {
           
         </div>
         <div className = "m-1">
-        <MaskedHeading
+        {/*<MaskedHeading
           text="Where ideas become reality"
           mediaType="video"
           src={textVideo}
@@ -153,7 +152,7 @@ export default function Home() {
           tracking={0}
           lineHeight={1.06}
           textScale={0.115}
-          />
+          />*/}
         </div>
       </section>
 v
