@@ -1,0 +1,1 @@
+var e=`/LumorixStudiosHq/assets/newtest-Dt4TrGtl.png`;export{e as t};
