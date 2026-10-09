@@ -32,10 +32,12 @@ function ScrollToTop() {
 }
 
 function PageContent() {
+  const { pathname } = useLocation();
+
   return (
     //credits to https://21st.dev/@uicapsule/components/background-pixel-stars for the background component
      <div className="h-dvh w-dvw bg-black bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIElEQVR42mIUEhJiwAbevXuHVZyJgUQwqmEUDB0AEGAADd8DEPTX6ksAAAAASUVORK5CYII=')] bg-[size:10px]">
-      <BackgroundPixelStars />
+      {pathname === "/" ? null : <BackgroundPixelStars />}
       
    
     <div className="flex min-h-screen flex-col bg-zinc-950">

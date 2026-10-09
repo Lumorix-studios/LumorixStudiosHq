@@ -282,7 +282,7 @@ export default function Downloads() {
               )}
             </div>
 
-            {/* {exe && msi && (
+             {exe && msi && (
               <div className="border-t border-white/15 bg-white/[0.03] px-6 py-4">
                 <p className="text-xs text-white/50">
                   Alternate Windows installer:{" "}
@@ -295,7 +295,7 @@ export default function Downloads() {
                   ({formatSize(msi.size)})
                 </p>
               </div>
-            )} */}
+            )} 
           </section>
 
           {/* Builds */}
