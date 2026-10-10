@@ -53,7 +53,7 @@ const Footer: React.FC = () => (
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
             Lumorix Studios builds modern applications, developer tools, and
-            experimental projects — all in the open.
+            experimental projects.
           </p>
 
           {/* Socials */}

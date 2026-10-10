@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
 import { IoLogoGithub } from "react-icons/io5";
 import structPreview from "../src/assets/newtest.png";
-
+import BackgroundPixelStars from "./background";
 const ORG_URL = "https://github.com/Lumorix-studios";
 const STRUCT_URL = "https://github.com/Lumorix-studios/Struct";
 
 export default function Home() {
   return (
-    <>
+    
+    <div>
+      <BackgroundPixelStars/>
+      
       <section>
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8 lg:py-24">
           <div>
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
-              Independent software studio
+              
             </p>
 
             <h1 className="max-w-xl text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
@@ -59,7 +62,7 @@ export default function Home() {
               className="block h-auto w-full rounded-lg"
             />
             <p className="mt-3 text-sm text-zinc-500 transition group-hover:text-zinc-300">
-              Struct <span aria-hidden="true">↗</span>
+              {/*Struct <span aria-hidden="true"></span>*/}
             </p>
           </Link>
         </div>
@@ -116,7 +119,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <p className = "m-80"></p>
       </section>
-    </>
+
+    </div>
   );
 }
